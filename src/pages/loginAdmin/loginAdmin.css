@@ -3,7 +3,8 @@
 }
 
 .login-section {
-  height: 57vh;
+  height: 55vh;
+  padding-top: 320px;
 }
 
 .triangle-top-left {
@@ -13,8 +14,8 @@
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 200px 200px 0 0;
-  border-color: #fe7968 transparent transparent transparent;
+  border-width: 270px 600px 0 0;
+  border-color: #feafa4 transparent transparent transparent;
 }
 
 .triangle-bottom-right {
@@ -24,12 +25,17 @@
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 0 0 200px 200px;
-  border-color: transparent transparent #fe7968 transparent;
+  border-width: 0 0 290px 700px;
+  border-color: transparent transparent #feafa4 transparent;
 }
 
 .login-content {
+  text-align: justify;
   margin-right: 90px;
+  margin-top: -200px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-size: 20px;
 }
 
 .logo-image {
@@ -37,7 +43,7 @@
 }
 
 .login-animation {
-  width: 600px;
+  width: 613px;
   bottom: 100;
   left: 0;
 }

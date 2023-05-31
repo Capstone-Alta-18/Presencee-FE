@@ -1,12 +1,9 @@
-import React from 'react';
-import { Row, Col, Form, Input, Button } from 'antd';
-import { IMAGES } from '../../assets/constant';
-import './loginAdmin.css';
+import { Row, Col, Form, Input, Button } from "antd";
+import { IMAGES } from "../../assets/constant";
+import "./loginAdmin.css";
 
 const LoginAdmin = () => {
-  const onFinish = (values) => {
-    console.log('Received values of form: ', values);
-  };
+  const onFinish = () => {};
 
   return (
     <div className="login-container">
@@ -21,23 +18,23 @@ const LoginAdmin = () => {
           </p>
         </Col>
         <Col
-          span={8}
+          span={7}
           style={{
-            boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
-            padding: '24px',
-            background: '#ffffff',
+            boxShadow: " 0px 0px 20px rgba(48, 48, 48, 0.2)",
+            padding: "24px",
+            background: "#ffffff",
           }}
         >
           <Form name="login-form" onFinish={onFinish}>
-            <Form.Item name="username" rules={[{ required: true, message: 'Please input your username!' }]}>
+            <Form.Item name="username" rules={[{ required: true, message: "Please input your username!" }]}>
               <Input placeholder="Input Email/NIM" />
             </Form.Item>
-            <Form.Item name="password" rules={[{ required: true, message: 'Please input your password!' }]}>
+            <Form.Item name="password" rules={[{ required: true, message: "Please input your password!" }]}>
               <Input.Password placeholder="Input Password" />
             </Form.Item>
-            <div style={{ borderTop: '1px solid #ccc', margin: '12px 0' }} />
+            <div style={{ borderTop: "1px solid #ccc", margin: "12px 0" }} />
             <Form.Item>
-              <Button type="primary" htmlType="submit" style={{ width: '100%' }}>
+              <Button type="primary" htmlType="submit" style={{ width: "100%" }}>
                 Enter
               </Button>
             </Form.Item>
