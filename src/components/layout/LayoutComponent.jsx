@@ -4,7 +4,7 @@ import { MENU_ITEM_ADMIN } from "./constant";
 import { IMAGES } from "./../../assets/constant";
 import { DotsThreeOutlineVertical, List } from "@phosphor-icons/react";
 import "./layoutComponent.css";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const { Header, Sider, Content } = Layout;
 
@@ -53,7 +53,17 @@ const LayoutComponent = ({ children }) => {
             <div className="nav-users">
               <img src={IMAGES.profilImage} alt="" width={50} />
               <p> Admin</p>
-              <Button className="btn-logout">Logout</Button>
+              <Link to="/">
+                <Button
+                  type="primary"
+                  onClick={() => {
+                    localStorage.removeItem("access_token");
+                  }}
+                  danger
+                >
+                  Logout
+                </Button>
+              </Link>
             </div>
           </Header>
 

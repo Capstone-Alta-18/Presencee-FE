@@ -13,7 +13,7 @@ export const useLogin = () => {
       console.log({ res });
 
       if (res) {
-        localStorage.setItem("access_token", res.data?.access_token);
+        localStorage.setItem("access_token", res.data?.token);
         message.open({
           type: "success",
           content: "Berhasil Login",

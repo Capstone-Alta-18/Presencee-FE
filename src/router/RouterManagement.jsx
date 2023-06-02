@@ -1,5 +1,5 @@
-import React, { Suspense } from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { Suspense, useEffect } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import LandingMain from "../pages/landingPage/LandingMain";
 import LoginAdmin from "../pages/loginAdmin/LoginAdmin";
 import LoginDosen from "../pages/loginDosen/LoginDosen";
@@ -10,23 +10,31 @@ import DataMahasiswa from "../pages/dataMahasiswa/DataMahasiswa";
 import RiwayatPresensi from "../pages/riwayatPresensi/RiwayatPresensi";
 
 const RouterManagement = () => {
+  const token = localStorage.getItem("access_token");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login-admin");
+    }
+  }, [token]);
   return (
     <div>
       <Suspense>
-        <Routes>
-          <Route path="/" element={<LandingMain />} />
-          <Route path="/login-admin" element={<LoginAdmin />} />
-          <Route path="/login-dosen" element={<LoginDosen />} />
-          <Route path="/dashboard-admin" element={<LoginDosen />} />
-        </Routes>
-        <LayoutComponent>
+        {!token ? (
           <Routes>
-            <Route path="/dashboard-admin" element={<DashboardAdmin />} />
-            <Route path="/jadwal-kuliah-admin" element={<JadwalKuliahAdmin />} />
-            <Route path="/data-mahasiswa" element={<DataMahasiswa />} />
-            <Route path="/riwayat-presensi" element={<RiwayatPresensi />} />
+            <Route path="/login-admin" element={<LoginAdmin />} />
           </Routes>
-        </LayoutComponent>
+        ) : (
+          <LayoutComponent>
+            <Routes>
+              <Route path="/dashboard-admin" element={<DashboardAdmin />} />
+              <Route path="/jadwal-kuliah-admin" element={<JadwalKuliahAdmin />} />
+              <Route path="/data-mahasiswa" element={<DataMahasiswa />} />
+              <Route path="/riwayat-presensi" element={<RiwayatPresensi />} />
+            </Routes>
+          </LayoutComponent>
+        )}
       </Suspense>
     </div>
   );
