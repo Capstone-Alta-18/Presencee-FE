@@ -14,6 +14,9 @@ import Features4 from "./img/features4.png";
 import AboutUs from "./img/aboutUs.png";
 import imagecontactus from "./img/imagecontactus.png";
 
+import profilImage from "./img/profil-image.png";
+
+
 export const IMAGES = {
   animasiLogin: animasiLogin,
   bgLandingPage: bgLandingPage,
@@ -30,4 +33,7 @@ export const IMAGES = {
   Features4: Features4,
   AboutUs: AboutUs,
   imagecontactus : imagecontactus,
+
+  profilImage: profilImage,
+
 };
