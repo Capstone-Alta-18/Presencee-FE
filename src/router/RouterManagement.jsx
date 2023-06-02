@@ -12,6 +12,7 @@ const RouterManagement = () => {
           <Route path="/" element={<LandingMain />} />
           <Route path="/login-admin" element={<LoginAdmin />} />
           <Route path="/login-dosen" element={<LoginDosen />} />
+          <Route path="/dashboard-admin" element={<LoginDosen />} />
         </Routes>
       </Suspense>
     </div>

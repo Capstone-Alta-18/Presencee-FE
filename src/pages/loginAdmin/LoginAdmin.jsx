@@ -1,9 +1,18 @@
 import { Row, Col, Form, Input, Button } from "antd";
 import { IMAGES } from "../../assets/constant";
+import { useNavigate } from "react-router-dom";
 import "./loginAdmin.css";
+import { useLogin } from "./hooks/useAuth";
 
 const LoginAdmin = () => {
-  const onFinish = () => {};
+  const navigate = useNavigate();
+  const [isLoadingLogin, login] = useLogin();
+
+  const onLogin = (values) => {
+    login(values, () => {
+      navigate("/dashboard-admin");
+    });
+  };
 
   return (
     <div className="login-container">
@@ -25,8 +34,8 @@ const LoginAdmin = () => {
             background: "#ffffff",
           }}
         >
-          <Form name="login-form" onFinish={onFinish}>
-            <Form.Item name="username" rules={[{ required: true, message: "Please input your username!" }]}>
+          <Form name="login-form" onFinish={onLogin}>
+            <Form.Item name="email" rules={[{ required: true, message: "Please input your username!" }]}>
               <Input placeholder="Input Email/NIM" />
             </Form.Item>
             <Form.Item name="password" rules={[{ required: true, message: "Please input your password!" }]}>
