@@ -7,6 +7,7 @@ import faq4 from "./img/FAQ 4.png";
 import logo1 from "./img/logo1.png";
 import logoGram1Warna from "./img/logogram 1 warna.png";
 import logoGram from "./img/logogram.png";
+import profilImage from "./img/profil-image.png";
 
 export const IMAGES = {
   animasiLogin: animasiLogin,
@@ -18,4 +19,5 @@ export const IMAGES = {
   logo1: logo1,
   logoGram1Warna: logoGram1Warna,
   logoGram: logoGram,
+  profilImage: profilImage,
 };
