@@ -53,7 +53,7 @@ const LayoutComponent = ({ children }) => {
             <div className="nav-users">
               <img src={IMAGES.profilImage} alt="" width={50} />
               <p> Admin</p>
-              <Link to="/">
+              <Link to="/login-admin">
                 <Button
                   type="primary"
                   onClick={() => {
