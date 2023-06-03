@@ -7,6 +7,15 @@ import faq4 from "./img/FAQ 4.png";
 import logo1 from "./img/logo1.png";
 import logoGram1Warna from "./img/logogram 1 warna.png";
 import logoGram from "./img/logogram.png";
+import Features from "./img/features.png";
+import Features2 from "./img/features2.png";
+import Features3 from "./img/features3.png";
+import Features4 from "./img/features4.png";
+import AboutUs from "./img/aboutUs.png";
+import imagecontactus from "./img/imagecontactus.png";
+
+import profilImage from "./img/profil-image.png";
+
 
 export const IMAGES = {
   animasiLogin: animasiLogin,
@@ -18,4 +27,13 @@ export const IMAGES = {
   logo1: logo1,
   logoGram1Warna: logoGram1Warna,
   logoGram: logoGram,
+  Features: Features,
+  Features2: Features2,
+  Features3: Features3,
+  Features4: Features4,
+  AboutUs: AboutUs,
+  imagecontactus : imagecontactus,
+
+  profilImage: profilImage,
+
 };
