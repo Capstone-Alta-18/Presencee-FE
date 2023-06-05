@@ -12,6 +12,7 @@
   background: linear-gradient(180deg, #cd4f3f 0%, #fe7968 100%) !important;
   border-radius: 0px 50px 50px 0px;
   padding: 64px 0px;
+  height: 100vh;
 }
 
 .menu-bar {

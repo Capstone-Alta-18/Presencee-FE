@@ -1,0 +1,77 @@
+.dashboard-section{
+    margin-top: 72px;
+    margin-left: 174px;
+}
+.left-dashboard{
+    width: 285px;
+}
+
+.title-dashboard-admin h2{
+    font-size: 28px;
+}
+
+.title-dashboard-admin p{
+    font-size: 20px;
+    margin-top: -20px;
+    margin-bottom: 33px;
+}
+.right-dashboard{
+    width: 635px;
+    margin-left: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.calender{
+    height: 294px !important;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 20px rgba(48, 48, 48, 0.2);
+}
+
+.presentase-kehadiran{
+    margin-top: 31px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 20px rgba(48, 48, 48, 0.2);
+}
+
+.all-data-section{
+    flex-basis: 50%;
+    flex-shrink: 0;
+}
+
+.container-data-section{
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    
+    width: 286px;
+    background-color: #FFFFFF;
+    height: 120px;
+    box-shadow: 0px 0px 20px rgba(48, 48, 48, 0.2);
+    border-radius: 8px;
+    margin-left: 5px;
+}
+
+.data-section{
+    background-color: #FE7968;
+    width: 163px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-right: -31px;
+    font-size: 14px;
+    border-radius: 0px 8px 8px 0px;
+    height: 120px;
+}
+
+.statistic-mingguan{
+    margin-top: 20px;
+    width: 100%;
+    background: #FFFFFF;
+/* shadow/7 */
+
+box-shadow: 0px 0px 20px rgba(48, 48, 48, 0.2);
+}
