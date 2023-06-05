@@ -1,5 +1,3 @@
-
-
 import React, { Suspense, useEffect } from "react";
 import { Route, Routes, useNavigate, Navigate } from "react-router-dom";
 import LandingMain from "../pages/landingPage/LandingMain";
@@ -27,7 +25,7 @@ const RouterManagement = () => {
           <Route path="/" element={<LandingMain />} />
           <Route path="/login-admin" element={<LoginAdmin />} />
           <Route
-            path="/dashboard-admin/*"
+            path="/admin-page/*"
             element={
               token ? (
                 <LayoutComponent>
