@@ -47,7 +47,7 @@
     display: flex;
     justify-content:space-evenly;
     align-items: center;
-    
+    margin-bottom: 30px;
     width: 286px;
     background-color: #FFFFFF;
     height: 120px;
@@ -61,7 +61,7 @@
     width: 163px;
     text-align: center;
     color: #FFFFFF;
-    margin-right: -31px;
+    margin-right: -33px;
     font-size: 14px;
     border-radius: 0px 8px 8px 0px;
     height: 120px;

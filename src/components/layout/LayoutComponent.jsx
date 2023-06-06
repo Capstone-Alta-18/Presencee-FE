@@ -75,7 +75,7 @@ const LayoutComponent = ({ children }) => {
           />
         </Drawer>
 
-        <Layout b>
+        <Layout>
           {/* header */}
           <Header className="header-layout">
             <div className="nav-brand">
@@ -103,6 +103,7 @@ const LayoutComponent = ({ children }) => {
             style={{
               minHeight: 280,
               background: "#fff",
+              marginLeft: -35,
             }}
           >
             {children}
