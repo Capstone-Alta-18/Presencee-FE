@@ -1,0 +1,39 @@
+.hero{
+    background-image: url('../../../assets/img/bg landing page.png');
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    background-position: center;
+
+}
+.text-hero{
+    width: 652px;
+    padding: 400px 0 330px 200px;
+}
+
+.text-hero h1{
+    font-size: 48px;
+}
+
+.text-hero p {
+    font-size: 28px;
+}
+
+@media (max-width: 860px){
+    .hero{
+        height: 751px;
+        background-position: center;
+    }
+
+    .text-hero{
+        width: auto;
+        padding: 292px 24px;
+    }
+
+    .text-hero h1{
+        font-size: 24px;
+    }
+    
+    .text-hero p {
+        font-size: 20px;
+    }
+}
