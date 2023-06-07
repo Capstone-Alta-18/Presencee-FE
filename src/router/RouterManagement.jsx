@@ -1,5 +1,3 @@
-
-
 import React, { Suspense, useEffect } from "react";
 import { Route, Routes, useNavigate, Navigate } from "react-router-dom";
 import LandingMain from "../pages/landingPage/LandingMain";
