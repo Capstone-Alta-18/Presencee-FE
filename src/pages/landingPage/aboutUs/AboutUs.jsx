@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./aboutUs.css";
 import { IMAGES } from "../../../assets/constant";
+import { useGetDosen, useGetMahasiswa } from "./hooks/useGetData";
 
 const AboutUs = () => {
+  const [, mahasiswas, getMahasiswa] = useGetMahasiswa();
+  const [, dosens, getDosen] = useGetDosen();
+
+  useEffect(() => {
+    getMahasiswa();
+    getDosen();
+  }, []);
+
   return (
     <div id="aboutus">
       <div className="about-section">
@@ -17,12 +26,12 @@ const AboutUs = () => {
         <div className="info-text">
           <div className="info-mahasiswa">
             <p>
-              500 <br /> Mahasiswa
+              {mahasiswas?.length} <br /> Mahasiswa
             </p>
           </div>
           <div className="info-dosen">
             <p>
-              50 <br /> dosen
+              {dosens?.length} <br /> Dosen
             </p>
           </div>
           <div className="info-kelas">

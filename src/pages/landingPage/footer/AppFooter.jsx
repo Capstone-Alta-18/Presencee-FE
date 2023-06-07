@@ -20,12 +20,12 @@ const AppFooter = () => {
             </p>
             <p className="text-footer">
               <Phone className="icon" size={32} weight="fill" />
-              +62 812 3456 78990
+              +62 816-1563-8362
             </p>
 
             <p className="text-footer">
               <EnvelopeSimpleOpen className="icon" size={32} weight="fill" />
-              presensee@attendance.co
+              presenseeproject@mail.com
             </p>
           </div>
         </div>
