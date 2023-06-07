@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Table } from "antd";
 import "./JadwalKuliah.css";
+import { Link } from "react-router-dom";
 
 const dataSource = [
   {
@@ -46,9 +47,11 @@ const JadwalKuliahAdmin = () => {
     <div className="display-table">
       <p>Manage Jadwal</p>
       <Table rowClassName={() => "rowClassName1"} className="table-jadwal-kuliah" dataSource={dataSource} columns={columns} pagination={{ pageSize: 10 }} />
-      <Button className="btn-add" style={{ float: "right" }}>
-        Tambahkan
-      </Button>
+      <Link to="/form-jadwal-kuliah-admin">
+        <Button className="btn-add" style={{ float: "right" }}>
+          Tambahkan
+        </Button>
+      </Link>
     </div>
   );
 };
