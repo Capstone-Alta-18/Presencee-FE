@@ -1,9 +1,9 @@
 import React from "react";
 import "./jurusan.css";
-import { BTN_KESEHATAN } from "./constant";
+import { BTN_HUKUM } from "./constant";
 import { Link } from "react-router-dom";
 
-const Kesehatan = () => {
+const Hukum = () => {
   return (
     <div>
       <div className="title-page-jurusan">
@@ -14,7 +14,7 @@ const Kesehatan = () => {
           <p>jurusan</p>
         </div>
         <div className="button-jurusan">
-          {BTN_KESEHATAN.map((index) => (
+          {BTN_HUKUM.map((index) => (
             <Link
               to={`/admin-page/riwayat-presensi/${index.data}`}
               key={index.data}
@@ -31,4 +31,4 @@ const Kesehatan = () => {
   );
 };
 
-export default Kesehatan;
+export default Hukum;

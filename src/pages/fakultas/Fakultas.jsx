@@ -32,7 +32,7 @@ const Fakultas = () => {
               to={`/admin-page/riwayat-presensi/${tahun}/${index.label.toLowerCase()}`}
               key={index.id}
             >
-              <div>
+              <div className="btn-fakultas">
                 {index.icon} <br />
                 {index.label}
               </div>

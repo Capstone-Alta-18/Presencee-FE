@@ -1,4 +1,4 @@
-.title-page-fakultas{
+.title-page-jurusan{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6,7 +6,7 @@
     height: 82px;
 }
 
-.content-halaman-fakultas{
+.content-halaman-jurusan{
     max-height: 431px;
 
     margin-top: 30px;
@@ -22,15 +22,15 @@
     padding-bottom: 38px;
     font-size: 24px;
 }
-.button-fakultas{
+.button-jurusan{
     width: 816px;
     text-align: center;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 kolom dengan lebar yang sama */
-    grid-template-rows: repeat(2, 90px); /* 2 baris dengan tinggi yang otomatis */
-    gap: 20px; /* Jarak antara tombol */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 143px;
 }
 
-.btn-fakultas{
+.btn-jurusan{
     color: black;
 }

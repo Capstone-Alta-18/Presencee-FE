@@ -9,6 +9,13 @@ import DataMahasiswa from "../pages/dataMahasiswa/DataMahasiswa";
 import RiwayatPresensi from "../pages/riwayatPresensi/RiwayatPresensi";
 import Fakultas from "../pages/fakultas/Fakultas";
 import Kesehatan from "../pages/jurusan/Kesehatan";
+import Hukum from "../pages/jurusan/Hukum";
+import Bisnis from "../pages/jurusan/Bisnis";
+import Sains from "../pages/jurusan/Sains";
+import Sastra from "../pages/jurusan/Sastra";
+import Math from "../pages/jurusan/Math";
+import Computer from "../pages/jurusan/Computer";
+import Media from "../pages/jurusan/Media";
 
 const RouterManagement = () => {
   const token = localStorage.getItem("access_token");
@@ -47,8 +54,40 @@ const RouterManagement = () => {
                       element={<Fakultas />}
                     />
                     <Route
+                      path="/riwayat-presensi/:tahun/hukum"
+                      element={<Hukum />}
+                    />
+                    <Route
+                      path="/riwayat-presensi/:tahun/bisnis"
+                      element={<Bisnis />}
+                    />
+                    <Route
+                      path="/riwayat-presensi/:tahun/sains"
+                      element={<Sains />}
+                    />
+                    <Route
+                      path="/riwayat-presensi/:tahun/sastra"
+                      element={<Sastra />}
+                    />
+                    <Route
+                      path="/riwayat-presensi/:tahun/math"
+                      element={<Math />}
+                    />
+                    <Route
+                      path="/riwayat-presensi/:tahun/sastra"
+                      element={<Sastra />}
+                    />
+                    <Route
                       path="/riwayat-presensi/:tahun/kesehatan"
                       element={<Kesehatan />}
+                    />
+                    <Route
+                      path="/riwayat-presensi/:tahun/computer"
+                      element={<Computer />}
+                    />
+                    <Route
+                      path="/riwayat-presensi/:tahun/media"
+                      element={<Media />}
                     />
                   </Routes>
                 </LayoutComponent>
