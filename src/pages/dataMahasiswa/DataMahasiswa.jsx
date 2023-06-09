@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./datamahasiswa.css"; // Impor file CSS terpisah
 
 const DataMahasiswa = () => {
@@ -10,7 +11,9 @@ const DataMahasiswa = () => {
         <p className="text">Data Mahasiswa</p>
       </div>
       <div className="box">
-        <p className="text">Data Dosen</p>
+        <Link to="/dashboard-admin/data/data-dosen">
+          <p className="text">Data Dosen</p>
+        </Link>
       </div>
     </div>
   );

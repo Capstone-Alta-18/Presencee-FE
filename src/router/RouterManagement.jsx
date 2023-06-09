@@ -7,9 +7,10 @@ import DashboardAdmin from "../pages/dashboradAdmin/DashboardAdmin";
 import JadwalKuliahAdmin from "../pages/jadwalKuliahAdmin/JadwalKuliahAdmin";
 import RiwayatPresensi from "../pages/riwayatPresensi/RiwayatPresensi";
 import DataMahasiswa from "../pages/dataMahasiswa/DataMahasiswa";
+import DataDosen from "../pages/dataMahasiswa/dataAll/DataDosen";
 
 const RouterManagement = () => {
-  const token = localStorage.getItem("access_token");
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,7 +33,8 @@ const RouterManagement = () => {
                   <Routes>
                     <Route path="/" element={<DashboardAdmin />} />
                     <Route path="/jadwal-kuliah-admin" element={<JadwalKuliahAdmin />} />
-                    <Route path="data-mahasiswa" element={<DataMahasiswa />} />
+                    <Route path="/data" element={<DataMahasiswa />} />
+                    <Route path="/data/data-dosen" element={<DataDosen />} />
                     <Route path="/riwayat-presensi" element={<RiwayatPresensi />} />
                   </Routes>
                 </LayoutComponent>
