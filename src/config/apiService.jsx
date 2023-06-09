@@ -1,3 +1,5 @@
+// auth.js
+
 import axios from "axios";
 
 export const baseAPI = axios.create({
@@ -20,7 +22,11 @@ baseAPI.interceptors.request.use(
 
 export const api = {
   login: (credentials) => {
-    return baseAPI.post("/v1/users/login", credentials);
+    return baseAPI.post("/v1/users/login", credentials).then((response) => {
+      const token = response.data.token; // asumsikan token berada dalam response.data
+      localStorage.setItem("token", token); // simpan token ke dalam localStorage
+      return response;
+    });
   },
   getUsers: () => {
     return baseAPI.get("/v1/users");
@@ -32,8 +38,8 @@ export const api = {
     return baseAPI.get("/v1/mahasiswa");
   },
 };
-// Contoh API with Token
-export const newBaseAPI = axios.create({
-  baseURL: "http://testing.biaracmpny.my.id",
-});
 
+export const getToken = () => {
+  const token = localStorage.getItem("token");
+  return token;
+};

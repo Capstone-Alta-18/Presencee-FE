@@ -1,9 +1,4 @@
-import {
-  Briefcase,
-  ChalkboardTeacher,
-  Student,
-  UsersThree,
-} from "@phosphor-icons/react";
+import { Briefcase, ChalkboardTeacher, Student, UsersThree } from "@phosphor-icons/react";
 
 export const DATA_DASHBOARD = [
   {

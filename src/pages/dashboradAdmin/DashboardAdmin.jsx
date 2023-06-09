@@ -1,9 +1,12 @@
-import React from "react";
+// eslint-disable-next-line no-unused-vars
+import React, { useEffect, useState } from "react";
 import "./dashboardAdmin.css";
 import { Calendar, Col, Row } from "antd";
-import { DATA_DASHBOARD } from "./constant";
-import { Doughnut } from "react-chartjs-2";
 import { Column } from "@ant-design/charts";
+import { Briefcase, ChalkboardTeacher, Student, UsersThree } from "@phosphor-icons/react";
+import { useGetDosen, useGetMahasiswa, useGetUser } from "./hooks/useGetData";
+import { DATA_DASHBOARD } from "./constant";
+import { getToken, api } from "../../config/apiService";
 
 function formatDate(date) {
   const options = {
@@ -16,6 +19,83 @@ function formatDate(date) {
 }
 
 const DashboardAdmin = () => {
+  const [mahasiswaData, getMahasiswa] = useGetMahasiswa();
+  const [ getDosen] = useGetDosen();
+  const [userData, getUsers] = useGetUser();
+  const [dashboardData, setDashboardData] = useState(DATA_DASHBOARD);
+  const [ setToken] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await Promise.all([getMahasiswa(), getDosen(), getUsers()]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    setDashboardData((prevData) => [
+      {
+        id: 1,
+        icon: <UsersThree size={60} weight="fill" />,
+        title: "Admin Aktif",
+        data: userData?.filter((user) => user.role === "admin")?.length || 21,
+      },
+      {
+        id: 2,
+        icon: <ChalkboardTeacher size={60} weight="fill" />,
+        title: "Jumlah Dosen",
+        data: dosenData?.length,
+      },
+      {
+        id: 3,
+        icon: <Student size={60} weight="fill" />,
+        title: "Jumlah Mahasiswa",
+        data: mahasiswaData?.length,
+      },
+      {
+        id: 4,
+        icon: <Briefcase size={60} weight="fill" />,
+        title: "Data Absensi",
+        data: 999, // Ganti dengan data aktual dari API
+      },
+    ]);
+  }, [mahasiswaData, dosenData, userData]);
+
+  useEffect(() => {
+    const fetchToken = async () => {
+      try {
+        const token = await getToken();
+        setToken(token);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchToken();
+  }, [userData]);
+
+  const handleLogin = async () => {
+    try {
+      const credentials = {
+        email: "dewabiara12gmail.com",
+        password: "123456",
+      };
+
+      const response = await api.login(credentials);
+      const { data } = response;
+      const token = data.token;
+      localStorage.setItem("token", token);
+      setToken(token);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const today = new Date();
   const formattedDate = formatDate(today);
 
@@ -53,15 +133,13 @@ const DashboardAdmin = () => {
       sales: 38,
     },
   ];
+
   const config = {
     data,
     xField: "type",
     yField: "sales",
     label: {
-      // 可手动配置 label 数据标签位置
       position: "middle",
-      // 'top', 'bottom', 'middle',
-      // 配置样式
       style: {
         fill: "#FFFFFF",
         opacity: 0.6,
@@ -99,9 +177,9 @@ const DashboardAdmin = () => {
           </div>
         </Col>
         <Col className="right-dashboard">
-          {DATA_DASHBOARD.map((data, id) => (
-            <div className="all-data-section">
-              <div key={id} className="container-data-section">
+          {dashboardData.map((data) => (
+            <div className="all-data-section" key={data.id}>
+              <div className="container-data-section">
                 <div className="icon-data">{data.icon}</div>
                 <div className="data-section">
                   <p>{data.title}</p>
@@ -116,6 +194,7 @@ const DashboardAdmin = () => {
           </div>
         </Col>
       </Row>
+      <button onClick={handleLogin}>Login</button>
     </div>
   );
 };
