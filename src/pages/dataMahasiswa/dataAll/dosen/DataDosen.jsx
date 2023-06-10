@@ -37,8 +37,6 @@ const DataDosen = () => {
   const [searchText, setSearchText] = useState("");
   const [filteredData, setFilteredData] = useState(dataSource);
 
-  const handleDetail = () => {};
-
   const handleSearch = (value) => {
     setSearchText(value);
 
@@ -76,9 +74,9 @@ const DataDosen = () => {
                 </td>
                 <td>{data.namaDosen}</td>
                 <td>
-                  <button className="button" onClick={() => handleDetail(data.nip)}>
-                    Detail
-                  </button>
+                  <Link to="/dashboard-admin/data/data-dosen/form-dosen">
+                    <Button className="button">Detail</Button>
+                  </Link>
                 </td>
               </tr>
             ))}
