@@ -1,48 +1,62 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./dataall.css";
-import { Button } from "antd";
-import { Input } from "antd";
+import { Button, Input, Pagination } from "antd";
 import { Link } from "react-router-dom";
 
-const DataDosen = () => {
-  const { Search } = Input;
-  const dataSource = [
-    {
-      key: "1",
-      nip: "4512636127377",
-      namaDosen: "John Doe",
-    },
-    {
-      key: "2",
-      nip: "4512636127377",
-      namaDosen: "Jane Smith",
-    },
-    {
-      key: "3",
-      nip: "4512636127377",
-      namaDosen: "Jane Smith",
-    },
-    {
-      key: "4",
-      nip: "4512636127377",
-      namaDosen: "Jane Smith",
-    },
-    {
-      key: "5",
-      nip: "4512636127377",
-      namaDosen: "Jane Smith",
-    },
-  ];
+const { Search } = Input;
 
+const DataDosen = () => {
+  const [dataSource, setDataSource] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const [filteredData, setFilteredData] = useState(dataSource);
+  const [filteredData, setFilteredData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
+  const [totalItems, setTotalItems] = useState(0);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Get token from local storage
+        const token = localStorage.getItem("token");
+
+        const response = await fetch("http://testing.biaracmpny.my.id/v1/dosen", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const data = await response.json();
+
+        const formattedData = data.dosens.map((dosen) => ({
+          key: dosen.ID,
+          nip: dosen.nip,
+          name: dosen.name,
+        }));
+
+        setDataSource(formattedData);
+        setFilteredData(formattedData);
+        setTotalItems(formattedData.length);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleSearch = (value) => {
     setSearchText(value);
 
-    const filtered = dataSource.filter((data) => data.namaDosen.toLowerCase().includes(value.toLowerCase()));
+    const filtered = dataSource.filter((data) => data.name.toLowerCase().includes(value.toLowerCase()));
     setFilteredData(filtered);
+    setTotalItems(filtered.length);
+    setCurrentPage(1);
   };
+
+  const handleChangePage = (page) => {
+    setCurrentPage(page);
+  };
+
+  const paginatedData = filteredData.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
   return (
     <div className="container">
@@ -55,26 +69,21 @@ const DataDosen = () => {
             <tr>
               <th className="container-th1">NIP</th>
               <th className="container-th">Nama Dosen</th>
-              <Search
-                placeholder="Cari Nama Dosen"
-                allowClear
-                onSearch={handleSearch}
-                style={{
-                  width: 200,
-                }}
-              />
+              <th>
+                <Search placeholder="Cari Nama Dosen" allowClear onSearch={handleSearch} style={{ width: 200 }} />
+              </th>
             </tr>
           </thead>
           <tbody>
-            {filteredData.map((data) => (
+            {paginatedData.map((data) => (
               <tr key={data.key}>
                 <td>
                   <div className="nip-container">{data.nip}</div>
                   <hr className="horizontal-line" />
                 </td>
-                <td>{data.namaDosen}</td>
+                <td>{data.name}</td>
                 <td>
-                  <Link to="/dashboard-admin/data/data-dosen/form-dosen">
+                  <Link to={`/dashboard-admin/data/data-dosen/detail/${data.key}`}>
                     <Button className="button">Detail</Button>
                   </Link>
                 </td>
@@ -83,12 +92,15 @@ const DataDosen = () => {
           </tbody>
         </table>
       </div>
+      <div className="pagination-container">
+        <Pagination current={currentPage} pageSize={pageSize} total={totalItems} onChange={handleChangePage} showSizeChanger={false} />
+      </div>
       <div className="button-container">
         <Link to="/dashboard-admin/data">
-          <Button className="back">Back</Button>
+          <Button className="back-dosen">Back</Button>
         </Link>
-        <Link>
-          <Button className="tambah">Tambah</Button>
+        <Link to="/dashboard-admin/data/data-dosen/form-dosen">
+          <Button className="tambah-dosen">Tambah</Button>
         </Link>
       </div>
     </div>

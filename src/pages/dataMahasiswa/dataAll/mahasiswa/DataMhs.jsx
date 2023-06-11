@@ -1,47 +1,52 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
-import { Button } from "antd";
-import { Input } from "antd";
+import React, { useState, useEffect } from "react";
+import { Button, Input, Pagination } from "antd";
 import { Link } from "react-router-dom";
 import "./datamhs.css";
 
 const DataMhs = () => {
   const { Search } = Input;
-  const dataSource = [
-    {
-      key: "1",
-      tahun: "2018",
-      nim: "4512636127377",
-      namaMahasiswa: "M.Yazid",
-    },
-    {
-      key: "2",
-      tahun: "2018",
-      nim: "4512636127377",
-      namaMahasiswa: "Santoso",
-    },
-    {
-      key: "3",
-      tahun: "2018",
-      nim: "4512636127377",
-      namaMahasiswa: "Jane Smith",
-    },
-    {
-      key: "4",
-      tahun: "2018",
-      nim: "4512636127377",
-      namaMahasiswa: "Jane Smith",
-    },
-    {
-      key: "5",
-      tahun: "2018",
-      nim: "4512636127377",
-      namaMahasiswa: "Jane Smith",
-    },
-  ];
-
+  const [dataSource, setDataSource] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const [filteredData, setFilteredData] = useState(dataSource);
+  const [filteredData, setFilteredData] = useState([]);
+  const [token, setToken] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
+
+  useEffect(() => {
+    // Get token from local storage
+    const storedToken = localStorage.getItem("token");
+    setToken(storedToken);
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://testing.biaracmpny.my.id/v1/mahasiswa", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const data = await response.json();
+
+        const formattedData = data.mahasiswas.map((mahasiswa) => ({
+          key: mahasiswa.ID,
+          tanggalMasuk: new Date(mahasiswa.CreatedAt).toLocaleDateString(),
+          nim: mahasiswa.nim,
+          namaMahasiswa: mahasiswa.name,
+        }));
+
+        setDataSource(formattedData);
+        setFilteredData(formattedData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    if (token) {
+      fetchData();
+    }
+  }, [token]);
 
   const handleDetail = (nim) => {
     // Handle detail logic here
@@ -53,6 +58,14 @@ const DataMhs = () => {
     const filtered = dataSource.filter((data) => data.namaMahasiswa.toLowerCase().includes(value.toLowerCase()));
     setFilteredData(filtered);
   };
+
+  const handleChangePage = (page) => {
+    setCurrentPage(page);
+  };
+
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const paginatedData = filteredData.slice(startIndex, endIndex);
 
   return (
     <div className="container-mhs">
@@ -66,41 +79,36 @@ const DataMhs = () => {
               <th className="container-th1-mhs">Tanggal Masuk</th>
               <th className="container-th1-mhs">NIM</th>
               <th className="container-th-mhs">Nama Mahasiswa</th>
-              <Search
-                placeholder="Cari Nama Mahasiswa"
-                allowClear
-                onSearch={handleSearch}
-                style={{
-                  width: 250,
-                }}
-              />
+              <th></th>
             </tr>
             <tr>
-              <td colSpan={3}></td>
+              <td colSpan={3}>
+                <Search placeholder="Cari Nama Mahasiswa" allowClear onSearch={handleSearch} />
+              </td>
             </tr>
           </thead>
           <tbody>
-            {filteredData.map((data) => (
+            {paginatedData.map((data) => (
               <tr key={data.key}>
-                <td>{data.tahun}</td>
+                <td>{data.tanggalMasuk}</td>
                 <td>{data.nim}</td>
                 <td>{data.namaMahasiswa}</td>
                 <td>
-                  <button className="button-mhs" onClick={() => handleDetail(data.nim)}>
+                  <Button className="button-mhs" onClick={() => handleDetail(data.nim)}>
                     Detail
-                  </button>
+                  </Button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      <div className="pagination-container">
+        <Pagination current={currentPage} pageSize={pageSize} total={filteredData.length} onChange={handleChangePage} showSizeChanger={false} />
+      </div>
       <div className="button-container-mhs">
         <Link to="/dashboard-admin/data">
           <Button className="back-mhs">Back</Button>
-        </Link>
-        <Link>
-          <Button className="tambah-mhs">Tambah</Button>
         </Link>
       </div>
     </div>

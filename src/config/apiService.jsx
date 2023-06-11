@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const baseAPI = axios.create({
+const baseAPI = axios.create({
   baseURL: "http://testing.biaracmpny.my.id",
 });
 
@@ -18,7 +18,7 @@ baseAPI.interceptors.request.use(
   }
 );
 
-export const api = {
+const api = {
   login: (credentials) => {
     return baseAPI.post("/v1/users/login", credentials);
   },
@@ -31,9 +31,16 @@ export const api = {
   getMahasiswa: () => {
     return baseAPI.get("/v1/mahasiswa");
   },
+  signUp: (body) => {
+    return baseAPI.post("/v1/users/signup", body);
+  },
+  createDosen: (body) => {
+    return baseAPI.post("/v1/dosen", body);
+  },
 };
-// Contoh API with Token
-export const newBaseAPI = axios.create({
+
+const newBaseAPI = axios.create({
   baseURL: "http://testing.biaracmpny.my.id",
 });
 
+export { baseAPI, api, newBaseAPI };
