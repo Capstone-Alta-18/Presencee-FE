@@ -1,9 +1,11 @@
 import React from "react";
 import "./jurusan.css";
-import { BTN_BISNIS } from "./constant";
-import { Link } from "react-router-dom";
+import { BTN_MATH } from "./constant";
+import { Link, useParams } from "react-router-dom";
 
-const Bisnis = () => {
+const Math = () => {
+  const { tahun } = useParams();
+  const { prodi } = useParams();
   return (
     <div>
       <div className="title-page-jurusan">
@@ -14,14 +16,11 @@ const Bisnis = () => {
           <p>jurusan</p>
         </div>
         <div className="button-jurusan">
-          {BTN_BISNIS.map((index) => (
-            <Link
-              to={`/admin-page/riwayat-presensi/${index.data}`}
-              key={index.data}
-            >
+          {BTN_MATH.map((index) => (
+            <Link to={`/admin-page/riwayat-presensi/${tahun}/math/${index.prodi.toLocaleLowerCase()}`} key={index.data}>
               <div className="btn-jurusan">
                 {index.data} <br />
-                {index.label}
+                {index.prodi}
               </div>
             </Link>
           ))}
@@ -31,4 +30,4 @@ const Bisnis = () => {
   );
 };
 
-export default Bisnis;
+export default Math;

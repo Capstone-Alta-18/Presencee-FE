@@ -2,16 +2,6 @@ import React from "react";
 import "./fakultas.css";
 import { Button } from "antd";
 import { BTN_FAKULTAS } from "./constant";
-import {
-  Bank,
-  Calculator,
-  ChartBar,
-  DesktopTower,
-  Leaf,
-  MusicNotes,
-  Pencil,
-  Stethoscope,
-} from "@phosphor-icons/react";
 import { Link, useParams } from "react-router-dom";
 
 const Fakultas = () => {
@@ -28,13 +18,10 @@ const Fakultas = () => {
         </div>
         <div className="button-fakultas">
           {BTN_FAKULTAS.map((index) => (
-            <Link
-              to={`/admin-page/riwayat-presensi/${tahun}/${index.label.toLowerCase()}`}
-              key={index.id}
-            >
+            <Link to={`/admin-page/riwayat-presensi/${tahun}/${index.fakultas.toLowerCase()}`} key={index.id}>
               <div className="btn-fakultas">
                 {index.icon} <br />
-                {index.label}
+                {index.fakultas}
               </div>
             </Link>
           ))}

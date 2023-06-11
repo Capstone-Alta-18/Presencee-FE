@@ -1,9 +1,10 @@
 import React from "react";
 import "./jurusan.css";
 import { BTN_COMPUTER } from "./constant";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Computer = () => {
+  const { tahun } = useParams();
   return (
     <div>
       <div className="title-page-jurusan">
@@ -15,13 +16,10 @@ const Computer = () => {
         </div>
         <div className="button-jurusan">
           {BTN_COMPUTER.map((index) => (
-            <Link
-              to={`/admin-page/riwayat-presensi/${index.data}`}
-              key={index.data}
-            >
+            <Link to={`/admin-page/riwayat-presensi/${tahun}/computer/${index.prodi.toLocaleLowerCase()}`} key={index.data}>
               <div className="btn-jurusan">
                 {index.data} <br />
-                {index.label}
+                {index.prodi}
               </div>
             </Link>
           ))}

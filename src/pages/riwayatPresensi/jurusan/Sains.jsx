@@ -1,9 +1,11 @@
 import React from "react";
 import "./jurusan.css";
-import { BTN_HUKUM } from "./constant";
-import { Link } from "react-router-dom";
+import { BTN_SAINS } from "./constant";
+import { Link, useParams } from "react-router-dom";
 
-const Hukum = () => {
+const Sains = () => {
+  const { tahun } = useParams();
+  const { prodi } = useParams();
   return (
     <div>
       <div className="title-page-jurusan">
@@ -14,14 +16,11 @@ const Hukum = () => {
           <p>jurusan</p>
         </div>
         <div className="button-jurusan">
-          {BTN_HUKUM.map((index) => (
-            <Link
-              to={`/admin-page/riwayat-presensi/${index.data}`}
-              key={index.data}
-            >
+          {BTN_SAINS.map((index) => (
+            <Link to={`/admin-page/riwayat-presensi/${tahun}/sains/${index.prodi.toLocaleLowerCase()}`} key={index.data}>
               <div className="btn-jurusan">
                 {index.data} <br />
-                {index.label}
+                {index.prodi}
               </div>
             </Link>
           ))}
@@ -31,4 +30,4 @@ const Hukum = () => {
   );
 };
 
-export default Hukum;
+export default Sains;

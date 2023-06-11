@@ -15,10 +15,7 @@ const RiwayatPresensi = () => {
         </div>
         <div className="button-riwayat">
           {BTN_RIWAYAT.map((index) => (
-            <Link
-              to={`/admin-page/riwayat-presensi/${index.tahun}`}
-              key={index.id}
-            >
+            <Link to={`/admin-page/riwayat-presensi/${index.tahun}`} key={index.id}>
               <Button className="btn-riwayat" type="primary" data={index.data}>
                 {index.tahun}
               </Button>

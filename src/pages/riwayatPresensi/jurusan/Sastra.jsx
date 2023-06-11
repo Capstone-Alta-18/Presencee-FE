@@ -1,9 +1,11 @@
 import React from "react";
 import "./jurusan.css";
 import { BTN_SASTRA } from "./constant";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Sastra = () => {
+  const { tahun } = useParams();
+  const { prodi } = useParams();
   return (
     <div>
       <div className="title-page-jurusan">
@@ -15,13 +17,10 @@ const Sastra = () => {
         </div>
         <div className="button-jurusan">
           {BTN_SASTRA.map((index) => (
-            <Link
-              to={`/admin-page/riwayat-presensi/${index.data}`}
-              key={index.data}
-            >
+            <Link to={`/admin-page/riwayat-presensi/${tahun}/sastra/${index.prodi.toLocaleLowerCase()}`} key={index.data}>
               <div className="btn-jurusan">
                 {index.data} <br />
-                {index.label}
+                {index.prodi}
               </div>
             </Link>
           ))}
