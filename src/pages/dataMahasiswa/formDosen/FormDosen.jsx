@@ -45,13 +45,13 @@ const FormDosen = () => {
   };
 
   return (
-    <div className="container">
-      <div className="title">
+    <div className="container-dosen">
+      <div className="title-dosen">
         <h1>Data Dosen</h1>
       </div>
-      <div className="container-form-mhs">
+      <div className="container-form-dosen">
         <div className="row">
-          <div className="upload-container">
+          <div className="upload-container-dosen">
             <Dragger>
               <p className="ant-upload-drag-icon">
                 <InboxOutlined />
@@ -59,16 +59,16 @@ const FormDosen = () => {
               <p className="ant-upload-text">Click or drag file to this area to upload</p>
             </Dragger>
           </div>
-          <div className="form-container">
+          <div className="form-container-dosen">
             <Form form={form} name="validateOnly" layout="vertical" autoComplete="off" onFinish={onFinish}>
-              <Form.Item className="text-form" name="name" label="Nama" rules={[{ required: true, message: "Please input your name!" }]}>
-                <Input className="input" />
+              <Form.Item className="text-form-dosen" name="name" label="Nama" rules={[{ required: true, message: "Please input your name!" }]}>
+                <Input className="input-dosen" />
               </Form.Item>
-              <Form.Item className="text-form" name="nip" label="NIP" rules={[{ required: true, message: "Please input your NIP!" }]}>
-                <Input className="input" />
+              <Form.Item className="text-form-dosen" name="nip" label="NIP" rules={[{ required: true, message: "Please input your NIP!" }]}>
+                <Input className="input-dosen" />
               </Form.Item>
               <Form.Item
-                className="text-form"
+                className="text-form-dosen"
                 name="email"
                 label="Email"
                 rules={[
@@ -76,16 +76,16 @@ const FormDosen = () => {
                   { type: "email", message: "Please enter a valid email address!" },
                 ]}
               >
-                <Input className="input" />
+                <Input className="input-dosen" />
               </Form.Item>
-              <Form.Item className="text-form" name="phone" label="Phone" rules={[{ required: true, message: "Please input your phone number!" }]}>
-                <Input className="input" />
+              <Form.Item className="text-form-dosen" name="phone" label="Phone" rules={[{ required: true, message: "Please input your phone number!" }]}>
+                <Input className="input-dosen" />
               </Form.Item>
-              <Form.Item className="text-form" name="password" label="Password" rules={[{ required: true, message: "Please input your password!" }]}>
-                <Input.Password className="input" />
+              <Form.Item className="text-form-dosen" name="password" label="Password" rules={[{ required: true, message: "Please input your password!" }]}>
+                <Input.Password className="input-dosen" />
               </Form.Item>
               <Form.Item>
-                <Space className="btn-simpan">
+                <Space className="btn-simpan-dosen">
                   <SubmitButton form={form} />
                 </Space>
               </Form.Item>
@@ -93,9 +93,9 @@ const FormDosen = () => {
           </div>
         </div>
       </div>
-      <div className="button-container">
+      <div className="button-container-dosen">
         <Link to="/dashboard-admin/data/data-dosen">
-          <Button className="back-form">Back</Button>
+          <Button className="back-form-dosen">Back</Button>
         </Link>
       </div>
     </div>

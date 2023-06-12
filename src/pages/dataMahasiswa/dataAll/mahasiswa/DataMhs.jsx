@@ -48,7 +48,7 @@ const DataMhs = () => {
     }
   }, [token]);
 
-  const handleDetail = (nim) => {
+  const handleDetail = () => {
     // Handle detail logic here
   };
 
@@ -79,12 +79,11 @@ const DataMhs = () => {
               <th className="container-th1-mhs">Tanggal Masuk</th>
               <th className="container-th1-mhs">NIM</th>
               <th className="container-th-mhs">Nama Mahasiswa</th>
+              <Search placeholder="Cari Nama Mahasiswa" allowClear onSearch={handleSearch} style={{ width: 200 }} />
               <th></th>
             </tr>
             <tr>
-              <td colSpan={3}>
-                <Search placeholder="Cari Nama Mahasiswa" allowClear onSearch={handleSearch} />
-              </td>
+              <td colSpan={3}></td>
             </tr>
           </thead>
           <tbody>
@@ -109,6 +108,9 @@ const DataMhs = () => {
       <div className="button-container-mhs">
         <Link to="/dashboard-admin/data">
           <Button className="back-mhs">Back</Button>
+        </Link>
+        <Link to="/dashboard-admin/data/data-mahasiswa/form-mahasiswa">
+          <Button className="tambah-mhs">Tambah</Button>
         </Link>
       </div>
     </div>

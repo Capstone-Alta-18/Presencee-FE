@@ -37,6 +37,9 @@ const api = {
   createDosen: (body) => {
     return baseAPI.post("/v1/dosen", body);
   },
+  createMahasiswa: (body) => {
+    return baseAPI.post("/v1/mahasiswa", body);
+  },
 };
 
 const newBaseAPI = axios.create({
