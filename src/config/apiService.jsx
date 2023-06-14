@@ -36,4 +36,3 @@ export const api = {
 export const newBaseAPI = axios.create({
   baseURL: "http://testing.biaracmpny.my.id",
 });
-
