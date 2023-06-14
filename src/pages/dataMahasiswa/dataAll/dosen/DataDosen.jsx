@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./dataall.css";
 import { Button, Input, Pagination } from "antd";
 import { Link } from "react-router-dom";
-import { api } from "../config/apiService";
+import { api } from "../../../../api/Index";
 
 const { Search } = Input;
 
