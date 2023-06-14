@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./dataall.css";
 import { Button, Input, Pagination } from "antd";
 import { Link } from "react-router-dom";
+import { api } from "../config/apiService";
 
 const { Search } = Input;
 
@@ -16,34 +17,17 @@ const DataDosen = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Get token from local storage
-        const token = localStorage.getItem("token");
+        const response = await api.getDosen();
+        const data = response.data;
 
-        const response = await fetch("{{base_url}}/v1/dosen", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error("Error fetching data");
-        }
-
-        const contentType = response.headers.get("content-type");
-        if (contentType && contentType.indexOf("application/json") !== -1) {
-          const data = await response.json();
-
-          const formattedData = data.dosens.map((dosen) => ({
-            key: dosen.ID,
-            nip: dosen.nip,
-            name: dosen.name,
-          }));
-          setDataSource(formattedData);
-          setFilteredData(formattedData);
-          setTotalItems(formattedData.length);
-        } else {
-          throw new Error("Invalid response format");
-        }
+        const formattedData = data.dosens.map((dosen) => ({
+          key: dosen.ID,
+          nip: dosen.nip,
+          name: dosen.name,
+        }));
+        setDataSource(formattedData);
+        setFilteredData(formattedData);
+        setTotalItems(formattedData.length);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
