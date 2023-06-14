@@ -73,7 +73,7 @@
   }
 }
 
-@media (min-width: 769px) and (max-width: 1090px) {
+@media (max-width: 1090px) {
   .image-contact-us {
     display: none;
   }
@@ -85,23 +85,17 @@
   }
 
   .text-contact-us {
-    margin: 50px;
+    font-size: 20px;
   }
 
   .text-contact-us h1 {
     font-size: 24px;
+    width: 300px;
   }
 
   .text-contact-us p {
     font-size: 20px;
     margin-top: 9px;
-  }
-}
-
-@media (min-width: 1091px) {
-  .text-contact-us {
-    margin-left: -80px;
-    margin-bottom: 57px;
-    margin-top: 47px;
+    width: 300px;
   }
 }

@@ -1,39 +1,61 @@
-import { Layout, Button, Drawer } from "antd";
+import React, { useState } from "react";
+import { IMAGES } from "./../../../assets/constant";
 import LeftMenu from "./leftMenu";
-import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { IMAGES } from "../../../assets/constant";
 import "./header.css";
+import { Button, Dropdown, Drawer } from "antd";
+import { MenuOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const [visible, setVisible] = useState(false);
+  const [drawerVisible, setDrawerVisible] = useState(false);
+
   const showDrawer = () => {
-    setVisible(!visible);
+    setDrawerVisible(true);
   };
 
-  let { pathname: location } = useLocation();
-  useEffect(() => {
-    setVisible(false);
-  }, [location]);
+  const onClose = () => {
+    setDrawerVisible(false);
+  };
+
+  const handleMenuItemClick = () => {
+    setDrawerVisible(false);
+  };
+
+  const items = [
+    {
+      label: <Link to="/login-admin">Admin</Link>,
+      key: "0",
+    },
+    {
+      label: <Link to="/login-admin">Portal Admin</Link>,
+      key: "1",
+    },
+    {
+      label: <Link to="/login-dosen">Portal Dosen</Link>,
+      key: "3",
+    },
+  ];
 
   return (
     <nav className="navbar">
-      <Layout>
-        <Layout.Header className="nav-header">
-          <div className="logo">
-            <img className="logo" src={IMAGES.logo1} alt="" />
-          </div>
-          <div className="navbar-menu">
-            <div>
-              <LeftMenu mode={"horizontal"} />
-            </div>
-            <Button className="menuButton" type="text" onClick={showDrawer}></Button>
-            <Drawer title={"Brand Here"} placement="right" closable={true} onClose={showDrawer} visible={visible} style={{ zIndex: 99999 }}>
-              <LeftMenu mode={"inline"} />
-            </Drawer>
-          </div>
-        </Layout.Header>
-      </Layout>
+      <img className="logo-navbar" src={IMAGES.logo1} alt="logo presence" width={240} />
+      <div className="menu-bar">
+        <LeftMenu mode="horizontal" onItemClick={handleMenuItemClick} />
+        <Dropdown menu={{ items }} placement="bottom" className="btn-protal" trigger={["click"]}>
+          <Button type="primary" className="btn-portal">
+            Portal
+          </Button>
+        </Dropdown>
+        <Button className="menu-drawer" type="text" onClick={showDrawer}>
+          <MenuOutlined />
+        </Button>
+        <Drawer className="drawer" title="Menu" placement="right" closable={true} onClose={onClose} visible={drawerVisible}>
+          <Button className="menu-drawer" type="text" onClick={handleMenuItemClick}>
+            <MenuOutlined />
+          </Button>
+          <LeftMenu mode="vertical" onItemClick={handleMenuItemClick} />
+        </Drawer>
+      </div>
     </nav>
   );
 };

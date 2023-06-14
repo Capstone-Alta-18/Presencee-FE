@@ -6,6 +6,7 @@ import Features from "./features/Features";
 import Navbar from "./header/Navbar";
 import ContactUs from "./contactUs/ContactUs";
 import AppFooter from "./footer/AppFooter";
+import Footer from "./footer/Footer";
 
 const LandingMain = () => {
   return (
@@ -14,8 +15,8 @@ const LandingMain = () => {
       <Home />
       <AboutUs />
       <Features />
-      <ContactUs/>
-      <AppFooter/>
+      <ContactUs />
+      <Footer />
     </div>
   );
 };
