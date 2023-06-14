@@ -2,7 +2,7 @@ import { Col, Row } from "antd";
 import React from "react";
 import { IMAGES } from "../../../assets/constant";
 import { AppleLogo, EnvelopeSimpleOpen, GooglePlayLogo, InstagramLogo, MapPin, Phone, YoutubeLogo } from "@phosphor-icons/react";
-
+import "./Footer.css";
 const Footer = () => {
   return (
     <footer className="footer-app">
