@@ -23,7 +23,6 @@ const ContactUs = () => {
       <div className="text-contact-us">
         <h1>Mari Berkolaborasi Bersama Kami!</h1>
         <p>Ada Pertanyaan Lain? Hubungi Kami</p>
-
         <Button onClick={handleContactButtonClick}>Contact Us</Button>
       </div>
 

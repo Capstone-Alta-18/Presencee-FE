@@ -94,8 +94,8 @@
   .menu-drawer {
     color: #fe7968;
     font-size: 22px;
-    margin-top: -10px;
-    display: inline;
+    display: inline-block;
+    height: 50px;
   }
 
   .drawer .menu-drawer {
