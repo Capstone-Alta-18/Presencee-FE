@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { message } from "antd";
-import { api } from "../../../../config/apiService";
+import { api } from "../../../../api/Index";
 
 // Get Data
 export const useGetMahasiswa = () => {
