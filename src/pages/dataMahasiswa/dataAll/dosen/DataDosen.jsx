@@ -19,7 +19,7 @@ const DataDosen = () => {
         // Get token from local storage
         const token = localStorage.getItem("token");
 
-        const response = await fetch("{{base_url}}/v1/dosen", {
+        const response = await fetch("/v1/dosen", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
