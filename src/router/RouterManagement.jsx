@@ -1,6 +1,6 @@
-import React, { Suspense, useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { Route, Routes, useNavigate, Navigate } from "react-router-dom";
-import LandingMain from "../pages/landingPage/LandingMain";
+import RiwayatPresensi from "../pages/riwayatPresensi/RiwayatPresensi";
 import LoginAdmin from "../pages/loginAdmin/LoginAdmin";
 import LayoutComponent from "../components/layout/LayoutComponent";
 import DashboardAdmin from "../pages/dashboardAdmin/DashboardAdmin";
@@ -12,6 +12,7 @@ import DataMhs from "../pages/dataMahasiswa/dataAll/mahasiswa/DataMhs";
 import FormDosen from "../pages/dataMahasiswa/formDosen/FormDosen";
 import FormMahasiswa from "../pages/dataMahasiswa/formMahasiswa/FormMahasiswa";
 import DetailDosen from "../pages/dataMahasiswa/formDosen/detail/DetailDosen";
+
 
 const RouterManagement = () => {
   const token = localStorage.getItem("token");
