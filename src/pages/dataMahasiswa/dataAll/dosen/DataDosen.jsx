@@ -24,19 +24,26 @@ const DataDosen = () => {
             Authorization: `Bearer ${token}`,
           },
         });
+
         if (!response.ok) {
           throw new Error("Error fetching data");
         }
-        const data = await response.json();
 
-        const formattedData = data.dosens.map((dosen) => ({
-          key: dosen.ID,
-          nip: dosen.nip,
-          name: dosen.name,
-        }));
-        setDataSource(formattedData);
-        setFilteredData(formattedData);
-        setTotalItems(formattedData.length);
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.indexOf("application/json") !== -1) {
+          const data = await response.json();
+
+          const formattedData = data.dosens.map((dosen) => ({
+            key: dosen.ID,
+            nip: dosen.nip,
+            name: dosen.name,
+          }));
+          setDataSource(formattedData);
+          setFilteredData(formattedData);
+          setTotalItems(formattedData.length);
+        } else {
+          throw new Error("Invalid response format");
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
