@@ -16,7 +16,7 @@ const AboutUs = () => {
     <div id="aboutus">
       <div className="about-section">
         <div className="about">
-          <img src={IMAGES.logo1} alt="about us image" />
+          <img src={IMAGES.logo1} alt="about us image" width={400} />
           <div className="about-text">
             <p>Presensee merupakan platform untuk presensi berbasis online. Presensee hadir untuk memudahkan akses dalam mengisi absensi dari segi peserta didik dan membantu pendidikan mengetahui kehadiran dari peserta didik.</p>
           </div>

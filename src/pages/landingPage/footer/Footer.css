@@ -1,132 +1,51 @@
-.footer {
-  text-align: center;
-  background: #ffe4e1;
-  padding: 20px;
-  font-family: "Poppins";
-  margin-top: 40px;
-}
-
-.footer-content {
+.footer-app {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffe4e1;
+  padding: 60px 0%;
 }
-
-.img-footer {
-  margin-top: 50px;
+.contact-footer {
+  margin-top: 22px;
   width: 300px;
-  height: auto;
+}
+.contact-footer p {
+  width: 100%;
+  font-size: 12px;
 }
 
-.footer-icons {
-  margin-left: 100px;
-  margin-top: 25px;
+.contact-footer .icon {
+  margin-right: 10px;
+}
+
+.contact-footer-content {
   display: flex;
-  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
-.text-footer {
-  text-align: left;
-  margin-left: 60px;
-  font-family: "Poppins";
-  display: block;
-}
-
-.icon {
-  float: left;
-}
-
-.text-right {
-  margin-right: 150px;
-  text-align: right;
-}
-
-.feature {
-  margin-top: 60px;
-  text-align: left;
-  margin-left: 12px;
-  font-family: "Poppins";
-}
-.text-feature {
-  text-align: left;
-  font-family: "Poppins";
-  font-style: normal;
-  font-size: 19px;
-  margin-left: 13px;
-}
-.text-about {
-  text-align: left;
-  font-family: "Inter";
-  font-style: normal;
-  font-size: 19px;
-  margin-left: 13px;
-}
-
-.sosmed {
-  float: left;
-  width: 50px;
+.menu-footer {
+  font-size: 16px;
 }
 
 .apple,
 .play {
-  border: 2px solid black;
-  margin-top: 20px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 242px;
   margin-bottom: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 300px;
+  font-size: 16px;
+  padding-left: 5px;
 }
 
 .text-get {
   margin-left: 10px;
-  font-size: 20px;
-  text-align: justify;
-}
-.footer-bottom {
-  text-align: center;
-  margin-top: 10px;
-  font-size: 24px;
-  color: black;
-  font-family: "Poppins";
 }
 
-/* Media Queries */
-@media screen and (max-width: 768px) {
-  .footer-content {
-    flex-direction: column;
-  }
-
-  .img-footer {
-    margin: 0 auto;
-    margin-bottom: 20px;
-  }
-
-  .text-footer {
-    margin-left: 0;
-    text-align: center;
-  }
-
-  .text-right {
-    text-align: center;
-  }
-
-  .apple,
-  .play {
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .footer-icons,
-  .text-footer,
-  .text-right {
-    text-align: center;
-    margin: 0 auto;
-  }
-
-  .apple,
-  .play {
-    margin-bottom: 20px;
+@media (max-width: 1210px) {
+  .footer-app {
+    padding: 60px 15%;
   }
 }
