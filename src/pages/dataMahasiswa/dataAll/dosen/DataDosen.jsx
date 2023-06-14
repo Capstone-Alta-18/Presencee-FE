@@ -31,7 +31,6 @@ const DataDosen = () => {
           nip: dosen.nip,
           name: dosen.name,
         }));
-
         setDataSource(formattedData);
         setFilteredData(formattedData);
         setTotalItems(formattedData.length);

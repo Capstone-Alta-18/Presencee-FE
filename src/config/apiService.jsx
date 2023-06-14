@@ -31,6 +31,9 @@ const api = {
   getMahasiswa: () => {
     return baseAPI.get("/v1/mahasiswa");
   },
+  getDosenById: (id) => {
+    return baseAPI.get(`/v1/dosen/${id}`);
+  },
   signUp: (body) => {
     return baseAPI.post("/v1/users/signup", body);
   },

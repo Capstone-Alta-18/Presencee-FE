@@ -11,6 +11,7 @@ import DataDosen from "../pages/dataMahasiswa/dataAll/dosen/DataDosen";
 import DataMhs from "../pages/dataMahasiswa/dataAll/mahasiswa/DataMhs";
 import FormDosen from "../pages/dataMahasiswa/formDosen/FormDosen";
 import FormMahasiswa from "../pages/dataMahasiswa/formMahasiswa/FormMahasiswa";
+import DetailDosen from "../pages/dataMahasiswa/formDosen/detail/DetailDosen";
 
 const RouterManagement = () => {
   const token = localStorage.getItem("token");
@@ -38,6 +39,7 @@ const RouterManagement = () => {
                     <Route path="/jadwal-kuliah-admin" element={<JadwalKuliahAdmin />} />
                     <Route path="/data" element={<DataMahasiswa />} />
                     <Route path="/data/data-dosen" element={<DataDosen />} />
+                    <Route path="/data/data-dosen/detail/:id" element={<DetailDosen/>} />
                     <Route path="/data/data-dosen/form-dosen" element={<FormDosen />} />
                     <Route path="/data/data-mahasiswa/form-mahasiswa" element={<FormMahasiswa />} />
                     <Route path="/data/data-mahasiswa" element={<DataMhs />} />
