@@ -10,7 +10,7 @@ const LoginAdmin = () => {
 
   const onLogin = (values) => {
     login(values, () => {
-      navigate("/dashboard-admin");
+      navigate("/admin-page");
     });
   };
 
