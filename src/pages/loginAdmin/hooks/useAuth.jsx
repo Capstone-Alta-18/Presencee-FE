@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
-import { api } from "../../../api/Index";
 import { message } from "antd";
+import { api } from "../../../api/Index";
 
 export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -13,7 +13,7 @@ export const useLogin = () => {
       console.log({ res });
 
       if (res) {
-        localStorage.setItem("access_token", res.data?.token);
+        localStorage.setItem("token", res.data?.token);
         message.open({
           type: "success",
           content: "Berhasil Login",
