@@ -48,9 +48,6 @@ const DetailDosen = () => {
         <Form.Item label="Phone">
           <Input value={dosen.phone} disabled />
         </Form.Item>
-        <Form.Item label="Password">
-          <Input.Password value={dosen.password} disabled />
-        </Form.Item>
       </Form>
     </div>
   );
