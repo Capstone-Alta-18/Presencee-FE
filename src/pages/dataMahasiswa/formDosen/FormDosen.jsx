@@ -94,7 +94,7 @@ const FormDosen = () => {
         </div>
       </div>
       <div className="button-container-dosen">
-        <Link to="/dashboard-admin/data/data-dosen">
+        <Link to="/admin-page/data/data-dosen">
           <Button className="back-form-dosen">Back</Button>
         </Link>
       </div>

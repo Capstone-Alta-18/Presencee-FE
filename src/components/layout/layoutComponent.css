@@ -15,7 +15,7 @@
   padding: 64px 0px;
 }
 
-.menu-bar {
+.menu-bar-admin {
   background-color: transparent;
   color: #fff;
   font-size: 15px;
@@ -23,7 +23,7 @@
   margin: 14px;
 }
 
-.menu-bar .ant-menu-item {
+.menu-bar-admin .ant-menu-item {
   border-radius: 43px;
   padding-top: 2px;
 }
@@ -36,7 +36,7 @@
   font-size: 20px;
 }
 
-.menu-bar:active {
+.menu-bar-admin:active {
   color: #fe7968;
 }
 

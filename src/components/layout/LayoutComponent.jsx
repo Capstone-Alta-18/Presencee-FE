@@ -34,7 +34,7 @@ const LayoutComponent = ({ children }) => {
         {/* sidebar */}
         <Sider className="side-bar" trigger={null} collapsible collapsed={collapsed}>
           <Button className="btn-menu" theme="light" type="text" icon={<List size={20} />} onClick={showDrawer} />
-          <Menu className="menu-bar" mode="inline" defaultSelectedKeys={1} selectedKeys={selectedKeys} items={MENU_ITEM_ADMIN} onClick={handleMenuClick} />
+          <Menu className="menu-bar-admin" mode="inline" defaultSelectedKeys={1} selectedKeys={selectedKeys} items={MENU_ITEM_ADMIN} onClick={handleMenuClick} />
         </Sider>
 
         <Drawer className="drawer-bar ant-drawer-content-wrapper" placement={placement} closable={false} onClose={onClose} open={open} key={placement}>

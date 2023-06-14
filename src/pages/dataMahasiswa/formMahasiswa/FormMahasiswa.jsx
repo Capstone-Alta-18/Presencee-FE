@@ -123,7 +123,7 @@ const FormMahasiswa = () => {
         </Row>
       </div>
       <div className="button-container">
-        <Link to="/dashboard-admin/data/data-mahasiswa">
+        <Link to="/admin-page/data/data-mahasiswa">
           <Button className="back-form">Back</Button>
         </Link>
       </div>

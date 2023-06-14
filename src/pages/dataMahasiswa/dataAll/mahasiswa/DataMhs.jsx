@@ -106,10 +106,10 @@ const DataMhs = () => {
         <Pagination current={currentPage} pageSize={pageSize} total={filteredData.length} onChange={handleChangePage} showSizeChanger={false} />
       </div>
       <div className="button-container-mhs">
-        <Link to="/dashboard-admin/data">
+        <Link to="/admin-page/data">
           <Button className="back-mhs">Back</Button>
         </Link>
-        <Link to="/dashboard-admin/data/data-mahasiswa/form-mahasiswa">
+        <Link to="/admin-page/data/data-mahasiswa/form-mahasiswa">
           <Button className="tambah-mhs">Tambah</Button>
         </Link>
       </div>

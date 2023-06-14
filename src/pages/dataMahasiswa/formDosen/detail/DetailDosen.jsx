@@ -18,7 +18,7 @@ const DetailDosen = () => {
           // ID tidak valid, redirect ke halaman lain atau lakukan tindakan yang sesuai
           console.error("ID tidak valid");
           // Contoh: Redirect ke halaman Data Dosen
-          return <Navigate to="/dashboard-admin/data/data-dosen" replace />;
+          return <Navigate to="/admin-page/data/data-dosen" replace />;
         }
       } catch (error) {
         console.error("Error saat mengambil data dosen:", error);
