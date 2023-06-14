@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
 
-.title {
+.title-feature {
   font-family: "Poppins", sans-serif;
   font-style: normal;
   font-weight: 600;
@@ -53,7 +53,7 @@
   background: linear-gradient(0deg, rgba(36, 36, 36, 0.5), rgba(36, 36, 36, 0.5)), url(../../../assets//img/features4.png);
 }
 
-.text {
+.text-image-feature {
   width: 159px;
   font-family: "Poppins", sans-serif;
   font-style: normal;

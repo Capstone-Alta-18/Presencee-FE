@@ -15,12 +15,12 @@ const Features = () => {
   return (
     <>
       <div id="features">
-        <p className="title">Feature Yang Tersedia</p>
+        <p className="title-feature">Feature Yang Tersedia</p>
         <Row>
           <Col className="col1" span={3}></Col>
           <Col className="col2" xs={24} md={18} lg={18}>
             <div className="text-container1" onClick={() => handleContainerClick(0)}>
-              <p className="text">Presensi Sidik Jari</p>
+              <p className="text-image-feature">Presensi Sidik Jari</p>
               {overlayVisible[0] && (
                 <div className="overlay">
                   <p className="overlay-text">Dengan fitur ini, data yang terinput tidak dapat dipalsukan, karena pada dasarnya setiap manusia memiliki sidik jari yang berbeda.</p>
@@ -28,7 +28,7 @@ const Features = () => {
               )}
             </div>
             <div className="text-container2" onClick={() => handleContainerClick(1)}>
-              <p className="text">Jadwal</p>
+              <p className="text-image-feature">Jadwal</p>
               {overlayVisible[1] && (
                 <div className="overlay">
                   <p className="overlay-text">Dengan fitur ini, dapat memudahkan dalam mengelola waktu sehingga tahu rencana kuliah yang harus dilakukan.</p>
@@ -36,7 +36,7 @@ const Features = () => {
               )}
             </div>
             <div className="text-container3" onClick={() => handleContainerClick(2)}>
-              <p className="text">Histori Presensi</p>
+              <p className="text-image-feature">Histori Presensi</p>
               {overlayVisible[2] && (
                 <div className="overlay">
                   <p className="overlay-text">Dengan fitur ini, dapat memudahkan dalam melihat kembali atau meninjau riwayat absensi mahasiswa.</p>
@@ -44,7 +44,7 @@ const Features = () => {
               )}
             </div>
             <div className="text-container4" onClick={() => handleContainerClick(3)}>
-              <p className="text">Pesensi kamera</p>
+              <p className="text-image-feature">Pesensi kamera</p>
               {overlayVisible[3] && (
                 <div className="overlay">
                   <p className="overlay-text">Dengan fitur ini, absensi akan lebih efektif.</p>
