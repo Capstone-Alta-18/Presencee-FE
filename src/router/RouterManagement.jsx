@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { Route, Routes, useNavigate, Navigate } from "react-router-dom";
 import RiwayatPresensi from "../pages/riwayatPresensi/RiwayatPresensi";
 import LoginAdmin from "../pages/loginAdmin/LoginAdmin";
@@ -9,7 +9,7 @@ import JadwalKuliahAdmin from "../pages/jadwalKuliahAdmin/JadwalKuliahAdmin";
 import DataMahasiswa from "../pages/dataMahasiswa/DataMahasiswa";
 
 const RouterManagement = () => {
-  const token = localStorage.getItem("access_token");
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
   useEffect(() => {
