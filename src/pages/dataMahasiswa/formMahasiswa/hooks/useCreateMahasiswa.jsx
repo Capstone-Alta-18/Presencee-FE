@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { api } from "../../../../config/apiService";
 import { message } from "antd";
+import { api } from "../../../../api/Index";
 
 const useCreateMahasiswa = () => {
   const [loading, setLoading] = useState(false);

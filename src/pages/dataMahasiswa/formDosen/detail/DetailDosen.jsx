@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Navigate } from "react-router-dom";
-import { api } from "../../../../config/apiService";
 import { Form, Input } from "antd";
+import { api } from "../../../../api/Index";
 
 const DetailDosen = () => {
   const [dosen, setDosen] = useState(null);
