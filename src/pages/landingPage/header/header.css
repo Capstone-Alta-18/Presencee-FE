@@ -6,7 +6,7 @@
   position: fixed;
   background-color: #fff;
   width: 100%;
-  z-index: 99999;
+  z-index: 10;
 }
 
 .logo-navbar {
@@ -50,6 +50,7 @@
   padding: 0 30px;
   margin-right: 40px;
 }
+
 .menu-drawer {
   display: none;
 }

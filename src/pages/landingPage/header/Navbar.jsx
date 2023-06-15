@@ -23,16 +23,15 @@ const Navbar = () => {
 
   const items = [
     {
-      label: <Link to="/login-admin">Admin</Link>,
-      key: "0",
-    },
-    {
       label: <Link to="/login-admin">Portal Admin</Link>,
       key: "1",
     },
     {
+      type: "divider",
+    },
+    {
       label: <Link to="/login-dosen">Portal Dosen</Link>,
-      key: "3",
+      key: "2",
     },
   ];
 
