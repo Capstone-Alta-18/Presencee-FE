@@ -1,9 +1,19 @@
 import { Row, Col, Form, Input, Button } from "antd";
 import { IMAGES } from "../../assets/constant";
 import "./loginDosen.css";
+import { useNavigate } from "react-router-dom";
+import { useLogin } from "./hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const LoginDosen = () => {
-  const onFinish = () => {};
+  const navigate = useNavigate();
+  const [isLoadingLogin, login] = useLogin();
+
+  const onLogin = (values) => {
+    login(values, () => {
+      navigate("/dosen-page");
+    });
+  };
 
   return (
     <div className="login-container">
@@ -25,7 +35,7 @@ const LoginDosen = () => {
             background: "#ffffff",
           }}
         >
-          <Form name="login-form" onFinish={onFinish}>
+          <Form name="login-form" onFinish={onLogin}>
             <Form.Item name="username" rules={[{ required: true, message: "Please input your username!" }]}>
               <Input placeholder="Input Email/NIM" />
             </Form.Item>
@@ -33,16 +43,19 @@ const LoginDosen = () => {
               <Input.Password placeholder="Input Password" />
             </Form.Item>
             <Form.Item style={{ textAlign: "center" }}>
-              <Button type="link" style={{ color: "#FE9486" }}>Lupa Password?</Button>
+              <Button type="link" style={{ color: "#FE9486" }}>
+                Lupa Password?
+              </Button>
             </Form.Item>
 
             <div style={{ borderTop: "1px solid #ccc", margin: "12px 0" }} />
-            <br>
-            </br>
+            <br></br>
             <Form.Item>
-              <Button type="primary" htmlType="submit" style={{ width: "100%" }}>
-                Login
-              </Button>
+              <Link to="/dosen-page/">
+                <Button type="primary" htmlType="submit" style={{ width: "100%" }}>
+                  Login
+                </Button>
+              </Link>
             </Form.Item>
           </Form>
         </Col>
