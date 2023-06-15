@@ -8,12 +8,12 @@ const DataMahasiswa = () => {
         <h1>Manage Data</h1>
       </div>
       <div className="box">
-        <Link to="/dashboard-admin/data/data-mahasiswa">
+        <Link to="/admin-page/data/data-mahasiswa">
           <p className="text">Data Mahasiswa</p>
         </Link>
       </div>
       <div className="box">
-        <Link to="/dashboard-admin/data/data-dosen">
+        <Link to="/admin-page/data/data-dosen">
           <p className="text">Data Dosen</p>
         </Link>
       </div>

@@ -12,6 +12,7 @@ import DataMhs from "../pages/dataMahasiswa/dataAll/mahasiswa/DataMhs";
 import FormDosen from "../pages/dataMahasiswa/formDosen/FormDosen";
 import FormMahasiswa from "../pages/dataMahasiswa/formMahasiswa/FormMahasiswa";
 import DetailDosen from "../pages/dataMahasiswa/formDosen/detail/DetailDosen";
+import DetailMhs from "../pages/dataMahasiswa/formMahasiswa/detail/DetailMhs";
 
 const RouterManagement = () => {
   const token = localStorage.getItem("token");
@@ -30,7 +31,7 @@ const RouterManagement = () => {
           <Route path="/" element={<LandingMain />} />
           <Route path="/login-admin" element={<LoginAdmin />} />
           <Route
-            path="/dashboard-admin/*"
+            path="/admin-page/*"
             element={
               token ? (
                 <LayoutComponent>
@@ -39,10 +40,11 @@ const RouterManagement = () => {
                     <Route path="/jadwal-kuliah-admin" element={<JadwalKuliahAdmin />} />
                     <Route path="/data" element={<DataMahasiswa />} />
                     <Route path="/data/data-dosen" element={<DataDosen />} />
-                    <Route path="/data/data-dosen/detail/:id" element={<DetailDosen/>} />
+                    <Route path="/data/data-dosen/detail/:id" element={<DetailDosen />} />
                     <Route path="/data/data-dosen/form-dosen" element={<FormDosen />} />
                     <Route path="/data/data-mahasiswa/form-mahasiswa" element={<FormMahasiswa />} />
                     <Route path="/data/data-mahasiswa" element={<DataMhs />} />
+                    <Route path="/data/data-mahasiswa/detail/:id" element={<DetailMhs />} />
                     <Route path="/riwayat-presensi" element={<RiwayatPresensi />} />
                   </Routes>
                 </LayoutComponent>

@@ -14,7 +14,7 @@ export const MENU_ITEM_ADMIN = [
   },
   {
     icon: <UsersFour size={20} />,
-    label: <Link to="/dashboard-admin/data">Data Mahasiswa</Link>,
+    label: <Link to="/admin-page/data">Data Mahasiswa</Link>,
     key: 3,
   },
   {

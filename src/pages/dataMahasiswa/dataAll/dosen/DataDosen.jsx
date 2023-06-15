@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./dataall.css";
 import { Button, Input, Pagination } from "antd";
 import { Link } from "react-router-dom";
+import { api } from "../../../../api/Index";
 
 const { Search } = Input;
 
@@ -16,15 +17,8 @@ const DataDosen = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Get token from local storage
-        const token = localStorage.getItem("token");
-
-        const response = await fetch("http://testing.biaracmpny.my.id/v1/dosen", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const data = await response.json();
+        const response = await api.getDosen();
+        const data = response.data;
 
         const formattedData = data.dosens.map((dosen) => ({
           key: dosen.ID,
@@ -82,7 +76,7 @@ const DataDosen = () => {
                 </td>
                 <td>{data.name}</td>
                 <td>
-                  <Link to={`/dashboard-admin/data/data-dosen/detail/${data.key}`}>
+                  <Link to={`/admin-page/data/data-dosen/detail/${data.key}`}>
                     <Button className="button">Detail</Button>
                   </Link>
                 </td>
@@ -95,10 +89,10 @@ const DataDosen = () => {
         <Pagination current={currentPage} pageSize={pageSize} total={totalItems} onChange={handleChangePage} showSizeChanger={false} />
       </div>
       <div className="button-container">
-        <Link to="/dashboard-admin/data">
+        <Link to="/admin-page/data">
           <Button className="back-dosen">Back</Button>
         </Link>
-        <Link to="/dashboard-admin/data/data-dosen/form-dosen">
+        <Link to="/admin-page/data/data-dosen/form-dosen">
           <Button className="tambah-dosen">Tambah</Button>
         </Link>
       </div>
