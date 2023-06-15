@@ -1,0 +1,16 @@
+.header-jadwal {
+  background-color: #fe7968;
+}
+.table-jadwal-dosen {
+  margin-top: 20px;
+}
+
+.ant-table-thead th {
+  background-color: #fe7968 !important;
+  border-color: #fe7968 !important;
+}
+
+.ant-table-tbody td {
+  background-color: #feafa4 !important;
+  border-color: black !important;
+}
