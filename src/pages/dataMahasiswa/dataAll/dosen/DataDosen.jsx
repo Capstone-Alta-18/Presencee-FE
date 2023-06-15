@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./dataall.css";
 import { Button, Input, Pagination } from "antd";
 import { Link } from "react-router-dom";
+import { api } from "../../../../api/Index";
 
 const { Search } = Input;
 
@@ -16,15 +17,8 @@ const DataDosen = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Get token from local storage
-        const token = localStorage.getItem("token");
-
-        const response = await fetch("http://testing.biaracmpny.my.id/v1/dosen", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const data = await response.json();
+        const response = await api.getDosen();
+        const data = response.data;
 
         const formattedData = data.dosens.map((dosen) => ({
           key: dosen.ID,

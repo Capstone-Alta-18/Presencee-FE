@@ -2,32 +2,21 @@ import React, { useState, useEffect } from "react";
 import { Button, Input, Pagination } from "antd";
 import { Link } from "react-router-dom";
 import "./datamhs.css";
+import { api } from "../../../../api/Index";
 
 const DataMhs = () => {
   const { Search } = Input;
   const [dataSource, setDataSource] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filteredData, setFilteredData] = useState([]);
-  const [token, setToken] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(5);
 
   useEffect(() => {
-    // Get token from local storage
-    const storedToken = localStorage.getItem("token");
-    setToken(storedToken);
-  }, []);
-
-  useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://testing.biaracmpny.my.id/v1/mahasiswa", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const data = await response.json();
+        const response = await api.getMahasiswa();
+        const data = response.data;
 
         const formattedData = data.mahasiswas.map((mahasiswa) => ({
           key: mahasiswa.ID,
@@ -43,12 +32,10 @@ const DataMhs = () => {
       }
     };
 
-    if (token) {
-      fetchData();
-    }
-  }, [token]);
+    fetchData();
+  }, []);
 
-  const handleDetail = () => {
+  const handleDetail = (nim) => {
     // Handle detail logic here
   };
 
@@ -79,7 +66,9 @@ const DataMhs = () => {
               <th className="container-th1-mhs">Tanggal Masuk</th>
               <th className="container-th1-mhs">NIM</th>
               <th className="container-th-mhs">Nama Mahasiswa</th>
-              <Search placeholder="Cari Nama Mahasiswa" allowClear onSearch={handleSearch} style={{ width: 200 }} />
+              <th>
+                <Search placeholder="Cari Nama Mahasiswa" allowClear onSearch={handleSearch} style={{ width: 200 }} />
+              </th>
               <th></th>
             </tr>
             <tr>
@@ -107,7 +96,7 @@ const DataMhs = () => {
       </div>
       <div className="button-container-mhs">
         <Link to="/admin-page/data">
-          <Button className="back-mhs">Back</Button>
+          <Button className="back-mhs">Kembali</Button>
         </Link>
         <Link to="/admin-page/data/data-mahasiswa/form-mahasiswa">
           <Button className="tambah-mhs">Tambah</Button>
