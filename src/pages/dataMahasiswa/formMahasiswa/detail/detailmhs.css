@@ -1,11 +1,60 @@
-.container-form-mhs-detail {
+.title-detail-mhs {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #feafa4;
+  color: black;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.container-detail-form {
+  font-family: "Poppins";
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #ffc9c3;
+  padding: 50px 5%;
+  margin-bottom: 100px;
+}
+
+.input-detail {
+  width: 300px;
+}
+
+.upload-container-detail {
+  background-color: #feafa4;
+  height: 376px;
+}
+.btn-simpan-mhs-detail {
+  display: flex;
+  justify-content: flex-end;
+  top: 100px;
+  position: relative;
+}
+
+.back-form-detail {
+  display: flex;
+  justify-content: flex-start;
+  top: 45px;
+  position: relative;
+}
+
+.form-detail {
+  height: auto;
+  margin-bottom: -70px;
+}
+/* .container-form-mhs-detail {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   background-color: #ffc9c3;
-
+  justify-content: center;
+  padding-top: 50px;
 }
 
 .container-detail-mhs {
@@ -34,10 +83,10 @@
 }
 
 .upload-container-detail {
-  margin-top: 10px;
-  width: 90%;
-  height: 490px;
-  margin-left: 10px;
+  width: 241px;
+  height: 376px;
+  background-color: #feafa4;
+  margin-left: 200px;
 }
 
 .form-container-detail {
@@ -45,7 +94,7 @@
 }
 
 .input-detail {
-  width: 100%;
+  width: 342px;
 }
 
 .btn-simpan-detail {
@@ -109,6 +158,7 @@
 }
 .form-kiri {
   left: 500px;
+  margin-left: 200px;
   width: 1300px;
   bottom: 487px;
-}
+} */

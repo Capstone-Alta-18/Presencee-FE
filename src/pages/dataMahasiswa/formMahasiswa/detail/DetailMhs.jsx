@@ -67,90 +67,92 @@ const DetailMhs = () => {
   };
 
   return (
-    <div className="container-detail-mhs">
+    <div className="detail-mahasiswa">
       <div className="title-detail-mhs">
         <h1>Data Mahasiswa</h1>
       </div>
-      <div className="container-form-mhs-detail">
-        <Row gutter={[16, 16]}>
-          <Col span={8}>
-            <div className="upload-container-detail">
-              <Dragger>
-                <p className="ant-upload-drag-icon">
-                  <InboxOutlined />
-                </p>
-                <p className="ant-upload-text">Click or drag file to this area to upload</p>
-              </Dragger>
-            </div>
-          </Col>
-          <Col span={8}>
-            <Form name="validateOnly" layout="vertical" autoComplete="off" initialValues={mahasiswa} onFinish={handleUpdate}>
-              <Form.Item className="text-form-detail" name="name" label="Nama" rules={[{ message: "Please input your name!" }]}>
-                <Input className="input-detail" onChange={(e) => setMahasiswa({ ...mahasiswa, name: e.target.value })} />
-              </Form.Item>
-              <Form.Item className="text-form-detail" name="nim" label="NIM" rules={[{ message: "Please input your NIM!" }]}>
-                <Input className="input-detail" onChange={(e) => setMahasiswa({ ...mahasiswa, nim: e.target.value })} />
-              </Form.Item>
-              <Form.Item className="text-form-detail" name="email" label="Email" rules={[{ message: "Please input your email!" }, { type: "email", message: "Please enter a valid email address!" }]}>
-                <Input className="input-detail" onChange={(e) => setMahasiswa({ ...mahasiswa, email: e.target.value })} />
-              </Form.Item>
-              <Form.Item className="text-form-detail" name="phone" label="Phone" rules={[{ message: "Please input your phone number!" }]}>
-                <Input className="input-detail" onChange={(e) => setMahasiswa({ ...mahasiswa, phone: e.target.value })} />
-              </Form.Item>
-              <Form.Item className="text-form-detail" name="password" label="Password" rules={[{ message: "Please input your password!" }]}>
-                <Input.Password className="input-detail" onChange={(e) => setMahasiswa({ ...mahasiswa, password: e.target.value })} />
-              </Form.Item>
-              <Form.Item>
-                <Space className="btn-simpan-mhs-detail">
-                  <Button type="primary" htmlType="submit">
-                    Update
-                  </Button>
-                  <Button type="primary" onClick={handleDelete}>
-                    Delete
-                  </Button>
-                </Space>
-              </Form.Item>
-              <div className="form-kiri">
-                <Col span={8} className="form-kiri">
-                  <Form.Item className="text-form-detail" name="tahun_masuk" label="Tahun_Masuk" rules={[{ message: "Please select your angkatan!" }]}>
-                    <Select className="input-detail">
-                      <Option value="2020">2020</Option>
-                      <Option value="2021">2021</Option>
-                      <Option value="2022">2022</Option>
-                      <Option value="2023">2023</Option>
-                    </Select>
-                  </Form.Item>
-                  <Form.Item className="text-form-detail" name="fakultas" label="Fakultas" rules={[{ message: "Please select your fakultas!" }]}>
-                    <Select className="input-detail">
-                      <Option value="Fakultas 1">Fakultas 1</Option>
-                      <Option value="Fakultas 2">Fakultas 2</Option>
-                      <Option value="Fakultas 3">Fakultas 3</Option>
-                    </Select>
-                  </Form.Item>
-                  <Form.Item className="text-form-detail" name="jurusan" label="Jurusan" rules={[{ message: "Please select your jurusan!" }]}>
-                    <Select className="input-detail" onChange={(value) => setMahasiswa({ ...mahasiswa, jurusan: value })}>
-                      <Option value="Jurusan 1">Informatika</Option>
-                      <Option value="Jurusan 2">Hukum</Option>
-                      <Option value="Jurusan 3">Sastra</Option>
-                      <Option value="Jurusan 4">Fisika</Option>
-                      <Option value="Jurusan 5">Kimia</Option>
-                      <Option value="Jurusan 6">Biologi</Option>
-                      <Option value="Jurusan 7">Astronomi</Option>
-                      <Option value="Jurusan 8">Matematika</Option>
-                      <Option value="Jurusan 9">Inggris</Option>
-                      <Option value="Jurusan 10">Olahraga</Option>
-                    </Select>
-                  </Form.Item>
-                </Col>
-              </div>
-            </Form>
-          </Col>
-        </Row>
-      </div>
-      <div className="button-container-detail">
-        <Link to="/admin-page/data/data-mahasiswa">
-          <Button className="back-form-detail">Back</Button>
-        </Link>
+      <div className="container-detail-form">
+        <div className="form-detail">
+          <Form name="validateOnly" layout="vertical" autoComplete="off" initialValues={mahasiswa} onFinish={handleUpdate}>
+            <Row gutter={60}>
+              <Col>
+                <div className="upload-container-detail">
+                  <Dragger>
+                    <p className="ant-upload-drag-icon">
+                      <InboxOutlined />
+                    </p>
+                    <p className="ant-upload-text">Click or drag file to this area to upload</p>
+                  </Dragger>
+                </div>
+              </Col>
+              <Col>
+                <Form.Item className="text-form-detail" name="name" label="Nama" rules={[{ message: "Please input your name!" }]}>
+                  <Input className="input-detail" onChange={(e) => setMahasiswa({ ...mahasiswa, name: e.target.value })} />
+                </Form.Item>
+                <Form.Item className="text-form-detail" name="nim" label="NIM" rules={[{ message: "Please input your NIM!" }]}>
+                  <Input className="input-detail" onChange={(e) => setMahasiswa({ ...mahasiswa, nim: e.target.value })} />
+                </Form.Item>
+                <Form.Item className="text-form-detail" name="email" label="Email" rules={[{ message: "Please input your email!" }, { type: "email", message: "Please enter a valid email address!" }]}>
+                  <Input className="input-detail" onChange={(e) => setMahasiswa({ ...mahasiswa, email: e.target.value })} />
+                </Form.Item>
+                <Form.Item className="text-form-detail" name="phone" label="Phone" rules={[{ message: "Please input your phone number!" }]}>
+                  <Input className="input-detail" onChange={(e) => setMahasiswa({ ...mahasiswa, phone: e.target.value })} />
+                </Form.Item>
+                <Form.Item className="text-form-detail" name="password" label="Password" rules={[{ message: "Please input your password!" }]}>
+                  <Input.Password className="input-detail" onChange={(e) => setMahasiswa({ ...mahasiswa, password: e.target.value })} />
+                </Form.Item>
+              </Col>
+              <Col>
+                <Form.Item className="text-form-detail input-detail" name="tahun_masuk" label="Tahun Masuk" rules={[{ message: "Please select your angkatan!" }]}>
+                  <Select className="input-detail">
+                    <Option value="2020">2020</Option>
+                    <Option value="2021">2021</Option>
+                    <Option value="2022">2022</Option>
+                    <Option value="2023">2023</Option>
+                  </Select>
+                </Form.Item>
+                <Form.Item className="text-form-detail input-detail" name="fakultas" label="Fakultas" rules={[{ message: "Please select your fakultas!" }]}>
+                  <Select className="input-detail">
+                    <Option value="Fakultas 1">Fakultas 1</Option>
+                    <Option value="Fakultas 2">Fakultas 2</Option>
+                    <Option value="Fakultas 3">Fakultas 3</Option>
+                  </Select>
+                </Form.Item>
+                <Form.Item className="text-form-detail input-detail" name="jurusan" label="Jurusan" rules={[{ message: "Please select your jurusan!" }]}>
+                  <Select className="input-detail" onChange={(value) => setMahasiswa({ ...mahasiswa, jurusan: value })}>
+                    <Option value="Jurusan 1">Informatika</Option>
+                    <Option value="Jurusan 2">Hukum</Option>
+                    <Option value="Jurusan 3">Sastra</Option>
+                    <Option value="Jurusan 4">Fisika</Option>
+                    <Option value="Jurusan 5">Kimia</Option>
+                    <Option value="Jurusan 6">Biologi</Option>
+                    <Option value="Jurusan 7">Astronomi</Option>
+                    <Option value="Jurusan 8">Matematika</Option>
+                    <Option value="Jurusan 9">Inggris</Option>
+                    <Option value="Jurusan 10">Olahraga</Option>
+                  </Select>
+                </Form.Item>
+              </Col>
+            </Row>
+            <Form.Item>
+              <Space className="btn-simpan-mhs-detail">
+                <Button type="primary" htmlType="submit">
+                  Update
+                </Button>
+                <Button type="primary" onClick={handleDelete}>
+                  Delete
+                </Button>
+              </Space>
+            </Form.Item>
+          </Form>
+          <div>
+            <Link to="/admin-page/data/data-mahasiswa">
+              <Button type="primary" className="back-form-detail">
+                Back
+              </Button>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );
