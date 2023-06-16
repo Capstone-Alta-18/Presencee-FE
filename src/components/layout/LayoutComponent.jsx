@@ -57,7 +57,7 @@ const LayoutComponent = ({ children }) => {
                 <Button
                   type="primary"
                   onClick={() => {
-                    localStorage.removeItem("access_token");
+                    localStorage.removeItem("token");
                   }}
                   danger
                 >

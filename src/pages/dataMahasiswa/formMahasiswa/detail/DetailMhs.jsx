@@ -112,7 +112,7 @@ const DetailMhs = () => {
               </Form.Item>
               <div className="form-kiri">
                 <Col span={8} className="form-kiri">
-                  <Form.Item className="text-form-detail" name="angkatan" label="Angkatan" rules={[{ message: "Please select your angkatan!" }]}>
+                  <Form.Item className="text-form-detail" name="tahun_masuk" label="Tahun_Masuk" rules={[{ message: "Please select your angkatan!" }]}>
                     <Select className="input-detail">
                       <Option value="2020">2020</Option>
                       <Option value="2021">2021</Option>
@@ -121,17 +121,24 @@ const DetailMhs = () => {
                     </Select>
                   </Form.Item>
                   <Form.Item className="text-form-detail" name="fakultas" label="Fakultas" rules={[{ message: "Please select your fakultas!" }]}>
-                    <Select className="input">
+                    <Select className="input-detail">
                       <Option value="Fakultas 1">Fakultas 1</Option>
                       <Option value="Fakultas 2">Fakultas 2</Option>
                       <Option value="Fakultas 3">Fakultas 3</Option>
                     </Select>
                   </Form.Item>
                   <Form.Item className="text-form-detail" name="jurusan" label="Jurusan" rules={[{ message: "Please select your jurusan!" }]}>
-                    <Select className="input-detail" onChange={(e) => setMahasiswa({ ...mahasiswa, jurusan: e.target.value })}>
+                    <Select className="input-detail" onChange={(value) => setMahasiswa({ ...mahasiswa, jurusan: value })}>
                       <Option value="Jurusan 1">Informatika</Option>
                       <Option value="Jurusan 2">Hukum</Option>
                       <Option value="Jurusan 3">Sastra</Option>
+                      <Option value="Jurusan 4">Fisika</Option>
+                      <Option value="Jurusan 5">Kimia</Option>
+                      <Option value="Jurusan 6">Biologi</Option>
+                      <Option value="Jurusan 7">Astronomi</Option>
+                      <Option value="Jurusan 8">Matematika</Option>
+                      <Option value="Jurusan 9">Inggris</Option>
+                      <Option value="Jurusan 10">Olahraga</Option>
                     </Select>
                   </Form.Item>
                 </Col>
