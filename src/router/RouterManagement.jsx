@@ -7,6 +7,7 @@ import DashboardAdmin from "../pages/dashboradAdmin/DashboardAdmin";
 import JadwalKuliahAdmin from "../pages/jadwalKuliahAdmin/JadwalKuliahAdmin";
 import DataMahasiswa from "../pages/dataMahasiswa/DataMahasiswa";
 import RiwayatPresensi from "../pages/riwayatPresensi/RiwayatPresensi";
+import FormJadwalKuliah from "../pages/jadwalKuliahAdmin/formJadwalKuliah/formJadwalKuliah";
 
 const RouterManagement = () => {
   const token = localStorage.getItem("access_token");
@@ -32,6 +33,7 @@ const RouterManagement = () => {
                   <Routes>
                     <Route path="/" element={<DashboardAdmin />} />
                     <Route path="/jadwal-kuliah-admin" element={<JadwalKuliahAdmin />} />
+                    <Route path="/form-jadwal-kuliah-admin" element={<FormJadwalKuliah />} />
                     <Route path="/data-mahasiswa" element={<DataMahasiswa />} />
                     <Route path="/riwayat-presensi" element={<RiwayatPresensi />} />
                   </Routes>

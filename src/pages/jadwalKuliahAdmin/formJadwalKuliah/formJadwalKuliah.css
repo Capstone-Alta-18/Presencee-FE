@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+
+.layout-jadwal-kuliah {
+  margin: 0;
+  padding: 0;
+}
+
+.Layout-jadwal-kuliah p {
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 42px;
+  letter-spacing: 0.01em;
+  color: #000000;
+  background-color: #ffc9c3;
+  padding: 20px 0px;
+  gap: 10px;
+}
+
+.layout-form-jadwal-kuliah {
+  display: flex;
+  flex-direction: column;
+  width: 1364px;
+  height: 460px;
+  padding: 18px 64px;
+  background-color: #ffc9c3;
+  border-radius: 12px;
+  gap: 20px;
+}
+
+.title-form-jadwal-kuliah {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: 0.01em;
+  color: #242424;
+}
+
+.white-label .ant-form-item-label > label {
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: bold;
+}
+
+.submit-form-jadwal-kuliah {
+  background: #fe9486;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  align-items: center;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+  padding: 4px 15px;
+  gap: 8px;
+  box-sizing: border-box;
+  border: 1px solid #fe9486;
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+  border-radius: 3px;
+}
