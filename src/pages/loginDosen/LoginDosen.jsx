@@ -36,7 +36,7 @@ const LoginDosen = () => {
           }}
         >
           <Form name="login-form" onFinish={onLogin}>
-            <Form.Item name="username" rules={[{ required: true, message: "Please input your username!" }]}>
+            <Form.Item name="email" rules={[{ required: true, message: "Please input your email!" }]}>
               <Input placeholder="Input Email/NIM" />
             </Form.Item>
             <Form.Item name="password" rules={[{ required: true, message: "Please input your password!" }]}>
@@ -51,11 +51,9 @@ const LoginDosen = () => {
             <div style={{ borderTop: "1px solid #ccc", margin: "12px 0" }} />
             <br></br>
             <Form.Item>
-              <Link to="/dosen-page/">
-                <Button type="primary" htmlType="submit" style={{ width: "100%" }}>
-                  Login
-                </Button>
-              </Link>
+              <Button type="primary" htmlType="submit" style={{ width: "100%" }}>
+                Login
+              </Button>
             </Form.Item>
           </Form>
         </Col>

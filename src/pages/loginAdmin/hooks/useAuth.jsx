@@ -8,7 +8,7 @@ export const useLogin = () => {
   const login = useCallback(async (body, onSuccess) => {
     try {
       setIsLoading(true);
-      const res = await api.login(body);
+      const res = await api.loginAdmin(body);
 
       console.log({ res });
 
