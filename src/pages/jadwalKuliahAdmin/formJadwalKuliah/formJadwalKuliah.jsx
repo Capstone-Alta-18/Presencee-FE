@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { Button, Form, Input, DatePicker, Popconfirm, Space, message, Select, Checkbox, Radio, Alert, Modal, notification, Col, Row } from "antd";
 import "./formJadwalKuliah.css";
+import Swal from "sweetalert2";
 
 const FormJadwalKuliah = () => {
   const [formBio] = Form.useForm();
@@ -9,68 +10,39 @@ const FormJadwalKuliah = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [open, setOpen] = useState(false);
 
-  const { RangePicker } = DatePicker;
   const onChange = (value, dateString) => {
     console.log("Selected Time: ", value);
     console.log("Formatted Selected Time: ", dateString);
   };
+
   const onOk = (value) => {
     console.log("onOk: ", value);
   };
 
-  const TABLE_COLUMNS = [
-    {
-      title: "Full Name",
-      dataIndex: "fullName",
-      key: "fullName",
-    },
-    {
-      title: "Phone Number",
-      dataIndex: "phoneNumber",
-      key: "phoneNumber",
-    },
-    {
-      title: "Booking Time",
-      dataIndex: "bookingTime",
-      key: "bookingTime",
-    },
-    {
-      title: "Date Booking",
-      dataIndex: "dateBooking",
-      key: "dateBooking",
-    },
-    {
-      title: "Notes",
-      dataIndex: "notes",
-      key: "notes",
-    },
-    {
-      title: "Service",
-      dataIndex: "service",
-      key: "service",
-    },
-    {
-      title: "Email",
-      dataIndex: "email",
-      key: "email",
-    },
+  const handleSuccessClick = () => {
+    Swal.fire({
+      title: "Berhasil Menyimpan Data",
+      icon: "success",
+      showConfirmButton: false,
+      timer: 3000,
+    });
+  };
 
-    {
-      title: "Action",
-      dataIndex: "action",
-      render: (_, record) =>
-        TABLE_BOOKING.length >= 1 ? (
-          <Space>
-            <a className="edit-button" onClick={() => handleEdit(record)}>
-              Edit
-            </a>
-            <Popconfirm title="Sure to delete?" arrow={false} onConfirm={() => onDelete(record.id)}>
-              <a className="delete-button">Delete</a>
-            </Popconfirm>
-          </Space>
-        ) : null,
-    },
-  ];
+  const handleErrorClick = () => {
+    Swal.fire({
+      title: "WARNING",
+      text: "Apakah anda yakin untuk menghapus data ini?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Delete ",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+      }
+    });
+  };
 
   //   to handle edit button
   const handleEdit = (row_data) => {
@@ -82,6 +54,7 @@ const FormJadwalKuliah = () => {
   //   to handle cancel button
   const handleCancel = () => {
     setRowData();
+    setIsModalOpen(false);
     setIsEdit(false);
     formBio.resetFields();
   };
@@ -91,27 +64,6 @@ const FormJadwalKuliah = () => {
     const body = {
       ...values,
     };
-    addBooking({
-      variables: {
-        object: {
-          ...body,
-        },
-      },
-      onError: (err) => {
-        message.open({
-          type: "Terjadi Kesalahan saat memasukan data",
-          content: `${err?.message}`,
-        });
-      },
-      onCompleted: () => {
-        // Tampilkan notifikasi setelah berhasil submit
-        notification.success({
-          message: "Sukses",
-          description: "Data booking berhasil disimpan.",
-        });
-        handleCancel();
-      },
-    });
   };
 
   //   Delete Data from table
@@ -243,29 +195,19 @@ const FormJadwalKuliah = () => {
           </Row>
 
           {/* button edit and delete */}
-          {isEdit ? (
-            <Space>
-              <Button type="primary" htmlType="submit" loading={loadingUpdateBooking}>
-                Save
-              </Button>
-              <Button type="primary" onClick={handleCancel} danger>
-                Cancel
-              </Button>
-            </Space>
-          ) : (
-            <Form.Item>
-              <Button className="submit-form-jadwal-kuliah" style={{ float: "right" }} htmlType="submit">
-                Simpan
-              </Button>
-            </Form.Item>
-          )}
+
+          <Form.Item>
+            <Button className="submit-form-jadwal-kuliah" style={{ float: "right" }} htmlType="submit" onClick={handleSuccessClick}>
+              Simpan
+            </Button>
+          </Form.Item>
         </div>
       </Form>
       <div>
         <Button className="submit-form-jadwal-kuliah" style={{ float: "left", margin: "50px 0px" }} htmlType="submit">
           Back
         </Button>
-        <Button className="submit-form-jadwal-kuliah" style={{ float: "right", margin: "50px 0px" }} htmlType="submit">
+        <Button className="submit-form-jadwal-kuliah" style={{ float: "right", margin: "50px 0px" }} htmlType="submit" onClick={handleErrorClick}>
           Delete
         </Button>
         <Button className="submit-form-jadwal-kuliah" style={{ float: "right", margin: "50px 50px" }} htmlType="submit">
