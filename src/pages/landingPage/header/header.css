@@ -6,7 +6,7 @@
   position: fixed;
   background-color: #fff;
   width: 100%;
-  z-index: 99999;
+  z-index: 999;
 }
 
 .logo-navbar {
@@ -54,8 +54,9 @@
   display: none;
 }
 .drawer {
-  padding-top: 40px;
   background-color: #fe7968 !important;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
 }
 
 .drawer > .menu-drawer {

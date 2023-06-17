@@ -19,7 +19,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="contact-us-section">
+    <div id="contact" className="contact-us-section">
       <div className="text-contact-us">
         <h1>Mari Berkolaborasi Bersama Kami!</h1>
         <p>Ada Pertanyaan Lain? Hubungi Kami</p>
