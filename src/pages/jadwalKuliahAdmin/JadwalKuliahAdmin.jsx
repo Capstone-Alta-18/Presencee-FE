@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Table } from "antd";
-import "./JadwalKuliah.css";
+import "./jadwalKuliah.css";
 import { Link } from "react-router-dom";
 
 const dataSource = [
