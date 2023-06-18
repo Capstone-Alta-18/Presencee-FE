@@ -16,8 +16,8 @@ const LeftMenu = ({ mode }) => {
           Features
         </Link>
       </Menu.Item>
-      <Menu.Item key="help">
-        <Link to="help" spy={true} smooth={true} offset={-70} duration={700}>
+      <Menu.Item key="contact">
+        <Link to="contact" spy={true} smooth={true} offset={-70} duration={700}>
           Help
         </Link>
       </Menu.Item>
