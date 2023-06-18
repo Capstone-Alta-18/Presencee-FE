@@ -27,8 +27,11 @@ const Navbar = () => {
       key: "1",
     },
     {
+      type: "divider",
+    },
+    {
       label: <Link to="/login-dosen">Portal Dosen</Link>,
-      key: "3",
+      key: "2",
     },
   ];
 

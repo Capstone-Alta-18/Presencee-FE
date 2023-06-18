@@ -14,6 +14,7 @@ const Features = () => {
 
   return (
     <>
+
       {/* Features */}
       <div className="features">
         <p className="title-features">Feature Yang Tersedia</p>
@@ -21,6 +22,7 @@ const Features = () => {
           <Col className="col2-features" span={24}>
             <div className="text-container1" onClick={() => handleContainerClick(0)}>
               <p className="text-card-features">Presensi Sidik Jari</p>
+
               {overlayVisible[0] && (
                 <div className="overlay-features">
                   <p className="overlay-text-features">Dengan fitur ini, data yang terinput tidak dapat dipalsukan, karena pada dasarnya setiap manusia memiliki sidik jari yang berbeda.</p>
@@ -28,7 +30,9 @@ const Features = () => {
               )}
             </div>
             <div className="text-container2" onClick={() => handleContainerClick(1)}>
+
               <p className="text-card-features">Jadwal</p>
+
               {overlayVisible[1] && (
                 <div className="overlay-features">
                   <p className="overlay-text-features">Dengan fitur ini, dapat memudahkan dalam mengelola waktu sehingga tahu rencana kuliah yang harus dilakukan.</p>

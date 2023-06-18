@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Layout, Menu, Button, Drawer } from "antd";
-import { MENU_ITEM_ADMIN } from "./constant";
+import { MENU_ITEM_DOSEN } from "./constant";
 import { IMAGES } from "./../../assets/constant";
 import { DotsThreeOutlineVertical, List } from "@phosphor-icons/react";
 import "./layoutComponent.css";
@@ -8,7 +8,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const { Header, Sider, Content } = Layout;
 
-const LayoutComponent = ({ children }) => {
+const LayoutComponentDosen = ({ children }) => {
   const [collapsed, setCollapsed] = useState(true);
   const location = useLocation();
   const [selectedKeys, setSelectedKeys] = useState([location.pathname]);
@@ -34,14 +34,20 @@ const LayoutComponent = ({ children }) => {
         {/* sidebar */}
         <Sider className="side-bar" trigger={null} collapsible collapsed={collapsed}>
           <Button className="btn-menu" theme="light" type="text" icon={<List size={20} />} onClick={showDrawer} />
-          <Menu className="menu-bar-admin" mode="inline" defaultSelectedKeys={1} selectedKeys={selectedKeys} items={MENU_ITEM_ADMIN} onClick={handleMenuClick} />
+          <Menu className="menu-bar-admin" mode="inline" defaultSelectedKeys={1} selectedKeys={selectedKeys} items={MENU_ITEM_DOSEN} onClick={handleMenuClick}>
+            {MENU_ITEM_DOSEN.map((item) => (
+              <Menu.Item key={item.key} icon={item.icon} disabled={item.disabled}>
+                {item.label}
+              </Menu.Item>
+            ))}
+          </Menu>
         </Sider>
 
         <Drawer className="drawer-bar ant-drawer-content-wrapper" placement={placement} closable={false} onClose={onClose} open={open} key={placement}>
           <Button className="dots-icon" onClick={onClose}>
             <DotsThreeOutlineVertical />
           </Button>
-          <Menu className="menu-bar-drawer" mode="inline" selectedKeys={selectedKeys} items={MENU_ITEM_ADMIN} onClick={handleMenuClick} />
+          <Menu className="menu-bar-drawer" mode="inline" selectedKeys={selectedKeys} items={MENU_ITEM_DOSEN} onClick={handleMenuClick} />
         </Drawer>
 
         <Layout>
@@ -52,8 +58,8 @@ const LayoutComponent = ({ children }) => {
             </div>
             <div className="nav-users">
               <img src={IMAGES.profilImage} alt="" width={50} />
-              <p> Admin</p>
-              <Link to="/login-admin">
+              <p> Dosen</p>
+              <Link to="/login-dosen">
                 <Button
                   type="primary"
                   onClick={() => {
@@ -82,4 +88,4 @@ const LayoutComponent = ({ children }) => {
   );
 };
 
-export default LayoutComponent;
+export default LayoutComponentDosen;

@@ -7,7 +7,7 @@
   background-color: #fff;
   width: 100%;
   z-index: 999;
-}
+
 
 .logo-navbar {
   margin: 37px 50px;
@@ -50,6 +50,7 @@
   padding: 0 30px;
   margin-right: 40px;
 }
+
 .menu-drawer {
   display: none;
 }
