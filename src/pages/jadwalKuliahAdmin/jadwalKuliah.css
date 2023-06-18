@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+
+.display-table p {
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 42px;
+  letter-spacing: 0.01em;
+  color: #000000;
+  background-color: #ffc9c3;
+  padding: 20px;
+
+  gap: 10px;
+}
+.table-jadwal-kuliah {
+  background-color: #ffe4e1;
+  border-radius: 12px;
+}
+
+.rowClassName1 {
+  background-color: #ffe4e1;
+}
+
+.rowClassName1 td {
+  border-top: solid rgba(86, 84, 84, 0.603);
+}
+
+.ant-table .ant-table-container .ant-table-content table thead.ant-table-thead .ant-table-cell {
+  background-color: #ffe4e1 !important;
+}
+
+.btn-add {
+  margin: 30px 0px;
+  background: #fe9486;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  align-items: center;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+  padding: 4px 15px;
+  gap: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ffe4e1;
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+  border-radius: 2px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}

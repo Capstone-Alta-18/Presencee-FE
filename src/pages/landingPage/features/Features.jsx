@@ -14,64 +14,72 @@ const Features = () => {
 
   return (
     <>
-      <div id="features">
-        <p className="title-feature">Feature Yang Tersedia</p>
+
+      {/* Features */}
+      <div className="features">
+        <p className="title-features">Feature Yang Tersedia</p>
         <Row>
-          <Col className="col1" span={3}></Col>
-          <Col className="col2" xs={24} md={18} lg={18}>
+          <Col className="col2-features" span={24}>
             <div className="text-container1" onClick={() => handleContainerClick(0)}>
-              <p className="text-image-feature">Presensi Sidik Jari</p>
+              <p className="text-card-features">Presensi Sidik Jari</p>
+
               {overlayVisible[0] && (
-                <div className="overlay">
-                  <p className="overlay-text">Dengan fitur ini, data yang terinput tidak dapat dipalsukan, karena pada dasarnya setiap manusia memiliki sidik jari yang berbeda.</p>
+                <div className="overlay-features">
+                  <p className="overlay-text-features">Dengan fitur ini, data yang terinput tidak dapat dipalsukan, karena pada dasarnya setiap manusia memiliki sidik jari yang berbeda.</p>
                 </div>
               )}
             </div>
             <div className="text-container2" onClick={() => handleContainerClick(1)}>
-              <p className="text-image-feature">Jadwal</p>
+
+              <p className="text-card-features">Jadwal</p>
+
               {overlayVisible[1] && (
-                <div className="overlay">
-                  <p className="overlay-text">Dengan fitur ini, dapat memudahkan dalam mengelola waktu sehingga tahu rencana kuliah yang harus dilakukan.</p>
+                <div className="overlay-features">
+                  <p className="overlay-text-features">Dengan fitur ini, dapat memudahkan dalam mengelola waktu sehingga tahu rencana kuliah yang harus dilakukan.</p>
                 </div>
               )}
             </div>
             <div className="text-container3" onClick={() => handleContainerClick(2)}>
-              <p className="text-image-feature">Histori Presensi</p>
+              <p className="text-card-features">Histori Presensi</p>
               {overlayVisible[2] && (
-                <div className="overlay">
-                  <p className="overlay-text">Dengan fitur ini, dapat memudahkan dalam melihat kembali atau meninjau riwayat absensi mahasiswa.</p>
+                <div className="overlay-features">
+                  <p className="overlay-text-features">Dengan fitur ini, dapat memudahkan dalam melihat kembali atau meninjau riwayat absensi mahasiswa.</p>
                 </div>
               )}
             </div>
             <div className="text-container4" onClick={() => handleContainerClick(3)}>
-              <p className="text-image-feature">Pesensi kamera</p>
+              <p className="text-card-features">Pesensi kamera</p>
               {overlayVisible[3] && (
-                <div className="overlay">
-                  <p className="overlay-text">Dengan fitur ini, absensi akan lebih efektif.</p>
+                <div className="overlay-features">
+                  <p className="overlay-text-features">Dengan fitur ini, absensi akan lebih efektif.</p>
                 </div>
               )}
             </div>
           </Col>
-          <Col className="col3" span={3}></Col>
         </Row>
       </div>
-      <div className="FAQ" id="help">
+
+      {/* FAQ */}
+      <div className="FAQ">
         <h1>Frequently Asked Questions (FAQ)</h1>
         <Row>
-          <Col className="col1" span={3}></Col>
-          <Col className="col2" xs={24} md={18} lg={18}>
+          <Col className="col2-faq" span={24}>
             {FAQ.map((faq, index) => (
               <div key={index}>
-                <div className={faq.className}>
+                <div className={faq.className} onClick={() => handleContainerClick(index)}>
                   <div className="cardfaq">
-                    <img src={faq.bgimg} alt="gambar" />
+                    <img src={faq.bgimg} alt="Thumbnail" />
                     <p>{faq.description}</p>
+                    {overlayVisible[index] && (
+                      <div className="overlay-faq">
+                        <p className="overlay-text-faq">{faq.overlayText}</p>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
             ))}
           </Col>
-          <Col className="col3" span={3}></Col>
         </Row>
       </div>
     </>
