@@ -33,6 +33,9 @@ export const api = {
   getDosen: () => {
     return baseAPI.get("/v1/dosen");
   },
+  getRoom: () => {
+    return baseAPI.get("/v1/room");
+  },
   getMahasiswa: () => {
     return baseAPI.get("/v1/mahasiswa");
   },
