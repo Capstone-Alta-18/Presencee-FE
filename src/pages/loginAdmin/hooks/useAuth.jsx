@@ -5,10 +5,10 @@ import { api } from "../../../api/Index";
 export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const login = useCallback(async (body, onSuccess) => {
+  const loginAdmin = useCallback(async (body, onSuccess) => {
     try {
       setIsLoading(true);
-      const res = await api.login(body);
+      const res = await api.loginAdmin(body);
 
       console.log({ res });
 
@@ -30,5 +30,5 @@ export const useLogin = () => {
     }
   }, []);
 
-  return [isLoading, login];
+  return [isLoading, loginAdmin];
 };

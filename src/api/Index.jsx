@@ -27,6 +27,12 @@ export const api = {
   login: (body) => {
     return baseAPI.post("/v1/users/login", body);
   },
+  loginAdmin: (body) => {
+    return baseAPI.post("/v1/users/admin", body);
+  },
+  loginDosen: (body) => {
+    return baseAPI.post("/v1/users/dosen", body);
+  },
   getUsers: () => {
     return baseAPI.get("/v1/users");
   },

@@ -2,14 +2,14 @@ import { Row, Col, Form, Input, Button } from "antd";
 import { IMAGES } from "../../assets/constant";
 import "./loginDosen.css";
 import { useNavigate } from "react-router-dom";
-import { useLogin } from "./hooks/useAuth";
 import { Link } from "react-router-dom";
+import { useLoginDosen } from "./hooks/useAuth";
 
 const LoginDosen = () => {
   const navigate = useNavigate();
-  const [isLoadingLogin, login] = useLogin();
+  const [isLoadingLoginDosen, login] = useLoginDosen();
 
-  const onLogin = (values) => {
+  const onLoginDosen = (values) => {
     login(values, () => {
       navigate("/dosen-page");
     });
@@ -35,8 +35,8 @@ const LoginDosen = () => {
             background: "#ffffff",
           }}
         >
-          <Form name="login-form" onFinish={onLogin}>
-            <Form.Item name="username" rules={[{ required: true, message: "Please input your username!" }]}>
+          <Form name="login-form" onFinish={onLoginDosen}>
+            <Form.Item name="email" rules={[{ required: true, message: "Please input your username!" }]}>
               <Input placeholder="Input Email/NIM" />
             </Form.Item>
             <Form.Item name="password" rules={[{ required: true, message: "Please input your password!" }]}>
@@ -49,13 +49,11 @@ const LoginDosen = () => {
             </Form.Item>
 
             <div style={{ borderTop: "1px solid #ccc", margin: "12px 0" }} />
-            <br></br>
+            <br />
             <Form.Item>
-              <Link to="/dosen-page/">
-                <Button type="primary" htmlType="submit" style={{ width: "100%" }}>
-                  Login
-                </Button>
-              </Link>
+              <Button type="primary" htmlType="submit" style={{ width: "100%" }}>
+                Login
+              </Button>
             </Form.Item>
           </Form>
         </Col>
