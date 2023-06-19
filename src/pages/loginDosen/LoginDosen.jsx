@@ -51,11 +51,9 @@ const LoginDosen = () => {
             <div style={{ borderTop: "1px solid #ccc", margin: "12px 0" }} />
             <br></br>
             <Form.Item>
-              <Link to="/dosen-page/">
-                <Button type="primary" htmlType="submit" style={{ width: "100%" }}>
-                  Login
-                </Button>
-              </Link>
+              <Button type="primary" htmlType="submit" style={{ width: "100%" }}>
+                Login
+              </Button>
             </Form.Item>
           </Form>
         </Col>
