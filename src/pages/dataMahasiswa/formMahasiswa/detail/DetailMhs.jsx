@@ -103,8 +103,8 @@ const DetailMhs = () => {
                 </Form.Item>
               </Col>
               <Col>
-                <Form.Item className="text-form-detail input-detail" name="tahun_masuk" label="Tahun Masuk" rules={[{ message: "Please select your angkatan!" }]}>
-                  <Select className="input-detail">
+                <Form.Item className="text-form-detail input-detail" name="tahun_masuk" label="Angkatan" rules={[{ message: "Please select your angkatan!" }]}>
+                  <Select className="input-detail" onChange={(value) => setMahasiswa({ ...mahasiswa, tahun_masuk: value })}>
                     <Option value="2020">2020</Option>
                     <Option value="2021">2021</Option>
                     <Option value="2022">2022</Option>
@@ -112,10 +112,10 @@ const DetailMhs = () => {
                   </Select>
                 </Form.Item>
                 <Form.Item className="text-form-detail input-detail" name="fakultas" label="Fakultas" rules={[{ message: "Please select your fakultas!" }]}>
-                  <Select className="input-detail">
-                    <Option value="Fakultas 1">Fakultas 1</Option>
-                    <Option value="Fakultas 2">Fakultas 2</Option>
-                    <Option value="Fakultas 3">Fakultas 3</Option>
+                  <Select className="input-detail" onChange={(value) => setMahasiswa({ ...mahasiswa, fakultas: value })}>
+                    <Option value="Fakultas MIPA">MIPA</Option>
+                    <Option value="Fakultas Teknik">Fakultas Teknik</Option>
+                    <Option value="Fakultas Ekonomi">Fakultas Ekonomi</Option>
                   </Select>
                 </Form.Item>
                 <Form.Item className="text-form-detail input-detail" name="jurusan" label="Jurusan" rules={[{ message: "Please select your jurusan!" }]}>

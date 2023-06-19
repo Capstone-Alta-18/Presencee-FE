@@ -26,7 +26,7 @@ const useCreateMahasiswa = () => {
         name: data.name,
         email: data.email,
         nim: data.nim,
-        image: data.image,
+        image: data.imageUrl, // Ubah data.image menjadi data.imageUrl
         phone: data.phone,
         jurusan: data.jurusan,
         tahun_masuk: data.tahun_masuk,

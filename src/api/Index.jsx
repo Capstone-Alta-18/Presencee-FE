@@ -22,7 +22,7 @@ baseAPI.interceptors.request.use(
 );
 
 export const api = {
-  // API with Token
+  // API dengan Token
   // Login
   login: (body) => {
     return baseAPI.post("/v1/users/login", body);
@@ -67,7 +67,7 @@ export const api = {
     return baseAPI.post("/v1/mahasiswa", body);
   },
 
-  // upload image
+  // unggah gambar
   uploadImage: (file) => {
     const formData = new FormData();
     formData.append("image", file);

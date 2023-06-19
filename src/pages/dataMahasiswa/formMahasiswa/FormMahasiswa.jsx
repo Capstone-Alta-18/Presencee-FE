@@ -21,19 +21,22 @@ const FormMahasiswa = () => {
 
   const onFinish = async (values) => {
     try {
-      // Mengunggah gambar jika ada file yang dipilih
       if (fileList.length > 0) {
         const file = fileList[0].originFileObj;
         const response = await api.uploadImage(file);
-        setImageUrl(response.url);
+        if (response.success) {
+          setImageUrl(response.data.imageUrl);
+        } else {
+          throw new Error(response.message);
+        }
       }
 
-      // Menambahkan imageUrl ke body request
-      const requestBody = { ...values, imageUrl };
+      const requestBody = { ...values, imageUrl: imageUrl };
 
       await createMahasiswa(requestBody);
       form.resetFields();
       setFileList([]);
+      setImageUrl(null);
       message.success("Data mahasiswa berhasil disimpan");
     } catch (error) {
       console.error(error);
@@ -89,9 +92,9 @@ const FormMahasiswa = () => {
               </Form.Item>
               <Form.Item className="text-form" name="fakultas" label="Fakultas" rules={[{ message: "Please select your fakultas!" }]}>
                 <Select className="input">
-                  <Option value="Fakultas 1">Fakultas 1</Option>
-                  <Option value="Fakultas 2">Fakultas 2</Option>
-                  <Option value="Fakultas 3">Fakultas 3</Option>
+                  <Option value="Fakultas MIPA">MIPA</Option>
+                  <Option value="Fakultas Teknik">Fakultas Teknik</Option>
+                  <Option value="Fakultas Ekonomi">Fakultas Ekonomi</Option>
                 </Select>
               </Form.Item>
               <Form.Item className="text-form" name="jurusan" label="Jurusan" rules={[{ message: "Please select your jurusan!" }]}>

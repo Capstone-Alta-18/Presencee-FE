@@ -22,7 +22,6 @@ const DetailDosen = () => {
           console.error("ID tidak valid");
           // Contoh: Redirect ke halaman Data Dosen
           return <Navigate to="/admin-page/data/data-dosen" replace />;
-
         }
       } catch (error) {
         console.error("Error saat mengambil data dosen:", error);
@@ -57,7 +56,7 @@ const DetailDosen = () => {
 
       if (response.data && response.data.status === "success") {
         message.success("Data berhasil dihapus");
-        navigate("/dashboard-admin/data/data-dosen");
+        navigate("/admin-page/data/data-dosen");
       } else {
         message.error("Gagal menghapus data");
       }
@@ -104,7 +103,7 @@ const DetailDosen = () => {
                   <Button type="primary" htmlType="submit">
                     Update
                   </Button>
-                  <Button type="primary"  onClick={handleDelete}>
+                  <Button type="primary" onClick={handleDelete}>
                     Delete
                   </Button>
                 </Space>
