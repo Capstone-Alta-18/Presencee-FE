@@ -20,7 +20,9 @@ const DetailDosen = () => {
           setDosen(response.data.dosen);
         } else {
           console.error("ID tidak valid");
-          navigate("/admin-page/data/data-dosen");
+          // Contoh: Redirect ke halaman Data Dosen
+          return <Navigate to="/admin-page/data/data-dosen" replace />;
+
         }
       } catch (error) {
         console.error("Error saat mengambil data dosen:", error);

@@ -1,25 +1,34 @@
-import React, { Suspense, useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { Route, Routes, useNavigate, Navigate } from "react-router-dom";
-import LandingMain from "../pages/landingPage/LandingMain";
+import RiwayatPresensi from "../pages/riwayatPresensi/RiwayatPresensi";
 import LoginAdmin from "../pages/loginAdmin/LoginAdmin";
 import LayoutComponent from "../components/layout/LayoutComponent";
-import DashboardAdmin from "../pages/dashboradAdmin/DashboardAdmin";
+import DashboardAdmin from "../pages/dashboardAdmin/DashboardAdmin";
 import JadwalKuliahAdmin from "../pages/jadwalKuliahAdmin/JadwalKuliahAdmin";
-import RiwayatPresensi from "../pages/riwayatPresensi/RiwayatPresensi";
 import DataMahasiswa from "../pages/dataMahasiswa/DataMahasiswa";
 import DataDosen from "../pages/dataMahasiswa/dataAll/dosen/DataDosen";
 import DataMhs from "../pages/dataMahasiswa/dataAll/mahasiswa/DataMhs";
 import FormDosen from "../pages/dataMahasiswa/formDosen/FormDosen";
 import FormMahasiswa from "../pages/dataMahasiswa/formMahasiswa/FormMahasiswa";
 import DetailDosen from "../pages/dataMahasiswa/formDosen/detail/DetailDosen";
+
 import DetailMhs from "../pages/dataMahasiswa/formMahasiswa/detail/DetailMhs";
+
+import LandingMain from "../pages/landingPage/LandingMain";
+import LayoutComponentDosen from "../components/layoutDosen/LayoutComponentDosen";
+import LoginDosen from "../pages/loginDosen/LoginDosen";
+import DashboardDosen from "../pages/dashboardDosen/DashboardDosen";
+import JadwalKuliahDosen from "../pages/jadwalKuliahDosen/JadwalKuliahDosen";
+
+
 
 const RouterManagement = () => {
   const token = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!token && window.location.pathname !== "/login-admin") {
+    if (!token && window.location.pathname !== "/login-admin" && window.location.pathname !== "/login-dosen") {
       navigate("/");
     }
   }, [token, navigate]);
@@ -30,6 +39,7 @@ const RouterManagement = () => {
         <Routes>
           <Route path="/" element={<LandingMain />} />
           <Route path="/login-admin" element={<LoginAdmin />} />
+          <Route path="/login-dosen" element={<LoginDosen />} />
           <Route
             path="/admin-page/*"
             element={
@@ -51,6 +61,17 @@ const RouterManagement = () => {
               ) : (
                 <Navigate to="/login-admin" />
               )
+            }
+          />
+          <Route
+            path="/dosen-page/*"
+            element={
+              <LayoutComponentDosen>
+                <Routes>
+                  <Route path="/" element={<DashboardDosen />} />
+                  <Route path="/jadwal-kuliah-dosen" element={<JadwalKuliahDosen />} />
+                </Routes>
+              </LayoutComponentDosen>
             }
           />
         </Routes>

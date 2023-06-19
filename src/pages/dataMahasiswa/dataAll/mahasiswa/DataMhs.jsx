@@ -96,7 +96,9 @@ const DataMhs = () => {
       </div>
       <div className="button-container-mhs">
         <Link to="/admin-page/data">
+
           <Button className="back-mhs">Back</Button>
+
         </Link>
         <Link to="/admin-page/data/data-mahasiswa/form-mahasiswa">
           <Button className="tambah-mhs">Tambah</Button>

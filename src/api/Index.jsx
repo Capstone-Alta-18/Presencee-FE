@@ -1,4 +1,12 @@
-import { baseAPI } from "../config/apiService";
+import axios from "axios";
+import { BASE_URL } from "../utils";
+
+const baseAPI = axios.create({
+  baseURL: BASE_URL.API,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
 baseAPI.interceptors.request.use(
   (config) => {
@@ -14,7 +22,7 @@ baseAPI.interceptors.request.use(
 );
 
 export const api = {
-  /// API with Token
+  // API with Token
   // Login
   login: (body) => {
     return baseAPI.post("/v1/users/login", body);
@@ -24,6 +32,9 @@ export const api = {
   },
   getDosen: () => {
     return baseAPI.get("/v1/dosen");
+  },
+  getRoom: () => {
+    return baseAPI.get("/v1/room");
   },
   getMahasiswa: () => {
     return baseAPI.get("/v1/mahasiswa");
