@@ -3,6 +3,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { Button, Form, Input, DatePicker, Popconfirm, Space, message, Select, Checkbox, Radio, Alert, Modal, notification, Col, Row } from "antd";
 import "./formJadwalKuliah.css";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const FormJadwalKuliah = () => {
   const [formBio] = Form.useForm();
@@ -204,9 +205,11 @@ const FormJadwalKuliah = () => {
         </div>
       </Form>
       <div>
-        <Button className="submit-form-jadwal-kuliah" style={{ float: "left", margin: "50px 0px" }} htmlType="submit">
-          Back
-        </Button>
+        <Link to="/admin-page/jadwal-kuliah-admin">
+          <Button className="submit-form-jadwal-kuliah" style={{ float: "left", margin: "50px 0px" }} htmlType="submit">
+            Back
+          </Button>
+        </Link>
         <Button className="submit-form-jadwal-kuliah" style={{ float: "right", margin: "50px 0px" }} htmlType="submit" onClick={handleErrorClick}>
           Delete
         </Button>
