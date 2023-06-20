@@ -36,6 +36,18 @@ export const api = {
   getRoom: () => {
     return baseAPI.get("/v1/room");
   },
+  getJadwal: () => {
+    return baseAPI.get("/v1/jadwals");
+  },
+  createJadwal: (body) => {
+    return baseAPI.post("/v1/jadwals", body);
+  },
+  deleteJadwal: (id) => {
+    return baseAPI.delete(`/v1/jadwals/${id}`);
+  },
+  updateJadwal: (id, body) => {
+    return baseAPI.put(`/v1/jadwals/${id}`, body);
+  },
   getMahasiswa: () => {
     return baseAPI.get("/v1/mahasiswa");
   },
