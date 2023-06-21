@@ -16,7 +16,7 @@ import LayoutComponentDosen from "../components/layoutDosen/LayoutComponentDosen
 import LoginDosen from "../pages/loginDosen/LoginDosen";
 import DashboardDosen from "../pages/dashboardDosen/DashboardDosen";
 import JadwalKuliahDosen from "../pages/jadwalKuliahDosen/JadwalKuliahDosen";
-
+import LupaPassword from "../pages/lupaPassword/LupaPassword";
 
 const RouterManagement = () => {
   const token = localStorage.getItem("token");
@@ -24,7 +24,7 @@ const RouterManagement = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!token && window.location.pathname !== "/login-admin" && window.location.pathname !== "/login-dosen") {
+    if (!token && window.location.pathname !== "/login-admin" && window.location.pathname !== "/login-dosen" && window.location.pathname !== "/lupa-password") {
       navigate("/");
     }
   }, [token, navigate]);
@@ -36,6 +36,7 @@ const RouterManagement = () => {
           <Route path="/" element={<LandingMain />} />
           <Route path="/login-admin" element={<LoginAdmin />} />
           <Route path="/login-dosen" element={<LoginDosen />} />
+          <Route path="/lupa-password" element={<LupaPassword />} />
           <Route
             path="/admin-page/*"
             element={
