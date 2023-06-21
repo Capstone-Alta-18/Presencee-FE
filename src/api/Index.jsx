@@ -36,6 +36,9 @@ export const api = {
   getRoom: () => {
     return baseAPI.get("/v1/room");
   },
+  getAbsen: () => {
+    return baseAPI.get("/v1/absens");
+  },
   getMahasiswa: () => {
     return baseAPI.get("/v1/mahasiswa");
   },
