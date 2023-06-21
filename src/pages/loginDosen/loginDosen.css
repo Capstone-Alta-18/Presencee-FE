@@ -1,0 +1,49 @@
+.login-container {
+    position: relative;
+  }
+  
+  .login-section {
+    height: 55vh;
+    padding-top: 320px;
+  }
+  
+  .triangle-top-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 270px 600px 0 0;
+    border-color: #feafa4 transparent transparent transparent;
+  }
+  
+  .triangle-bottom-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 290px 700px;
+    border-color: transparent transparent #feafa4 transparent;
+  }
+  
+  .login-content {
+    text-align: justify;
+    margin-right: 90px;
+    margin-top: -200px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-size: 20px;
+  }
+  
+  .logo-image {
+    width: 100%;
+  }
+  
+  .login-animation {
+    width: 613px;
+    bottom: 100;
+    left: 0;
+  }

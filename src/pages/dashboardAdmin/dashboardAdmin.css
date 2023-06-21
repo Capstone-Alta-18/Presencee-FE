@@ -1,0 +1,51 @@
+.title-dashboard-admin h2 {
+  font-size: 28px;
+  font-weight: 700;
+}
+.dashboard-section {
+  display: flex;
+  gap: 30px;
+}
+
+.left-section {
+  width: 385px;
+}
+
+.right-section {
+  width: 698px;
+}
+.all-data-section {
+  margin-bottom: 44px;
+  height: 120px;
+}
+.container-data-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-data {
+  box-shadow: 0px 0px 20px rgba(48, 48, 48, 0.2);
+  border-radius: 8px 0px 0px 8px;
+  padding: 27px 29px;
+}
+
+.data-section {
+  width: 100%;
+  text-align: center;
+  background: #fe7968;
+  font-size: 21px;
+  color: #fff;
+  border-radius: 0px 8px 8px 0px;
+}
+
+.presentase-kehadiran {
+  height: 285px;
+  text-align: center;
+  box-shadow: 0px 0px 20px rgba(48, 48, 48, 0.2);
+}
+
+.presentase-kehadiran h3 {
+  padding-top: 11px;
+  margin-bottom: -40px;
+}

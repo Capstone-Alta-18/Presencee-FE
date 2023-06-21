@@ -53,6 +53,7 @@ const LayoutComponent = ({ children }) => {
             items={MENU_ITEM_ADMIN}
             onClick={handleMenuClick}
           />
+
         </Sider>
 
         <Drawer
@@ -88,7 +89,7 @@ const LayoutComponent = ({ children }) => {
                 <Button
                   type="primary"
                   onClick={() => {
-                    localStorage.removeItem("access_token");
+                    localStorage.removeItem("token");
                   }}
                   danger
                 >
@@ -103,7 +104,6 @@ const LayoutComponent = ({ children }) => {
             style={{
               margin: "24px 16px",
               padding: 24,
-              minHeight: "1024px",
             }}
           >
             {children}
