@@ -22,7 +22,7 @@
 .layout-form-jadwal-kuliah {
   display: flex;
   flex-direction: column;
-  width: 1364px;
+  width: 100%;
   height: 460px;
   padding: 18px 64px;
   background-color: #ffc9c3;

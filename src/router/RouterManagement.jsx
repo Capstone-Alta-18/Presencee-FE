@@ -19,7 +19,7 @@ import LayoutComponentDosen from "../components/layoutDosen/LayoutComponentDosen
 import LoginDosen from "../pages/loginDosen/LoginDosen";
 import DashboardDosen from "../pages/dashboardDosen/DashboardDosen";
 import JadwalKuliahDosen from "../pages/jadwalKuliahDosen/JadwalKuliahDosen";
-
+import FormJadwalKuliah from "./../pages/jadwalKuliahAdmin/formJadwalKuliah/formJadwalKuliah";
 
 
 const RouterManagement = () => {
@@ -48,6 +48,7 @@ const RouterManagement = () => {
                   <Routes>
                     <Route path="/" element={<DashboardAdmin />} />
                     <Route path="/jadwal-kuliah-admin" element={<JadwalKuliahAdmin />} />
+                    <Route path="/form-jadwal-kuliah-admin" element={<FormJadwalKuliah />} />
                     <Route path="/data" element={<DataMahasiswa />} />
                     <Route path="/data/data-dosen" element={<DataDosen />} />
                     <Route path="/data/data-dosen/detail/:id" element={<DetailDosen />} />
