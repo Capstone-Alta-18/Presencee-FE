@@ -45,6 +45,21 @@ export const api = {
   getDosenById: (id) => {
     return baseAPI.get(`/v1/dosen/${id}`);
   },
+  getMahasiswaById: (id) => {
+    return baseAPI.get(`/v1/mahasiswa/${id}`);
+  },
+  updateDosen: (id, body) => {
+    return baseAPI.put(`/v1/dosen/${id}`, body);
+  },
+  deleteDosen: (id) => {
+    return baseAPI.delete(`/v1/dosen/${id}`);
+  },
+  updateMahasiswa: (id, body) => {
+    return baseAPI.put(`/v1/mahasiswa/${id}`, body);
+  },
+  deleteMahasiswa: (id) => {
+    return baseAPI.delete(`/v1/mahasiswa/${id}`);
+  },
   signUp: (body) => {
     return baseAPI.post("/v1/users/signup", body);
   },
@@ -53,5 +68,16 @@ export const api = {
   },
   createMahasiswa: (body) => {
     return baseAPI.post("/v1/mahasiswa", body);
+  },
+
+  // upload image
+  uploadImage: (file) => {
+    const formData = new FormData();
+    formData.append("image", file);
+    return baseAPI.post("/v1/upload", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   },
 };
