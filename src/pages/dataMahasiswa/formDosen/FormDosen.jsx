@@ -7,6 +7,7 @@ import useCreateDosen from "./hooks/useCreateDosen";
 
 const { Dragger } = Upload;
 
+// eslint-disable-next-line react/prop-types
 const SubmitButton = ({ form }) => {
   const [submittable, setSubmittable] = React.useState(false);
 
