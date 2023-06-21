@@ -1,0 +1,36 @@
+.title-page-jurusan{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFC9C3;
+    height: 82px;
+}
+
+.content-halaman-jurusan{
+    max-height: 431px;
+
+    margin-top: 30px;
+    background-color: #FFE4E1;
+    padding: 80px 185px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-content{
+    padding-bottom: 38px;
+    font-size: 24px;
+}
+.button-jurusan{
+    width: 816px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 143px;
+}
+
+.btn-jurusan{
+    color: black;
+}

@@ -1,3 +1,4 @@
+
 import { Suspense, useEffect } from "react";
 import { Route, Routes, useNavigate, Navigate } from "react-router-dom";
 import RiwayatPresensi from "../pages/riwayatPresensi/RiwayatPresensi";
@@ -6,6 +7,18 @@ import LayoutComponent from "../components/layout/LayoutComponent";
 import DashboardAdmin from "../pages/dashboardAdmin/DashboardAdmin";
 import JadwalKuliahAdmin from "../pages/jadwalKuliahAdmin/JadwalKuliahAdmin";
 import DataMahasiswa from "../pages/dataMahasiswa/DataMahasiswa";
+import RiwayatPresensi from "../pages/riwayatPresensi/RiwayatPresensi";
+import Fakultas from "../pages/riwayatPresensi/fakultas/Fakultas";
+import Hukum from "../pages/riwayatPresensi/jurusan/Hukum";
+import Bisnis from "../pages/riwayatPresensi/jurusan/Bisnis";
+import Sains from "../pages/riwayatPresensi/jurusan/Sains";
+import Sastra from "../pages/riwayatPresensi/jurusan/Sastra";
+import Math from "../pages/riwayatPresensi/jurusan/Math";
+import Kesehatan from "../pages/riwayatPresensi/jurusan/Kesehatan";
+import Computer from "../pages/riwayatPresensi/jurusan/Computer";
+import Media from "../pages/riwayatPresensi/jurusan/Media";
+import Kehadiran from "../pages/riwayatPresensi/kehadiran/Kehadiran";
+import DetailKehadiran from "../pages/riwayatPresensi/detailKehadiran/DetailKehadiran";
 import DataDosen from "../pages/dataMahasiswa/dataAll/dosen/DataDosen";
 import DataMhs from "../pages/dataMahasiswa/dataAll/mahasiswa/DataMhs";
 import FormDosen from "../pages/dataMahasiswa/formDosen/FormDosen";
@@ -21,11 +34,11 @@ import DashboardDosen from "../pages/dashboardDosen/DashboardDosen";
 import JadwalKuliahDosen from "../pages/jadwalKuliahDosen/JadwalKuliahDosen";
 import FormJadwalKuliah from "./../pages/jadwalKuliahAdmin/formJadwalKuliah/formJadwalKuliah";
 
-
 const RouterManagement = () => {
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
   const navigate = useNavigate();
+  const { tahun, fakultas } = useParams();
 
   useEffect(() => {
     if (!token && window.location.pathname !== "/login-admin" && window.location.pathname !== "/login-dosen") {
@@ -57,6 +70,17 @@ const RouterManagement = () => {
                     <Route path="/data/data-mahasiswa" element={<DataMhs />} />
                     <Route path="/data/data-mahasiswa/detail/:id" element={<DetailMhs />} />
                     <Route path="/riwayat-presensi" element={<RiwayatPresensi />} />
+                    <Route path="/riwayat-presensi/:tahun" element={<Fakultas />} />
+                    <Route path="/riwayat-presensi/:tahun/hukum" element={<Hukum />} />
+                    <Route path="/riwayat-presensi/:tahun/bisnis" element={<Bisnis />} />
+                    <Route path="/riwayat-presensi/:tahun/sains" element={<Sains />} />
+                    <Route path="/riwayat-presensi/:tahun/sastra" element={<Sastra />} />
+                    <Route path="/riwayat-presensi/:tahun/math" element={<Math />} />
+                    <Route path="/riwayat-presensi/:tahun/kesehatan" element={<Kesehatan />} />
+                    <Route path="/riwayat-presensi/:tahun/computer" element={<Computer />} />
+                    <Route path="/riwayat-presensi/:tahun/media" element={<Media />} />
+                    <Route path="/riwayat-presensi/:tahun/:jurusan/:prodi" element={<Kehadiran />} />
+                    <Route path="/riwayat-presensi/:tahun/:jurusan/:prodi/:id" element={<DetailKehadiran />} />
                   </Routes>
                 </LayoutComponent>
               ) : (
