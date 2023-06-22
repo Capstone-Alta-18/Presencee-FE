@@ -48,10 +48,12 @@ export const api = {
   },
   updateJadwal: (id, body) => {
     return baseAPI.put(`/v1/jadwals/${id}`, body);
-
+  },
   getAbsen: () => {
     return baseAPI.get("/v1/absens");
-
+  },
+  getMatkul: () => {
+    return baseAPI.get("/v1/matakuliah");
   },
   getMahasiswa: () => {
     return baseAPI.get("/v1/mahasiswa");

@@ -4,12 +4,19 @@ import { Button, Form, Input, DatePicker, Popconfirm, Space, message, Select, Ch
 import "./formJadwalKuliah.css";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { useFetchDosenOptions, useFetchMatkulOptions, useFetchRoomOptions } from "./hooks/useGetData";
+import { api } from "../../../api/Index";
+
+const { Option } = Select;
 
 const FormJadwalKuliah = () => {
   const [formBio] = Form.useForm();
   const [rowData, setRowData] = useState();
   const [isEdit, setIsEdit] = useState(false);
   const [open, setOpen] = useState(false);
+  const dosenOptions = useFetchDosenOptions();
+  const roomOptions = useFetchRoomOptions();
+  const matkulOptions = useFetchMatkulOptions();
 
   const onChange = (value, dateString) => {
     console.log("Selected Time: ", value);
@@ -45,66 +52,69 @@ const FormJadwalKuliah = () => {
     });
   };
 
-  //   to handle edit button
   const handleEdit = (row_data) => {
     setRowData(row_data);
     setIsEdit(true);
     formBio.setFieldsValue();
   };
 
-  //   to handle cancel button
   const handleCancel = () => {
     setRowData();
-    setIsModalOpen(false);
+    setOpen(false);
     setIsEdit(false);
     formBio.resetFields();
   };
 
-  //   Add Data to table
   const onAdd = (values) => {
     const body = {
       ...values,
     };
+    // Tambahkan kode untuk mengirim data ke API di sini
+    api
+      .createJadwal(body)
+      .then((response) => {
+        console.log(response);
+        handleSuccessClick();
+      })
+      .catch((error) => {
+        console.log(error);
+        handleErrorClick();
+      });
   };
 
-  //   Delete Data from table
   const onDelete = (row_id) => {
-    deleteBooking({
-      variables: { id: row_id },
-      onError: (err) => {
-        message.open({
-          type: "Terjadi Kesalahan saat menghapus data",
-          content: `${err?.message}`,
-        });
-      },
-    });
+    // Tambahkan kode untuk menghapus data dari API di sini
+    api
+      .deleteJadwal(row_id)
+      .then((response) => {
+        console.log(response);
+        handleSuccessClick();
+      })
+      .catch((error) => {
+        console.log(error);
+        handleErrorClick();
+      });
   };
 
-  //   Edit Data from table
   const onEdit = (values) => {
     const id = rowData.id;
     const body = {
       ...values,
     };
-
-    updateBooking({
-      variables: { pk_columns: { id: id }, _set: { ...body } },
-      onCompleted: () => {
+    // Tambahkan kode untuk memperbarui data ke API di sini
+    api
+      .updateJadwal(id, body)
+      .then((response) => {
+        console.log(response);
         handleCancel();
-      },
-      onError: (err) => {
-        message.open({
-          type: "error",
-          content: `${err?.message}`,
-        });
-      },
-    });
+      })
+      .catch((error) => {
+        console.log(error);
+        handleErrorClick();
+      });
   };
 
   const onFinish = (values) => {
-    // Lakukan proses submit form di sini
-    // ...
-    // Tampilkan notifikasi setelah berhasil submit
     notification.success({
       message: "Sukses",
       description: "Data booking berhasil disimpan.",
@@ -114,88 +124,63 @@ const FormJadwalKuliah = () => {
   return (
     <div className="Layout-jadwal-kuliah">
       <p>Manage Jadwal</p>
-      {/* Form */}
       <Form className="display-form-jadwal-kuliah" name="form-bio" form={formBio} layout="vertical" onFinish={isEdit ? onEdit : onAdd} colon={false} style={{}}>
         <div className="layout-form-jadwal-kuliah">
           <h1 className="title-form-jadwal-kuliah"> Lihat Jadwal Kuliah </h1>
           <Row>
             <Col className="col-layout-form-jadwal-kuliah" span={12}>
-              <Form.Item
-                name="mataKuliah"
-                label="Mata Kuliah"
-                rules={[
-                  {
-                    message: "Please input nama Mata Kuliah!",
-                  },
-                ]}
-                className="white-label"
-              >
-                <Input style={{ padding: "5px 12px", width: "444px" }} placeholder="Input Nama Mata Kuliah" />
+              <Form.Item name="matakuliah_id" label="Mata Kuliah" className="white-label">
+                <Select showSearch style={{ width: 200 }} placeholder="" optionFilterProp="children" filterOption={(input, option) => option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+                  {matkulOptions.map((option) => (
+                    <Select.Option key={option.value} value={option.value}>
+                      {option.label}
+                    </Select.Option>
+                  ))}
+                </Select>
               </Form.Item>
 
-              {/* Jumlah sks */}
               <Form.Item
-                name="jumlahSks"
+                name="sks"
                 label="Jumlah SKS"
                 rules={[
                   {
-                    message: "Please input Jumalah SKS Mata Kuliah!",
+                    message: "Mohon masukkan Jumlah SKS Mata Kuliah!",
                   },
                 ]}
                 className="white-label"
               >
-                <Input style={{ padding: "5px 12px", width: "444px" }} placeholder="Input Jumlah SKS " />
+                <Input style={{ padding: "5px 12px", width: "444px" }} placeholder="Masukkan Jumlah SKS " />
               </Form.Item>
 
-              {/* Kelas */}
-              <Form.Item
-                name="Kelas"
-                label="Kelas"
-                rules={[
-                  {
-                    message: "Please input Kelas",
-                  },
-                ]}
-                className="white-label"
-              >
-                <Input style={{ padding: "5px 12px", width: "444px" }} placeholder="Input Kelas" />
+              <Form.Item name="room_id" label="Kelas" className="white-label">
+                <Select showSearch style={{ width: 200 }} placeholder="" optionFilterProp="children" filterOption={(input, option) => option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+                  {roomOptions.map((option) => (
+                    <Select.Option key={option.value} value={option.value}>
+                      {option.label}
+                    </Select.Option>
+                  ))}
+                </Select>
               </Form.Item>
             </Col>
 
             <Col span={12}>
-              {/* Pengajar */}
-              <Form.Item
-                name="Pengajar"
-                label="Pengajar"
-                rules={[
-                  {
-                    message: "Please input Pengajar!",
-                  },
-                ]}
-                className="white-label"
-              >
-                <Input style={{ padding: "5px 12px", width: "444px" }} placeholder="Input Pengajar" />
+              <Form.Item name="dosen_id" label="Pengajar" className="white-label">
+                <Select showSearch style={{ width: 200 }} placeholder="" optionFilterProp="children" filterOption={(input, option) => option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+                  {dosenOptions.map((option) => (
+                    <Select.Option key={option.value} value={option.value}>
+                      {option.label}
+                    </Select.Option>
+                  ))}
+                </Select>
               </Form.Item>
 
-              {/* Jadwal kelas*/}
-              <Form.Item
-                name="jadwalKelas"
-                label="Jadwal Kelas"
-                rules={[
-                  {
-                    message: "Input Jadwal Kelas!",
-                  },
-                ]}
-                className="white-label"
-              >
+              <Form.Item name="jam" label="Jadwal Kelas" className="white-label">
                 <Space direction="vertical" size={12}>
                   <DatePicker showTime onChange={onChange} onOk={onOk} style={{ padding: "5px 12px", width: "444px" }} />
                 </Space>
               </Form.Item>
             </Col>
           </Row>
-
-          {/* button edit and delete */}
 
           <Form.Item>
             <Button className="submit-form-jadwal-kuliah" style={{ float: "right" }} htmlType="submit" onClick={handleSuccessClick}>
@@ -204,19 +189,6 @@ const FormJadwalKuliah = () => {
           </Form.Item>
         </div>
       </Form>
-      <div>
-        <Link to="/admin-page/jadwal-kuliah-admin">
-          <Button className="submit-form-jadwal-kuliah" style={{ float: "left", margin: "50px 0px" }} htmlType="submit">
-            Back
-          </Button>
-        </Link>
-        <Button className="submit-form-jadwal-kuliah" style={{ float: "right", margin: "50px 0px" }} htmlType="submit" onClick={handleErrorClick}>
-          Delete
-        </Button>
-        <Button className="submit-form-jadwal-kuliah" style={{ float: "right", margin: "50px 50px" }} htmlType="submit">
-          Update
-        </Button>
-      </div>
     </div>
   );
 };

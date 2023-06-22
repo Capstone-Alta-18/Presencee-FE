@@ -1,13 +1,10 @@
-
 import { Suspense, useEffect } from "react";
-import { Route, Routes, useNavigate, Navigate } from "react-router-dom";
+import { Route, Routes, useNavigate, Navigate, useParams } from "react-router-dom";
 import RiwayatPresensi from "../pages/riwayatPresensi/RiwayatPresensi";
 import LoginAdmin from "../pages/loginAdmin/LoginAdmin";
-import LayoutComponent from "../components/layout/LayoutComponent";
 import DashboardAdmin from "../pages/dashboardAdmin/DashboardAdmin";
 import JadwalKuliahAdmin from "../pages/jadwalKuliahAdmin/JadwalKuliahAdmin";
 import DataMahasiswa from "../pages/dataMahasiswa/DataMahasiswa";
-import RiwayatPresensi from "../pages/riwayatPresensi/RiwayatPresensi";
 import Fakultas from "../pages/riwayatPresensi/fakultas/Fakultas";
 import Hukum from "../pages/riwayatPresensi/jurusan/Hukum";
 import Bisnis from "../pages/riwayatPresensi/jurusan/Bisnis";
@@ -24,15 +21,14 @@ import DataMhs from "../pages/dataMahasiswa/dataAll/mahasiswa/DataMhs";
 import FormDosen from "../pages/dataMahasiswa/formDosen/FormDosen";
 import FormMahasiswa from "../pages/dataMahasiswa/formMahasiswa/FormMahasiswa";
 import DetailDosen from "../pages/dataMahasiswa/formDosen/detail/DetailDosen";
-
-import DetailMhs from "../pages/dataMahasiswa/formMahasiswa/detail/DetailMhs";
-
-import LandingMain from "../pages/landingPage/LandingMain";
-import LayoutComponentDosen from "../components/layoutDosen/LayoutComponentDosen";
-import LoginDosen from "../pages/loginDosen/LoginDosen";
 import DashboardDosen from "../pages/dashboardDosen/DashboardDosen";
 import JadwalKuliahDosen from "../pages/jadwalKuliahDosen/JadwalKuliahDosen";
 import FormJadwalKuliah from "./../pages/jadwalKuliahAdmin/formJadwalKuliah/formJadwalKuliah";
+import LayoutComponent from "../components/layout/LayoutComponent";
+import LandingMain from "../pages/landingPage/LandingMain";
+import LoginDosen from "../pages/loginDosen/LoginDosen";
+import DetailMhs from "../pages/dataMahasiswa/dataAll/mahasiswa/DataMhs";
+import LayoutComponentDosen from "../components/layoutDosen/LayoutComponentDosen";
 
 const RouterManagement = () => {
   const token = localStorage.getItem("token");
