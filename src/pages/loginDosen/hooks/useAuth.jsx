@@ -2,33 +2,27 @@ import { useCallback, useState } from "react";
 import { message } from "antd";
 import { api } from "../../../api/Index";
 
-export const useLogin = () => {
+export const useLoginDosen = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const login = useCallback(async (body, onSuccess) => {
+  const loginDosen = useCallback(async (body, onSuccess) => {
     try {
       setIsLoading(true);
-      const res = await api.login(body);
+      const res = await api.loginDosen(body);
 
       console.log({ res });
 
       if (res) {
         localStorage.setItem("token", res.data?.token);
-        message.open({
-          type: "success",
-          content: "Berhasil Login",
-        });
+        message.success("Berhasil Login");
         onSuccess && onSuccess();
       }
     } catch (err) {
-      message.open({
-        type: "error",
-        content: `${err?.message}`,
-      });
+      message.error(err?.message);
     } finally {
       setIsLoading(false);
     }
   }, []);
 
-  return [isLoading, login];
+  return [isLoading, loginDosen];
 };
