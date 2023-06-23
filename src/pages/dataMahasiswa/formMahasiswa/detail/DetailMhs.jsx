@@ -90,14 +90,7 @@ const DetailMhs = () => {
           <Form name="validateOnly" layout="vertical" autoComplete="off" initialValues={mahasiswa} onFinish={handleUpdate}>
             <Row gutter={60}>
               <Col>
-                <div className="upload-container-detail">
-                  <Dragger>
-                    <p className="ant-upload-drag-icon">
-                      <InboxOutlined />
-                    </p>
-                    <p className="ant-upload-text">Click or drag file to this area to upload</p>
-                  </Dragger>
-                </div>
+                <div className="upload-container-detail">{mahasiswa.image && <img src={mahasiswa.image} alt="Mahasiswa" className="uploaded-image" width={300} height={400} />}</div>
               </Col>
               <Col>
                 <Form.Item className="text-form-detail" name="name" label="Nama" rules={[{ message: "Please input your name!" }]}>

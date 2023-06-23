@@ -71,7 +71,7 @@ const DetailDosen = () => {
 
       if (response.data && response.data.status === "success") {
         message.success("Data berhasil dihapus");
-        navigate("/dashboard-admin/data/data-dosen");
+        navigate("/admin-page/data/data-dosen");
       } else {
         message.error("Gagal menghapus data");
       }
