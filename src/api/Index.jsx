@@ -58,9 +58,10 @@ export const api = {
   updateUserDosen: (user_id, body) => {
     return baseAPI.put(`/v1/users/${user_id}`, body);
   },
-  updateUserMahasiswa: (id, body) => {
-    return baseAPI.put(`/v1/users/${id}`, body);
+  updateUserMahasiswa: (user_id, body) => {
+    return baseAPI.put(`/v1/users/${user_id}`, body);
   },
+
   getAbsen: () => {
     return baseAPI.get("/v1/absens");
   },

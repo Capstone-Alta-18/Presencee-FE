@@ -89,9 +89,9 @@ const FormMahasiswa = () => {
               </Form.Item>
               <Form.Item className="text-form" name="fakultas" label="Fakultas" rules={[{ message: "Please select your fakultas!" }]}>
                 <Select className="input">
-                  <Option value="Fakultas 1">Fakultas 1</Option>
-                  <Option value="Fakultas 2">Fakultas 2</Option>
-                  <Option value="Fakultas 3">Fakultas 3</Option>
+                  <Option value="Fakultas MIPA">MIPA</Option>
+                  <Option value="Fakultas Teknik">Fakultas Teknik</Option>
+                  <Option value="Fakultas Ekonomi">Fakultas Ekonomi</Option>
                 </Select>
               </Form.Item>
               <Form.Item className="text-form" name="jurusan" label="Jurusan" rules={[{ message: "Please select your jurusan!" }]}>

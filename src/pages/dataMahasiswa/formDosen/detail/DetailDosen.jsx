@@ -46,9 +46,9 @@ const DetailDosen = () => {
         });
 
         if (passwordUpdateResponse.data && passwordUpdateResponse.data.status === "success") {
-          message.success("Kata sandi berhasil diperbarui");
+          ("");
         } else {
-          message.error("Gagal memperbarui kata sandi");
+          ("");
         }
       }
 

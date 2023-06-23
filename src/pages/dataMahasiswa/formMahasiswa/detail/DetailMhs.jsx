@@ -38,9 +38,23 @@ const DetailMhs = () => {
 
   const handleUpdate = async () => {
     try {
-      const response = await api.updateMahasiswa(id, mahasiswa);
+      const { password, ...mahasiswaData } = mahasiswa;
 
-      if (response.data && response.data.status === "success") {
+      if (password) {
+        const passwordUpdateResponse = await api.updateUserMahasiswa(mahasiswa.user_id, {
+          user_id: mahasiswa.user_id,
+          password,
+        });
+        if (passwordUpdateResponse.data && passwordUpdateResponse.data.status === "success") {
+          ("");
+        } else {
+          ("");
+        }
+      }
+
+      const mahasiswaUpdateResponse = await api.updateMahasiswa(id, mahasiswaData);
+
+      if (mahasiswaUpdateResponse.data && mahasiswaUpdateResponse.data.status === "success") {
         message.success("Data berhasil diperbarui");
         navigate("/admin-page/data/data-mahasiswa");
       } else {
@@ -112,10 +126,10 @@ const DetailMhs = () => {
                   </Select>
                 </Form.Item>
                 <Form.Item className="text-form-detail input-detail" name="fakultas" label="Fakultas" rules={[{ message: "Please select your fakultas!" }]}>
-                  <Select className="input-detail">
-                    <Option value="Fakultas 1">Fakultas 1</Option>
-                    <Option value="Fakultas 2">Fakultas 2</Option>
-                    <Option value="Fakultas 3">Fakultas 3</Option>
+                  <Select className="input-detail" onChange={(value) => setMahasiswa({ ...mahasiswa, fakultas: value })}>
+                    <Option value="Fakultas MIPA">MIPA</Option>
+                    <Option value="Fakultas Teknik">Fakultas Teknik</Option>
+                    <Option value="Fakultas Ekonomi">Fakultas Ekonomi</Option>
                   </Select>
                 </Form.Item>
                 <Form.Item className="text-form-detail input-detail" name="jurusan" label="Jurusan" rules={[{ message: "Please select your jurusan!" }]}>
