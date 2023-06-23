@@ -22,7 +22,6 @@ const DetailDosen = () => {
           console.error("ID tidak valid");
           // Contoh: Redirect ke halaman Data Dosen
           return <Navigate to="/admin-page/data/data-dosen" replace />;
-
         }
       } catch (error) {
         console.error("Error saat mengambil data dosen:", error);
@@ -38,9 +37,24 @@ const DetailDosen = () => {
 
   const handleUpdate = async () => {
     try {
-      const response = await api.updateDosen(id, dosen);
+      const { password, ...dosenData } = dosen;
 
-      if (response.data && response.data.status === "success") {
+      if (password) {
+        const passwordUpdateResponse = await api.updateUserDosen(dosen.user_id, {
+          user_id: dosen.user_id,
+          password,
+        });
+
+        if (passwordUpdateResponse.data && passwordUpdateResponse.data.status === "success") {
+          message.success("Kata sandi berhasil diperbarui");
+        } else {
+          message.error("Gagal memperbarui kata sandi");
+        }
+      }
+
+      const dosenUpdateResponse = await api.updateDosen(id, dosenData);
+
+      if (dosenUpdateResponse.data && dosenUpdateResponse.data.status === "success") {
         message.success("Data berhasil diperbarui");
         navigate("/admin-page/data/data-dosen");
       } else {
@@ -104,7 +118,7 @@ const DetailDosen = () => {
                   <Button type="primary" htmlType="submit">
                     Update
                   </Button>
-                  <Button type="primary"  onClick={handleDelete}>
+                  <Button type="primary" onClick={handleDelete}>
                     Delete
                   </Button>
                 </Space>
