@@ -96,6 +96,7 @@ const DetailMhs = () => {
                       <InboxOutlined />
                     </p>
                     <p className="ant-upload-text">Click or drag file to this area to upload</p>
+                    {mahasiswa.image && <img src={mahasiswa.image} alt="Mahasiswa" className="uploaded-image" />}
                   </Dragger>
                 </div>
               </Col>

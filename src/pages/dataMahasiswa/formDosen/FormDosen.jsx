@@ -4,6 +4,7 @@ import { InboxOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import "./formdosen.css";
 import useCreateDosen from "./hooks/useCreateDosen";
+import { useUpload } from "./hooks/useUpload";
 
 const { Dragger } = Upload;
 
@@ -35,13 +36,15 @@ const SubmitButton = ({ form }) => {
 const FormDosen = () => {
   const [form] = Form.useForm();
   const { createDosen, loading, error } = useCreateDosen();
+  const [isLoading, upload] = useUpload();
 
   const onFinish = async (values) => {
     try {
-      await createDosen(values);
+      const imageUrl = await upload(values.file); // Upload the file and get the image URL
+      await createDosen({ ...values, image: imageUrl }); // Pass the image URL to the createDosen function
       form.resetFields();
     } catch (error) {
-      // Tangani error jika terjadi kesalahan
+      // Handle error if any error occurs
     }
   };
 
@@ -53,7 +56,12 @@ const FormDosen = () => {
       <div className="container-form-dosen">
         <div className="row">
           <div className="upload-container-dosen">
-            <Dragger>
+            <Dragger
+              beforeUpload={(file) => {
+                form.setFieldsValue({ file }); // Store the uploaded file in form values
+                return false; // Prevent automatic file upload
+              }}
+            >
               <p className="ant-upload-drag-icon">
                 <InboxOutlined />
               </p>
