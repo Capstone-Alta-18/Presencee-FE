@@ -27,8 +27,8 @@ import FormJadwalKuliah from "./../pages/jadwalKuliahAdmin/formJadwalKuliah/form
 import LayoutComponent from "../components/layout/LayoutComponent";
 import LandingMain from "../pages/landingPage/LandingMain";
 import LoginDosen from "../pages/loginDosen/LoginDosen";
-import DetailMhs from "../pages/dataMahasiswa/dataAll/mahasiswa/DataMhs";
 import LayoutComponentDosen from "../components/layoutDosen/LayoutComponentDosen";
+import DetailMhs from "../pages/dataMahasiswa/formMahasiswa/detail/DetailMhs";
 
 const RouterManagement = () => {
   const token = localStorage.getItem("token");
