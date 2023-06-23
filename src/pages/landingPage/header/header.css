@@ -6,7 +6,7 @@
   position: fixed;
   background-color: #fff;
   width: 100%;
-  z-index: 10;
+  z-index: 999;
 }
 
 .logo-navbar {
@@ -55,8 +55,9 @@
   display: none;
 }
 .drawer {
-  padding-top: 40px;
   background-color: #fe7968 !important;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
 }
 
 .drawer > .menu-drawer {
@@ -95,8 +96,8 @@
   .menu-drawer {
     color: #fe7968;
     font-size: 22px;
-    margin-top: -10px;
-    display: inline;
+    display: inline-block;
+    height: 50px;
   }
 
   .drawer .menu-drawer {

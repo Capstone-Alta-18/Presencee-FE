@@ -22,10 +22,16 @@ baseAPI.interceptors.request.use(
 );
 
 export const api = {
-  // API with Token
+  // API dengan Token
   // Login
   login: (body) => {
     return baseAPI.post("/v1/users/login", body);
+  },
+  loginAdmin: (body) => {
+    return baseAPI.post("/v1/users/admin", body);
+  },
+  loginDosen: (body) => {
+    return baseAPI.post("/v1/users/dosen", body);
   },
   getUsers: () => {
     return baseAPI.get("/v1/users");
@@ -33,11 +39,29 @@ export const api = {
   getDosen: () => {
     return baseAPI.get("/v1/dosen");
   },
+  getRoom: () => {
+    return baseAPI.get("/v1/room");
+  },
   getMahasiswa: () => {
     return baseAPI.get("/v1/mahasiswa");
   },
   getDosenById: (id) => {
     return baseAPI.get(`/v1/dosen/${id}`);
+  },
+  getMahasiswaById: (id) => {
+    return baseAPI.get(`/v1/mahasiswa/${id}`);
+  },
+  updateDosen: (id, body) => {
+    return baseAPI.put(`/v1/dosen/${id}`, body);
+  },
+  deleteDosen: (id) => {
+    return baseAPI.delete(`/v1/dosen/${id}`);
+  },
+  updateMahasiswa: (id, body) => {
+    return baseAPI.put(`/v1/mahasiswa/${id}`, body);
+  },
+  deleteMahasiswa: (id) => {
+    return baseAPI.delete(`/v1/mahasiswa/${id}`);
   },
   signUp: (body) => {
     return baseAPI.post("/v1/users/signup", body);
@@ -47,5 +71,16 @@ export const api = {
   },
   createMahasiswa: (body) => {
     return baseAPI.post("/v1/mahasiswa", body);
+  },
+
+  // unggah gambar
+  uploadImage: (file) => {
+    const formData = new FormData();
+    formData.append("image", file);
+    return baseAPI.post("/v1/upload", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   },
 };

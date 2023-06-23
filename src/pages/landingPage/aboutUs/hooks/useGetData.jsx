@@ -54,3 +54,28 @@ export const useGetDosen = () => {
 
   return [isLoading, data, getData];
 };
+export const useGetRoom = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState();
+
+  const getData = useCallback(async () => {
+    try {
+      const token = localStorage.getItem("token"); // Mengambil token dari local storage
+      const res = await api.getRoom(token); // Menyertakan token dalam permintaan API
+      setData(res?.data.rooms);
+    } catch (err) {
+      message.open({
+        type: "error",
+        content: `${err?.message}`,
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    getData();
+  }, [getData]);
+
+  return [isLoading, data, getData];
+};

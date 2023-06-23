@@ -49,16 +49,16 @@
 
 @media (max-width: 768px) {
   .contact-us-section {
-    flex-direction: column;
-    align-items: flex-start;
     padding: 40px;
     width: auto;
   }
 
   .text-contact-us {
-    margin-left: 0;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin-left: 40px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
   }
 
   .text-contact-us h1 {

@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+
+.title-dashboard-dosen h1 {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 42px;
+  line-height: 63px;
+  /* identical to box height */
+  letter-spacing: 0.01em;
+  color: #000000;
+  margin-top: -20px;
+}
+
+.title-dashboard-dosen p {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  /* identical to box height */
+  letter-spacing: 0.01em;
+  color: #000000;
+  margin-top: -25px;
+}
+
+.left-dashboard-dosen {
+  display: flex;
+  flex-direction: row;
+  padding: 20px 0px 50px 0px;
+}
+/* Calendar */
+.calender-dosen {
+  width: 285px;
+  height: 315px;
+  left: 0px;
+  top: 0px;
+  background: #ffffff;
+  box-shadow: -20px 22px 9px -9px rgba(0, 0, 0, 0.36);
+  margin: 0px 100px;
+}
+
+.style-calendar {
+  background-color: #fe7968;
+  padding: 8px;
+  width: 285px;
+  height: 40px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 15px;
+  align-items: center;
+  color: #ffffff;
+}
+
+/* total-kehadiran-mahasiswa */
+.total-kehadiran-mahasiswa {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px 24px;
+  gap: 4px;
+  border-radius: 8px;
+  width: 788px;
+  height: 250px;
+  background: #fe7968;
+}
+
+.total-kehadiran-mahasiswa h1 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 42px;
+  line-height: 63px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+}
+
+/* right-dashboard-dosen */
+.right-dashboard-dosen {
+  display: flex;
+  flex-direction: row;
+  gap: 70px;
+  padding: 0px 50px;
+}
+
+/* persentase-kehadiran */
+.konfirmasi-kehadiran {
+  display: flex;
+  padding: 30px 20px;
+  gap: 42px;
+  width: 575px;
+  height: 209px;
+  left: 205px;
+  top: 638px;
+  background: #ffe4e1;
+  box-shadow: -4px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.content-konfirmasi-kehadiran {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px 15px;
+  gap: 13px;
+  background: #fe7968;
+  border-radius: 8px;
+}
+
+.content-konfirmasi-kehadiran h3 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+}
+
+.img-vector-konfirmasi-kehadiran {
+  width: 80px;
+  height: 60px;
+  margin-top: 50px;
+}
+.img-vector-konfirmasi-on-progres {
+  width: 100px;
+  height: 100px;
+  margin-top: 30px;
+}

@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
 import "./aboutUs.css";
 import { IMAGES } from "../../../assets/constant";
-import { useGetDosen, useGetMahasiswa } from "./hooks/useGetData";
+import { useGetDosen, useGetMahasiswa, useGetRoom } from "./hooks/useGetData";
 
 const AboutUs = () => {
   const [, mahasiswas, getMahasiswa] = useGetMahasiswa();
   const [, dosens, getDosen] = useGetDosen();
+  const [, rooms, getRoom] = useGetRoom();
 
   useEffect(() => {
     getMahasiswa();
     getDosen();
+    getRoom();
   }, []);
 
   return (
@@ -36,7 +38,7 @@ const AboutUs = () => {
           </div>
           <div className="info-kelas">
             <p>
-              20 <br /> Kelas
+              {rooms?.length} <br /> Kelas
             </p>
           </div>
         </div>
