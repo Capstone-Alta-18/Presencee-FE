@@ -6,13 +6,16 @@
   padding: 20px;
   background-color: #ffc9c3;
 }
-
+.form-container-dosen {
+  width: 100%;
+}
 .container-dosen {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  margin-bottom: 100px;
 }
 
 .title-dosen {
@@ -34,8 +37,8 @@
 
 .upload-container-dosen {
   margin-top: 10px;
-  width: 30%;
-  margin-right: 90px;
+  width: 100%;
+  background-color: red;
   height: 350px;
 }
 
@@ -51,10 +54,10 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background: #fe9486;
-  border: 1px solid #fe9486;
   box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
   border-radius: 2px;
+  background-color: transparent !important;
+  border-color: transparent !important;
   color: white;
   margin-left: 600px;
 }

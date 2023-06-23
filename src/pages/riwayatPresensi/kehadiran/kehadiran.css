@@ -4,9 +4,11 @@
   justify-content: center;
   background: #ffc9c3;
   height: 82px;
+  font-family: "Poppins", sans-serif;
 }
 
 .content-halaman-kehadiran {
+  font-family: "Poppins", sans-serif;
   max-height: 431px;
   margin-top: 30px;
   background-color: #ffc9c3;

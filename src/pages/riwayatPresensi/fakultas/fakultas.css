@@ -1,36 +1,37 @@
-.title-page-fakultas{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #FFC9C3;
-    height: 82px;
+.title-page-fakultas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffc9c3;
+  height: 82px;
+  font-family: "Poppins", sans-serif;
 }
 
-.content-halaman-fakultas{
-    max-height: 431px;
-
-    margin-top: 30px;
-    background-color: #FFE4E1;
-    padding: 80px 185px;
-    display: flex; 
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.content-halaman-fakultas {
+  max-height: 431px;
+  font-family: "Poppins", sans-serif;
+  margin-top: 30px;
+  background-color: #ffe4e1;
+  padding: 80px 185px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.title-content{
-    padding-bottom: 38px;
-    font-size: 24px;
+.title-content {
+  padding-bottom: 38px;
+  font-size: 24px;
 }
-.button-fakultas{
-    width: 816px;
-    text-align: center;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 kolom dengan lebar yang sama */
-    grid-template-rows: repeat(2, 90px); /* 2 baris dengan tinggi yang otomatis */
-    gap: 20px; /* Jarak antara tombol */
+.button-fakultas {
+  width: 816px;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 kolom dengan lebar yang sama */
+  grid-template-rows: repeat(2, 90px); /* 2 baris dengan tinggi yang otomatis */
+  gap: 20px; /* Jarak antara tombol */
 }
 
-.btn-fakultas{
-    color: black;
+.btn-fakultas {
+  color: black;
 }

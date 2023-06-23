@@ -130,7 +130,7 @@ const FormJadwalKuliah = () => {
           <Row>
             <Col className="col-layout-form-jadwal-kuliah" span={12}>
               <Form.Item name="matakuliah_id" label="Mata Kuliah" className="white-label">
-                <Select showSearch style={{ width: 200 }} placeholder="" optionFilterProp="children" filterOption={(input, option) => option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+                <Select className="input-box" showSearch placeholder="" optionFilterProp="children" filterOption={(input, option) => option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
                   {matkulOptions.map((option) => (
                     <Select.Option key={option.value} value={option.value}>
                       {option.label}
@@ -149,11 +149,11 @@ const FormJadwalKuliah = () => {
                 ]}
                 className="white-label"
               >
-                <Input style={{ padding: "5px 12px", width: "444px" }} placeholder="Masukkan Jumlah SKS " />
+                <Input className="input-box" placeholder="Masukkan Jumlah SKS " />
               </Form.Item>
 
               <Form.Item name="room_id" label="Kelas" className="white-label">
-                <Select showSearch style={{ width: 200 }} placeholder="" optionFilterProp="children" filterOption={(input, option) => option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+                <Select className="input-box" showSearch placeholder="" optionFilterProp="children" filterOption={(input, option) => option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
                   {roomOptions.map((option) => (
                     <Select.Option key={option.value} value={option.value}>
                       {option.label}
@@ -163,9 +163,9 @@ const FormJadwalKuliah = () => {
               </Form.Item>
             </Col>
 
-            <Col span={12}>
+            <Col className="col-layout-form-jadwal-kuliah" span={12}>
               <Form.Item name="dosen_id" label="Pengajar" className="white-label">
-                <Select showSearch style={{ width: 200 }} placeholder="" optionFilterProp="children" filterOption={(input, option) => option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+                <Select className="input-box" showSearch placeholder="" optionFilterProp="children" filterOption={(input, option) => option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
                   {dosenOptions.map((option) => (
                     <Select.Option key={option.value} value={option.value}>
                       {option.label}
@@ -176,7 +176,7 @@ const FormJadwalKuliah = () => {
 
               <Form.Item name="jam" label="Jadwal Kelas" className="white-label">
                 <Space direction="vertical" size={12}>
-                  <DatePicker showTime onChange={onChange} onOk={onOk} style={{ padding: "5px 12px", width: "444px" }} />
+                  <DatePicker className="input-box" showTime onChange={onChange} onOk={onOk} />
                 </Space>
               </Form.Item>
             </Col>

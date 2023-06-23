@@ -44,7 +44,7 @@ const LayoutComponent = ({ children }) => {
           <Menu className="menu-bar-drawer" mode="inline" selectedKeys={selectedKeys} items={MENU_ITEM_ADMIN} onClick={handleMenuClick} />
         </Drawer>
 
-        <Layout>
+        <Layout style={{ backgroundColor: "#fff" }}>
           {/* header */}
           <Header className="header-layout">
             <div className="nav-brand">
@@ -70,8 +70,8 @@ const LayoutComponent = ({ children }) => {
           {/* content */}
           <Content
             style={{
-              margin: "24px 16px",
-              padding: 24,
+              margin: "118px 85px 50px 150px",
+              backgroundColor: "#fff",
             }}
           >
             {children}

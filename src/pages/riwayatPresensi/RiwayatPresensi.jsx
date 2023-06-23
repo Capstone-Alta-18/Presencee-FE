@@ -7,7 +7,7 @@ const RiwayatPresensi = () => {
   return (
     <div>
       <div className="title-page-riwayat">
-        <h2>Halaman Riwayat</h2>
+        <p>Halaman Riwayat</p>
       </div>
       <div className="content-halaman-riwayat">
         <div className="title-content">

@@ -1,4 +1,4 @@
-import "./dashboardAdmin.css"
+import "./dashboardAdmin.css";
 import { Calendar } from "antd";
 import { Pie } from "@ant-design/charts";
 import { DATA_DASHBOARD, useGetAbsen, useGetDosen, useGetMahasiswa, useGetUser } from "./hooks/constant";
@@ -71,7 +71,7 @@ const DashboardAdmin = () => {
     label: {
       type: "inner",
       offset: "-50%",
-      content: "{percentage}",
+      content: "{value}%", // Menggunakan {value}% agar nilai persentase ditampilkan sebagai bilangan bulat
       style: {
         fontSize: 11,
         textAlign: "center",
@@ -80,8 +80,19 @@ const DashboardAdmin = () => {
     interactions: [{ type: "element-active" }],
   };
 
+  const renderHeader = ({ value, type, onChange }) => {
+    const yearText = value.format("YYYY");
+    const headerText = type === "month" ? value.format(" ddd, DD MMMM") : value.format("D MMMM YYYY");
+    return (
+      <div className="style-calendar">
+        <div>{yearText}</div>
+        <div>{headerText}</div>
+      </div>
+    );
+  };
+
   return (
-    <div>
+    <div className="container-dashboard">
       <div className="title-dashboard-admin">
         <h2>Selamat datang, Admin!</h2>
         <p>{formattedDate}</p>
@@ -89,7 +100,7 @@ const DashboardAdmin = () => {
       <div className="dashboard-section">
         <div className="left-section">
           <div className="calender">
-            <Calendar fullscreen={false} />
+            <Calendar fullscreen={false} headerRender={renderHeader} />
           </div>
           <div className="presentase-kehadiran">
             <h3>Presentase Kehadiran</h3>

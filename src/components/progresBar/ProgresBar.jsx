@@ -15,7 +15,7 @@ const ProgresBar = ({ bgcolor, progress, height }) => {
     width: `${progress}%`,
     backgroundColor: bgcolor,
     borderRadius: 40,
-    margin: "-19px 0 0 0",
+    margin: "-21px 0 0 0",
     color: "transparent",
   };
 

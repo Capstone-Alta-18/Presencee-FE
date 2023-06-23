@@ -1,6 +1,15 @@
+.container-dashboard {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .title-dashboard-admin h2 {
   font-size: 28px;
   font-weight: 700;
+}
+.title-dashboard-admin {
+  margin-right: 695px;
 }
 .dashboard-section {
   display: flex;
@@ -8,7 +17,7 @@
 }
 
 .left-section {
-  width: 385px;
+  width: 285px;
 }
 
 .right-section {
@@ -48,4 +57,18 @@
 .presentase-kehadiran h3 {
   padding-top: 11px;
   margin-bottom: -40px;
+}
+
+.style-calendar {
+  background-color: #fe7968;
+  padding: 8px;
+  width: 100%;
+  height: 40px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 15px;
+  align-items: center;
+  color: #ffffff;
 }

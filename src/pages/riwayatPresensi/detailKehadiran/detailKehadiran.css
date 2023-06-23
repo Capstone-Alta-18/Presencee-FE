@@ -4,11 +4,13 @@
   justify-content: center;
   background: #ffc9c3;
   height: 82px;
+  font-family: "Poppins", sans-serif;
 }
 
 .content-halaman-detail-kehadiran {
   margin-top: 32px;
   background-color: transparent;
+  font-family: "Poppins", sans-serif;
 }
 
 .collapse-detail {

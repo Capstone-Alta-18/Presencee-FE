@@ -57,44 +57,51 @@ const DataDosen = () => {
         <h1 className="title">Data Dosen</h1>
       </div>
       <div className="table-container">
-        <table className="custom-table">
-          <thead>
-            <tr>
-              <th className="container-th1">NIP</th>
-              <th className="container-th">Nama Dosen</th>
-              <th>
-                <Search placeholder="Cari Nama Dosen" allowClear onSearch={handleSearch} style={{ width: 200 }} />
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {paginatedData.map((data) => (
-              <tr key={data.key}>
-                <td>
-                  <div className="nip-container">{data.nip}</div>
-                  <hr className="horizontal-line" />
-                </td>
-                <td>{data.name}</td>
-                <td>
-                  <Link to={`/admin-page/data/data-dosen/detail/${data.key}`}>
-                    <Button className="button">Detail</Button>
-                  </Link>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className="container-tabel-section">
+          <div className="search-dosen">
+            <Search className="search-input-dosen" placeholder="Cari Nama Dosen" allowClear onSearch={handleSearch} style={{ width: 200 }} />
+          </div>
+          <div>
+            <table className="custom-table">
+              <thead>
+                <tr>
+                  <th className="container-th1">NIP</th>
+                  <th className="container-th">Nama Dosen</th>
+                </tr>
+              </thead>
+              <tbody>
+                {paginatedData.map((data) => (
+                  <tr key={data.key}>
+                    <td>
+                      <div className="nip-container">{data.nip}</div>
+                    </td>
+                    <td>{data.name}</td>
+                    <td>
+                      <Link to={`/admin-page/data/data-dosen/detail/${data.key}`}>
+                        <Button className="button">Detail</Button>
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-      <div className="pagination-container">
-        <Pagination current={currentPage} pageSize={pageSize} total={totalItems} onChange={handleChangePage} showSizeChanger={false} />
-      </div>
-      <div className="button-container">
-        <Link to="/admin-page/data">
-          <Button className="back-dosen">Back</Button>
-        </Link>
-        <Link to="/admin-page/data/data-dosen/form-dosen">
-          <Button className="tambah-dosen">Tambah</Button>
-        </Link>
+      <div className="footer-dosen">
+        <div>
+          <Link to="/admin-page/data">
+            <Button className="back-dosen">Back</Button>
+          </Link>
+        </div>
+        <div className="pagination-container">
+          <Pagination current={currentPage} pageSize={pageSize} total={totalItems} onChange={handleChangePage} showSizeChanger={false} />
+        </div>
+        <div className="button-container">
+          <Link to="/admin-page/data/data-dosen/form-dosen">
+            <Button className="tambah-dosen">Tambah</Button>
+          </Link>
+        </div>
       </div>
     </div>
   );
