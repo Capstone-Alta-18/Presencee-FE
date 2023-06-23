@@ -29,6 +29,7 @@ import LandingMain from "../pages/landingPage/LandingMain";
 import LoginDosen from "../pages/loginDosen/LoginDosen";
 import LayoutComponentDosen from "../components/layoutDosen/LayoutComponentDosen";
 import DetailMhs from "../pages/dataMahasiswa/formMahasiswa/detail/DetailMhs";
+import UpdateJadwalKuliah from "../pages/jadwalKuliahAdmin/updateJadwalKuliah/UpdateJadwalKuliah";
 
 const RouterManagement = () => {
   const token = localStorage.getItem("token");
@@ -58,6 +59,7 @@ const RouterManagement = () => {
                     <Route path="/" element={<DashboardAdmin />} />
                     <Route path="/jadwal-kuliah-admin" element={<JadwalKuliahAdmin />} />
                     <Route path="/form-jadwal-kuliah-admin" element={<FormJadwalKuliah />} />
+                    <Route path="/form-jadwal-kuliah-admin/:id" element={<UpdateJadwalKuliah />} />
                     <Route path="/data" element={<DataMahasiswa />} />
                     <Route path="/data/data-dosen" element={<DataDosen />} />
                     <Route path="/data/data-dosen/detail/:id" element={<DetailDosen />} />

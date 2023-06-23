@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Button, Table } from "antd";
 import "./JadwalKuliah.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { api } from "../../api/Index";
 
 const JadwalKuliahAdmin = () => {
   const [dataSource, setDataSource] = useState([]);
-
+  const { id } = useParams();
   useEffect(() => {
     fetchData();
   }, []);
@@ -30,16 +30,32 @@ const JadwalKuliahAdmin = () => {
     }
   };
 
+  const renderMataKuliah = (text, record) => {
+    // Custom rendering for MataKuliah column
+    return (
+      <Link to={`/admin-page/form-jadwal-kuliah-admin/${record.key}`} style={{ color: "black" }}>
+        {text}
+      </Link>
+    );
+  };
+
+  const renderJumlahSks = (text) => {
+    // Custom rendering for JumlahSks column
+    return <span>{text} SKS</span>;
+  };
+
   const columns = [
     {
       title: "Matakuliah",
       dataIndex: "mataKuliah",
       key: "mataKuliah",
+      render: renderMataKuliah,
     },
     {
       title: "Jumlah SKS",
       dataIndex: "jumlahSks",
       key: "jumlahSks",
+      render: renderJumlahSks,
     },
     {
       title: "Kelas",
