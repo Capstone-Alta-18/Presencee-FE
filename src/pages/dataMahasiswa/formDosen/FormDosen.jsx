@@ -2,9 +2,9 @@ import React from "react";
 import { Form, Input, Button, Space, Upload, message } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import { useCreateDosen } from "./hooks/useCreateDosen";
-import { useUpload } from "./hooks/useUpload";
-
+import useCreateDosen from "./hooks/useCreateDosen";
+import useUpload from "./hooks/useUpload";
+import "./formdosen.css";
 const { Dragger } = Upload;
 
 // eslint-disable-next-line react/prop-types
