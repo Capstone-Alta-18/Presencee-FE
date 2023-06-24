@@ -99,21 +99,20 @@ export const api = {
     return baseAPI.post("/v1/mahasiswa", body);
   },
 
-  // upload image
+  // unggah gambar
+  // uploadImage: (file) => {
+  //   const formData = new FormData();
+  //   formData.append("file", file);
+  //   return baseAPI.post("/v1/upload", formData);
+  // },
+  // unggah gambar
   uploadImage: (file) => {
     const formData = new FormData();
-    formData.append("image", file);
-    return baseAPI
-      .post("/v1/upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((response) => {
-        return response.data;
-      })
-      .catch((error) => {
-        throw new Error(error.message);
-      });
+    formData.append("file", file);
+    return baseAPI.post("/v1/upload", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   },
 };

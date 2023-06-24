@@ -9,11 +9,12 @@ const useUpload = () => {
     try {
       setIsLoading(true);
       const formData = new FormData();
-      formData.append("image", file);
+      formData.append("file", file);
 
       const response = await api.uploadImage(formData);
+      console.log("Upload Image Response:", response);
 
-      if (!response.error) {
+      if (response.error === false) {
         const imageURL = response.url;
         setImageUrl(imageURL);
       } else {

@@ -1,20 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, Input, Button, Space, Upload, message } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import useCreateDosen from "./hooks/useCreateDosen";
 import useUpload from "./hooks/useUpload";
 import "./formdosen.css";
+
 const { Dragger } = Upload;
 
-// eslint-disable-next-line react/prop-types
 const SubmitButton = ({ form }) => {
   const [submittable, setSubmittable] = React.useState(false);
 
-  // Watch all values
   const values = Form.useWatch([], form);
 
-  React.useEffect(() => {
+  useEffect(() => {
     form.validateFields({ validateOnly: true }).then(
       () => {
         setSubmittable(true);
@@ -23,7 +22,7 @@ const SubmitButton = ({ form }) => {
         setSubmittable(false);
       }
     );
-  }, [values]);
+  }, [form, values]);
 
   return (
     <Button type="primary" htmlType="submit" disabled={!submittable}>
@@ -34,8 +33,8 @@ const SubmitButton = ({ form }) => {
 
 const FormDosen = () => {
   const [form] = Form.useForm();
-  const { createDosen, loading, error } = useCreateDosen();
-  const [isLoading, upload, imageUrl] = useUpload();
+  const { createDosen } = useCreateDosen();
+  const [upload, imageUrl] = useUpload();
 
   const handleUpload = async (file) => {
     try {
@@ -59,10 +58,8 @@ const FormDosen = () => {
   const onFinish = async (values) => {
     try {
       if (imageUrl) {
-        // Jika ada URL gambar yang diunggah, gunakan URL tersebut dalam createDosen
         await createDosen({ ...values, image: imageUrl });
       } else {
-        // Jika tidak ada URL gambar, gunakan null atau nilai default yang sesuai dalam createDosen
         await createDosen({ ...values, image: null });
       }
       form.resetFields();
@@ -83,8 +80,8 @@ const FormDosen = () => {
           <div className="upload-container-dosen">
             <Dragger
               beforeUpload={(file) => {
-                form.setFieldsValue({ file }); // Store the uploaded file in form values
-                return false; // Prevent automatic file upload
+                form.setFieldsValue({ file });
+                return false;
               }}
               onChange={handleFileChange}
             >
