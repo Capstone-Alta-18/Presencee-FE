@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { useFetchDosenOptions, useFetchMatkulOptions, useFetchRoomOptions } from "./hooks/useGetData";
 import { api } from "../../../api/Index";
+import moment from "moment";
 
 const { Option } = Select;
 
@@ -67,9 +68,17 @@ const FormJadwalKuliah = () => {
 
   const onAdd = (values) => {
     const body = {
-      ...values,
+      matakuliah_id: values.matakuliah_id,
+      room_id: values.room_id,
+      sks: values.sks,
+      jam_mulai: moment(values.jam).format(), // Menggunakan format tanggal dan waktu yang sesuai dengan kebutuhan API Anda
+      jam_selesai: moment(values.jam).format(), // Menggunakan format tanggal dan waktu yang sesuai dengan kebutuhan API Anda
+      name: "Akutansi",
+      description: "Ini bahasa akutansi",
+      user_id: 3883762711,
+      dosen_id: values.dosen_id,
     };
-    // Tambahkan kode untuk mengirim data ke API di sini
+
     api
       .createJadwal(body)
       .then((response) => {
@@ -175,9 +184,7 @@ const FormJadwalKuliah = () => {
               </Form.Item>
 
               <Form.Item name="jam" label="Jadwal Kelas" className="white-label">
-                <Space direction="vertical" size={12}>
-                  <DatePicker className="input-box" showTime onChange={onChange} onOk={onOk} />
-                </Space>
+                <DatePicker className="input-box" showTime={{ format: "HH:mm" }} format="YYYY-MM-DD HH:mm" />
               </Form.Item>
             </Col>
           </Row>

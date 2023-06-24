@@ -1,30 +1,33 @@
 import { useCallback, useState } from "react";
 import { api } from "../../../../api/Index";
-import { message } from "antd";
 
-export const useUpload = () => {
+const useUpload = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [imageUrl, setImageUrl] = useState(null);
 
-  const upload = useCallback(async (file, onSuccess) => {
+  const upload = useCallback(async (file) => {
     try {
       setIsLoading(true);
       const formData = new FormData();
       formData.append("image", file);
 
       const response = await api.uploadImage(formData);
-      if (response.data.error === false) {
-        const imageURL = response.data.url;
-        onSuccess && onSuccess(imageURL);
-        message.success("Image uploaded successfully!");
+
+      if (!response.error) {
+        const imageURL = response.url;
+        setImageUrl(imageURL);
       } else {
-        throw new Error(response.data.message);
+        throw new Error(response.message);
       }
     } catch (error) {
-      message.error(error.message);
+      console.error("Upload Error:", error);
+      throw error;
     } finally {
       setIsLoading(false);
     }
   }, []);
 
-  return [isLoading, upload];
+  return [isLoading, upload, imageUrl];
 };
+
+export default useUpload;

@@ -1,9 +1,8 @@
 import React from "react";
-import { Form, Input, Button, Space, Upload } from "antd";
+import { Form, Input, Button, Space, Upload, message } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import "./formdosen.css";
-import useCreateDosen from "./hooks/useCreateDosen";
+import { useCreateDosen } from "./hooks/useCreateDosen";
 import { useUpload } from "./hooks/useUpload";
 
 const { Dragger } = Upload;
@@ -36,15 +35,41 @@ const SubmitButton = ({ form }) => {
 const FormDosen = () => {
   const [form] = Form.useForm();
   const { createDosen, loading, error } = useCreateDosen();
-  const [isLoading, upload] = useUpload();
+  const [isLoading, upload, imageUrl] = useUpload();
+
+  const handleUpload = async (file) => {
+    try {
+      await upload(file);
+      message.success("Image uploaded successfully!");
+    } catch (error) {
+      console.error("Upload Error:", error);
+      message.error("Failed to upload image. Please try again.");
+    }
+  };
+
+  const handleFileChange = (info) => {
+    const { file } = info;
+    if (file.status === "done") {
+      handleUpload(file.originFileObj);
+    } else if (file.status === "error") {
+      message.error("Failed to upload image. Please try again.");
+    }
+  };
 
   const onFinish = async (values) => {
     try {
-      const imageUrl = await upload(values.file); // Upload the file and get the image URL
-      await createDosen({ ...values, image: imageUrl }); // Pass the image URL to the createDosen function
+      if (imageUrl) {
+        // Jika ada URL gambar yang diunggah, gunakan URL tersebut dalam createDosen
+        await createDosen({ ...values, image: imageUrl });
+      } else {
+        // Jika tidak ada URL gambar, gunakan null atau nilai default yang sesuai dalam createDosen
+        await createDosen({ ...values, image: null });
+      }
       form.resetFields();
+      message.success("Dosen created successfully!");
     } catch (error) {
-      // Handle error if any error occurs
+      console.error("Error:", error);
+      message.error("Failed to create dosen. Please try again.");
     }
   };
 
@@ -61,6 +86,7 @@ const FormDosen = () => {
                 form.setFieldsValue({ file }); // Store the uploaded file in form values
                 return false; // Prevent automatic file upload
               }}
+              onChange={handleFileChange}
             >
               <p className="ant-upload-drag-icon">
                 <InboxOutlined />
