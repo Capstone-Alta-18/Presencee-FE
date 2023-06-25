@@ -19,11 +19,6 @@ const FormJadwalKuliah = () => {
   const roomOptions = useFetchRoomOptions();
   const matkulOptions = useFetchMatkulOptions();
 
-  const onChange = (value, dateString) => {
-    console.log("Selected Time: ", value);
-    console.log("Formatted Selected Time: ", dateString);
-  };
-
   const onOk = (value) => {
     console.log("onOk: ", value);
   };
@@ -71,8 +66,8 @@ const FormJadwalKuliah = () => {
       matakuliah_id: values.matakuliah_id,
       room_id: values.room_id,
       sks: values.sks,
-      jam_mulai: moment(values.jam).format(), // Menggunakan format tanggal dan waktu yang sesuai dengan kebutuhan API Anda
-      jam_selesai: moment(values.jam).format(), // Menggunakan format tanggal dan waktu yang sesuai dengan kebutuhan API Anda
+      jam_mulai: values.jam_mulai,
+      jam_selesai: values.jam_selesai,
       name: "Ilustrator",
       description: "Ini bahasa",
       user_id: 3883762711,
@@ -183,8 +178,19 @@ const FormJadwalKuliah = () => {
                 </Select>
               </Form.Item>
 
-              <Form.Item name="jam" label="Jadwal Kelas" className="white-label">
-                <DatePicker className="input-box" showTime={{ format: "HH:mm" }} format="YYYY-MM-DD HH:mm" />
+              <Form.Item label="Jadwal Kelas" className="white-label">
+                <Row>
+                  <Col>
+                    <Form.Item name="jam_mulai" noStyle>
+                      <DatePicker className="input-box-jam" showTime={{ format: "HH:mm" }} format="YYYY-MM-DD HH:mm" />
+                    </Form.Item>
+                  </Col>
+                  <Col span={12}>
+                    <Form.Item name="jam_selesai" noStyle>
+                      <DatePicker className="input-box-jam" showTime={{ format: "HH:mm" }} format="YYYY-MM-DD HH:mm" />
+                    </Form.Item>
+                  </Col>
+                </Row>
               </Form.Item>
             </Col>
           </Row>
@@ -195,6 +201,13 @@ const FormJadwalKuliah = () => {
             </Button>
           </Form.Item>
         </div>
+        <Link to={"/admin-page/jadwal-kuliah-admin"}>
+          <div>
+            <Button className="btn-jadwal" type="primary">
+              Back
+            </Button>
+          </div>
+        </Link>
       </Form>
     </div>
   );
