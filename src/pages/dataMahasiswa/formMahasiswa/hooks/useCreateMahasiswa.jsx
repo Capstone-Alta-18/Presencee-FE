@@ -28,10 +28,11 @@ const useCreateMahasiswa = () => {
         nim: data.nim,
         image: data.image,
         phone: data.phone,
+        fakultas: data.fakultas,
         jurusan: data.jurusan,
         tahun_masuk: data.tahun_masuk,
         ipk: data.ipk,
-        user_id: id,
+        user_id: id,   
       };
 
       const response = await api.createMahasiswa(mahasiswaData);

@@ -3,17 +3,21 @@ import { useMutation, useQuery } from "@apollo/client";
 import { Button, Form, Input, DatePicker, Popconfirm, Space, message, Select, Checkbox, Radio, Alert, Modal, notification, Col, Row } from "antd";
 import "./formJadwalKuliah.css";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
+import { useFetchDosenOptions, useFetchMatkulOptions, useFetchRoomOptions } from "./hooks/useGetData";
+import { api } from "../../../api/Index";
+import moment from "moment";
+
+const { Option } = Select;
 
 const FormJadwalKuliah = () => {
   const [formBio] = Form.useForm();
   const [rowData, setRowData] = useState();
   const [isEdit, setIsEdit] = useState(false);
   const [open, setOpen] = useState(false);
-
-  const onChange = (value, dateString) => {
-    console.log("Selected Time: ", value);
-    console.log("Formatted Selected Time: ", dateString);
-  };
+  const dosenOptions = useFetchDosenOptions();
+  const roomOptions = useFetchRoomOptions();
+  const matkulOptions = useFetchMatkulOptions();
 
   const onOk = (value) => {
     console.log("onOk: ", value);
@@ -44,66 +48,77 @@ const FormJadwalKuliah = () => {
     });
   };
 
-  //   to handle edit button
   const handleEdit = (row_data) => {
     setRowData(row_data);
     setIsEdit(true);
     formBio.setFieldsValue();
   };
 
-  //   to handle cancel button
   const handleCancel = () => {
     setRowData();
-    setIsModalOpen(false);
+    setOpen(false);
     setIsEdit(false);
     formBio.resetFields();
   };
 
-  //   Add Data to table
   const onAdd = (values) => {
     const body = {
-      ...values,
+      matakuliah_id: values.matakuliah_id,
+      room_id: values.room_id,
+      sks: values.sks,
+      jam_mulai: values.jam_mulai,
+      jam_selesai: values.jam_selesai,
+      name: "Ilustrator",
+      description: "Ini bahasa",
+      user_id: 3883762711,
+      dosen_id: values.dosen_id,
     };
+
+    api
+      .createJadwal(body)
+      .then((response) => {
+        console.log(response);
+        handleSuccessClick();
+      })
+      .catch((error) => {
+        console.log(error);
+        handleErrorClick();
+      });
   };
 
-  //   Delete Data from table
   const onDelete = (row_id) => {
-    deleteBooking({
-      variables: { id: row_id },
-      onError: (err) => {
-        message.open({
-          type: "Terjadi Kesalahan saat menghapus data",
-          content: `${err?.message}`,
-        });
-      },
-    });
+    // Tambahkan kode untuk menghapus data dari API di sini
+    api
+      .deleteJadwal(row_id)
+      .then((response) => {
+        console.log(response);
+        handleSuccessClick();
+      })
+      .catch((error) => {
+        console.log(error);
+        handleErrorClick();
+      });
   };
 
-  //   Edit Data from table
   const onEdit = (values) => {
     const id = rowData.id;
     const body = {
       ...values,
     };
-
-    updateBooking({
-      variables: { pk_columns: { id: id }, _set: { ...body } },
-      onCompleted: () => {
+    // Tambahkan kode untuk memperbarui data ke API di sini
+    api
+      .updateJadwal(id, body)
+      .then((response) => {
+        console.log(response);
         handleCancel();
-      },
-      onError: (err) => {
-        message.open({
-          type: "error",
-          content: `${err?.message}`,
-        });
-      },
-    });
+      })
+      .catch((error) => {
+        console.log(error);
+        handleErrorClick();
+      });
   };
 
   const onFinish = (values) => {
-    // Lakukan proses submit form di sini
-    // ...
-    // Tampilkan notifikasi setelah berhasil submit
     notification.success({
       message: "Sukses",
       description: "Data booking berhasil disimpan.",
@@ -113,88 +128,72 @@ const FormJadwalKuliah = () => {
   return (
     <div className="Layout-jadwal-kuliah">
       <p>Manage Jadwal</p>
-      {/* Form */}
       <Form className="display-form-jadwal-kuliah" name="form-bio" form={formBio} layout="vertical" onFinish={isEdit ? onEdit : onAdd} colon={false} style={{}}>
         <div className="layout-form-jadwal-kuliah">
           <h1 className="title-form-jadwal-kuliah"> Lihat Jadwal Kuliah </h1>
           <Row>
             <Col className="col-layout-form-jadwal-kuliah" span={12}>
-              <Form.Item
-                name="mataKuliah"
-                label="Mata Kuliah"
-                rules={[
-                  {
-                    message: "Please input nama Mata Kuliah!",
-                  },
-                ]}
-                className="white-label"
-              >
-                <Input style={{ padding: "5px 12px", width: "444px" }} placeholder="Input Nama Mata Kuliah" />
+              <Form.Item name="matakuliah_id" label="Mata Kuliah" className="white-label">
+                <Select className="input-box" showSearch placeholder="" optionFilterProp="children" filterOption={(input, option) => option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+                  {matkulOptions.map((option) => (
+                    <Select.Option key={option.value} value={option.value}>
+                      {option.label}
+                    </Select.Option>
+                  ))}
+                </Select>
               </Form.Item>
 
-              {/* Jumlah sks */}
               <Form.Item
-                name="jumlahSks"
+                name="sks"
                 label="Jumlah SKS"
                 rules={[
                   {
-                    message: "Please input Jumalah SKS Mata Kuliah!",
+                    message: "Mohon masukkan Jumlah SKS Mata Kuliah!",
                   },
                 ]}
                 className="white-label"
               >
-                <Input style={{ padding: "5px 12px", width: "444px" }} placeholder="Input Jumlah SKS " />
+                <Input className="input-box" placeholder="Masukkan Jumlah SKS " />
               </Form.Item>
 
-              {/* Kelas */}
-              <Form.Item
-                name="Kelas"
-                label="Kelas"
-                rules={[
-                  {
-                    message: "Please input Kelas",
-                  },
-                ]}
-                className="white-label"
-              >
-                <Input style={{ padding: "5px 12px", width: "444px" }} placeholder="Input Kelas" />
+              <Form.Item name="room_id" label="Kelas" className="white-label">
+                <Select className="input-box" showSearch placeholder="" optionFilterProp="children" filterOption={(input, option) => option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+                  {roomOptions.map((option) => (
+                    <Select.Option key={option.value} value={option.value}>
+                      {option.label}
+                    </Select.Option>
+                  ))}
+                </Select>
               </Form.Item>
             </Col>
 
-            <Col span={12}>
-              {/* Pengajar */}
-              <Form.Item
-                name="Pengajar"
-                label="Pengajar"
-                rules={[
-                  {
-                    message: "Please input Pengajar!",
-                  },
-                ]}
-                className="white-label"
-              >
-                <Input style={{ padding: "5px 12px", width: "444px" }} placeholder="Input Pengajar" />
+            <Col className="col-layout-form-jadwal-kuliah" span={12}>
+              <Form.Item name="dosen_id" label="Pengajar" className="white-label">
+                <Select className="input-box" showSearch placeholder="" optionFilterProp="children" filterOption={(input, option) => option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+                  {dosenOptions.map((option) => (
+                    <Select.Option key={option.value} value={option.value}>
+                      {option.label}
+                    </Select.Option>
+                  ))}
+                </Select>
               </Form.Item>
 
-              {/* Jadwal kelas*/}
-              <Form.Item
-                name="jadwalKelas"
-                label="Jadwal Kelas"
-                rules={[
-                  {
-                    message: "Input Jadwal Kelas!",
-                  },
-                ]}
-                className="white-label"
-              >
-                <Space direction="vertical" size={12}>
-                  <DatePicker showTime onChange={onChange} onOk={onOk} style={{ padding: "5px 12px", width: "444px" }} />
-                </Space>
+              <Form.Item label="Jadwal Kelas" className="white-label">
+                <Row>
+                  <Col>
+                    <Form.Item name="jam_mulai" noStyle>
+                      <DatePicker className="input-box-jam" showTime={{ format: "HH:mm" }} format="YYYY-MM-DD HH:mm" />
+                    </Form.Item>
+                  </Col>
+                  <Col span={12}>
+                    <Form.Item name="jam_selesai" noStyle>
+                      <DatePicker className="input-box-jam" showTime={{ format: "HH:mm" }} format="YYYY-MM-DD HH:mm" />
+                    </Form.Item>
+                  </Col>
+                </Row>
               </Form.Item>
             </Col>
           </Row>
-
-          {/* button edit and delete */}
 
           <Form.Item>
             <Button className="submit-form-jadwal-kuliah" style={{ float: "right" }} htmlType="submit" onClick={handleSuccessClick}>
@@ -202,18 +201,14 @@ const FormJadwalKuliah = () => {
             </Button>
           </Form.Item>
         </div>
+        <Link to={"/admin-page/jadwal-kuliah-admin"}>
+          <div>
+            <Button className="btn-jadwal" type="primary">
+              Back
+            </Button>
+          </div>
+        </Link>
       </Form>
-      <div>
-        <Button className="submit-form-jadwal-kuliah" style={{ float: "left", margin: "50px 0px" }} htmlType="submit">
-          Back
-        </Button>
-        <Button className="submit-form-jadwal-kuliah" style={{ float: "right", margin: "50px 0px" }} htmlType="submit" onClick={handleErrorClick}>
-          Delete
-        </Button>
-        <Button className="submit-form-jadwal-kuliah" style={{ float: "right", margin: "50px 50px" }} htmlType="submit">
-          Update
-        </Button>
-      </div>
     </div>
   );
 };

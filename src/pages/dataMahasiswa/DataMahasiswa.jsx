@@ -3,7 +3,7 @@ import "./datamahasiswa.css"; // Impor file CSS terpisah
 
 const DataMahasiswa = () => {
   return (
-    <div className="container">
+    <div className="container-manage">
       <div className="title">
         <h1>Manage Data</h1>
       </div>

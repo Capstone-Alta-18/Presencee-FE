@@ -1,19 +1,19 @@
-import React from "react";
-import { Form, Input, Button, Space, Upload } from "antd";
+import React, { useEffect } from "react";
+import { Form, Input, Button, Space, Upload, message } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
-import "./formdosen.css";
 import useCreateDosen from "./hooks/useCreateDosen";
+import useUpload from "./hooks/useUpload";
+import "./formdosen.css";
 
 const { Dragger } = Upload;
 
 const SubmitButton = ({ form }) => {
   const [submittable, setSubmittable] = React.useState(false);
 
-  // Watch all values
   const values = Form.useWatch([], form);
 
-  React.useEffect(() => {
+  useEffect(() => {
     form.validateFields({ validateOnly: true }).then(
       () => {
         setSubmittable(true);
@@ -22,7 +22,7 @@ const SubmitButton = ({ form }) => {
         setSubmittable(false);
       }
     );
-  }, [values]);
+  }, [form, values]);
 
   return (
     <Button type="primary" htmlType="submit" disabled={!submittable}>
@@ -33,14 +33,37 @@ const SubmitButton = ({ form }) => {
 
 const FormDosen = () => {
   const [form] = Form.useForm();
-  const { createDosen, loading, error } = useCreateDosen();
+  const { createDosen } = useCreateDosen();
+  const [isLoadingUpload, imageUrl, upload] = useUpload();
+
+  const handleUpload = async (file) => {
+    try {
+      const formData = new FormData();
+      formData.append("image", file.file.originFileObj);
+      await upload(formData);
+      console.log("Image URL:", imageUrl);
+      form.setFieldsValue({ image: imageUrl });
+    } catch (error) {
+      console.error("Upload Error:", error);
+    }
+  };
 
   const onFinish = async (values) => {
     try {
-      await createDosen(values);
+      const newValues = { ...values }; // Duplikat nilai-nilai form
+
+      if (imageUrl) {
+        newValues.image = imageUrl; // Tambahkan URL gambar ke newValues
+      } else {
+        newValues.image = null;
+      }
+
+      await createDosen(newValues);
       form.resetFields();
+      message.success("Dosen created successfully!");
     } catch (error) {
-      // Tangani error jika terjadi kesalahan
+      console.error("Error:", error);
+      message.error("Failed to create dosen. Please try again.");
     }
   };
 
@@ -52,13 +75,27 @@ const FormDosen = () => {
       <div className="container-form-dosen">
         <div className="row">
           <div className="upload-container-dosen">
-            <Dragger>
-              <p className="ant-upload-drag-icon">
-                <InboxOutlined />
-              </p>
-              <p className="ant-upload-text">Click or drag file to this area to upload</p>
-            </Dragger>
+            {imageUrl ? (
+              <div>
+                <img
+                  src={imageUrl}
+                  alt="avatar"
+                  style={{
+                    height: "150px",
+                    borderRadius: "10px",
+                  }}
+                />
+              </div>
+            ) : (
+              <Dragger onChange={handleUpload} showUploadList={false} maxCount={1} customRequest={() => {}}>
+                <p className="ant-upload-drag-icon">
+                  <InboxOutlined />
+                </p>
+                <p className="ant-upload-text">Click or drag file to this area to upload</p>
+              </Dragger>
+            )}
           </div>
+
           <div className="form-container-dosen">
             <Form form={form} name="validateOnly" layout="vertical" autoComplete="off" onFinish={onFinish}>
               <Form.Item className="text-form-dosen" name="name" label="Nama" rules={[{ required: true, message: "Please input your name!" }]}>

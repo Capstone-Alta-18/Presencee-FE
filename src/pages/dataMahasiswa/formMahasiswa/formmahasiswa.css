@@ -44,7 +44,7 @@
 }
 
 .input {
-  width: 100%;
+  width: 90%;
 }
 
 .btn-simpan {
@@ -111,4 +111,12 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
+}
+.form-kiri-mhs {
+  left: 999px;
+  width: 1300px;
+  bottom: 545px;
+}
+.input-mhs {
+  width: 90%;
 }
