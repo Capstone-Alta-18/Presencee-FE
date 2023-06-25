@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
 }
 
 .title-box-mhs {
@@ -32,19 +31,35 @@
   font-style: normal;
   font-size: 24px;
 }
-
+.container-mahasiswa-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
 .custom-table-mhs {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
 }
-
+.search-bar-mahasiswa {
+  justify-self: flex-end;
+  margin: 15px 66px;
+}
+.search-bar-mahasiswa .search {
+  width: 342px;
+}
 .custom-table-mhs th,
 .custom-table-mhs td {
   padding: 20px;
   text-align: left;
 }
-
+.custom-table-mhs td {
+  border-bottom: #000000 1px solid;
+}
+.custom-table-mhs {
+  margin-bottom: 40px;
+}
 .container-th1-mhs {
   width: 30%;
   text-align: left;
@@ -65,30 +80,6 @@
   width: 232%;
 }
 
-.button-mhs {
-  box-sizing: border-box;
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 4px 15px;
-  gap: 8px;
-  width: 80px;
-  height: 34px;
-  background: #fe9486;
-  border: 1px solid #fe9486;
-  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
-  border-radius: 8px;
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-  color: white;
-}
-
 .nim-container-mhs {
   margin-top: 14px;
   position: relative;
@@ -107,17 +98,7 @@
 .back-mhs {
   color: white;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   padding: 4px 15px;
-  gap: 8px;
-  position: absolute;
-  width: 72px;
-  height: 34px;
-  left: 195px;
-  top: 810px;
   background: #fe9486;
   border: 1px solid #fe9486;
   box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
@@ -126,17 +107,8 @@
 
 .tambah-mhs {
   box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   padding: 6.4px 15px;
-  gap: 10px;
-  position: absolute;
   width: 114px;
-  height: 40px;
-  left: 1450px;
-  top: 810px;
   background: #ffffff;
   border: 1px solid #fe9486;
   box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.016);
@@ -155,21 +127,9 @@
   margin-bottom: 90px;
   width: 170px;
 }
-.tambah-mhs {
-  box-sizing: border-box;
+.footer-mahasiswa {
+  width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 6.4px 15px;
-  gap: 10px;
-  position: absolute;
-  width: 114px;
-  height: 40px;
-  left: 1390px;
-  top: 810px;
-  background: #ffffff;
-  border: 1px solid #fe9486;
-  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.016);
-  border-radius: 8px;
 }

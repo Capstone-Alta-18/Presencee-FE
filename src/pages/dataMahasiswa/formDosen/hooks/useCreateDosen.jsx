@@ -26,7 +26,7 @@ const useCreateDosen = () => {
         name: data.name,
         email: data.email,
         nip: data.nip,
-        image: null,
+        image: data.imageUrl,
         phone: data.phone,
         user_id: id,
       };

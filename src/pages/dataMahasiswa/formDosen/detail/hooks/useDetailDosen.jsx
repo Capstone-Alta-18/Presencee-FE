@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { baseAPI } from "../config/apiService";
 
 const useDetailDosen = (id) => {
   const [dosen, setDosen] = useState(null);
@@ -9,12 +10,10 @@ const useDetailDosen = (id) => {
     const fetchDosen = async () => {
       setLoading(true);
       try {
-        const token = localStorage.getItem("token"); // Mengambil token dari local storage
-        const url = `http://testing.biaracmpny.my.id/v1/dosen/${id}`;
-
-        const response = await fetch(url, {
+        const token = localStorage.getItem("token");
+        const response = await baseAPI.get(`/v1/dosen/${id}`, {
           headers: {
-            Authorization: `Bearer ${token}`, // Menggunakan token dalam header Authorization
+            Authorization: `Bearer ${token}`,
           },
         });
 
@@ -22,7 +21,7 @@ const useDetailDosen = (id) => {
           throw new Error("Gagal mendapatkan data Dosen");
         }
 
-        const data = await response.json();
+        const data = response.data;
         setDosen(data);
       } catch (error) {
         setError(error);
@@ -34,9 +33,24 @@ const useDetailDosen = (id) => {
     fetchDosen();
   }, [id]);
 
-  const updateDosen = async (id, data) => {
-    // Fungsi updateDosen yang sesuai dengan kebutuhan Anda
-    // ...
+  const updateDosen = async (data) => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await baseAPI.put(`/v1/dosen/${id}`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Gagal memperbarui data Dosen");
+      }
+
+      // Tambahkan pesan sukses jika diperlukan
+      console.log("Data Dosen berhasil diperbarui");
+    } catch (error) {
+      setError(error);
+    }
   };
 
   return { dosen, loading, error, updateDosen };

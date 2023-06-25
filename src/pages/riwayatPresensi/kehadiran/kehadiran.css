@@ -1,0 +1,70 @@
+.title-page-kehadiran {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffc9c3;
+  height: 82px;
+  font-family: "Poppins", sans-serif;
+}
+
+.content-halaman-kehadiran {
+  font-family: "Poppins", sans-serif;
+  max-height: 431px;
+  margin-top: 30px;
+  background-color: #ffc9c3;
+  padding-bottom: 20px;
+}
+
+.title-content {
+  padding-bottom: 38px;
+  font-size: 24px;
+}
+
+.btn-kembali Button {
+  padding: 0px 7px;
+  font-size: 8px;
+  margin-left: 41px;
+  border-radius: 15px;
+  height: 22px;
+}
+.judul-kehadiran {
+  margin-top: -15px;
+}
+.header-kehadiran {
+  padding: 15px 35px 0 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.content-kehadiran {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 75px;
+  align-items: center;
+}
+
+.garis {
+  border: none;
+  height: 0.5px;
+  background-color: black;
+  margin-left: 65px;
+  margin-right: 25px;
+  margin-top: -5px;
+  margin-bottom: 30px;
+}
+
+.data-detail {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  margin-right: 16px;
+}
+
+.btn-detail {
+  width: 110px;
+  margin-left: 434px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  border-radius: 8px;
+}
