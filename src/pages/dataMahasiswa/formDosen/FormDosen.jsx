@@ -34,24 +34,17 @@ const SubmitButton = ({ form }) => {
 const FormDosen = () => {
   const [form] = Form.useForm();
   const { createDosen } = useCreateDosen();
-  const [upload, imageUrl] = useUpload();
+  const [isLoadingUpload, imageUrl, upload] = useUpload();
 
   const handleUpload = async (file) => {
     try {
-      await upload(file);
-      message.success("Image uploaded successfully!");
+      const formData = new FormData();
+      formData.append("image", file.file.originFileObj);
+      await upload(formData);
+      isLoadingUpload;
+      console.log("Image URL:", imageUrl);
     } catch (error) {
       console.error("Upload Error:", error);
-      message.error("Failed to upload image. Please try again.");
-    }
-  };
-
-  const handleFileChange = (info) => {
-    const { file } = info;
-    if (file.status === "done") {
-      handleUpload(file.originFileObj);
-    } else if (file.status === "error") {
-      message.error("Failed to upload image. Please try again.");
     }
   };
 
@@ -78,18 +71,26 @@ const FormDosen = () => {
       <div className="container-form-dosen">
         <div className="row">
           <div className="upload-container-dosen">
-            <Dragger
-              beforeUpload={(file) => {
-                form.setFieldsValue({ file });
-                return false;
-              }}
-              onChange={handleFileChange}
-            >
-              <p className="ant-upload-drag-icon">
-                <InboxOutlined />
-              </p>
-              <p className="ant-upload-text">Click or drag file to this area to upload</p>
-            </Dragger>
+            {imageUrl ? (
+              <div>
+                <img
+                  src={imageUrl}
+                  alt="avatar"
+                  style={{
+                    height: "150px",
+
+                    borderRadius: "10px",
+                  }}
+                />
+              </div>
+            ) : (
+              <Dragger onChange={handleUpload} showUploadList={false} maxCount={1} customRequest={() => {}}>
+                <p className="ant-upload-drag-icon">
+                  <InboxOutlined />
+                </p>
+                <p className="ant-upload-text">Click or drag file to this area to upload</p>
+              </Dragger>
+            )}
           </div>
           <div className="form-container-dosen">
             <Form form={form} name="validateOnly" layout="vertical" autoComplete="off" onFinish={onFinish}>

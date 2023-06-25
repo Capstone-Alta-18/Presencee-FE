@@ -5,15 +5,12 @@ const useUpload = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState(null);
 
-  const upload = useCallback(async (file) => {
+  const upload = useCallback(async (body) => {
     try {
       setIsLoading(true);
-      const formData = new FormData();
-      formData.append("file", file);
 
-      const response = await api.uploadImage(formData);
+      const response = await api.uploadImage(body);
       console.log("Upload Image Response:", response);
-
       if (response.error === false) {
         const imageURL = response.url;
         setImageUrl(imageURL);
@@ -28,7 +25,7 @@ const useUpload = () => {
     }
   }, []);
 
-  return [isLoading, upload, imageUrl];
+  return [isLoading, imageUrl, upload];
 };
 
 export default useUpload;

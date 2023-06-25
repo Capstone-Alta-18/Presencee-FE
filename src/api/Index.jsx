@@ -98,21 +98,28 @@ export const api = {
   createMahasiswa: (body) => {
     return baseAPI.post("/v1/mahasiswa", body);
   },
-
-  // unggah gambar
-  // uploadImage: (file) => {
-  //   const formData = new FormData();
-  //   formData.append("file", file);
-  //   return baseAPI.post("/v1/upload", formData);
-  // },
-  // unggah gambar
-  uploadImage: (file) => {
-    const formData = new FormData();
-    formData.append("file", file);
-    return baseAPI.post("/v1/upload", formData, {
+  uploadImage: (body) => {
+    return baseAPI.post("/v1/upload", body, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     });
   },
+
+  // unggah gambar
+  // uploadImage: (file) => {
+  // const formData = new FormData();
+  // formData.append("file", file);
+  //   return baseAPI.post("/v1/upload", formData);
+  // },
+  // unggah gambar
+  // uploadImage: (file) => {
+  //   const formData = new FormData();
+  //   formData.append("file", file);
+  // return baseAPI.post("/v1/upload", formData, {
+  //   headers: {
+  //     "Content-Type": "multipart/form-data",
+  //   },
+  //   });
+  // },
 };
