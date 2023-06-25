@@ -52,8 +52,8 @@ export const api = {
   deleteJadwal: (id) => {
     return baseAPI.delete(`/v1/jadwals/${id}`);
   },
-  updateJadwal: (id, body) => {
-    return baseAPI.put(`/v1/jadwals/${id}`, body);
+  updateJadwal: (id_jadwal, body) => {
+    return baseAPI.put(`/v1/jadwals/${id_jadwal}`, body);
   },
   updateUserDosen: (user_id, body) => {
     return baseAPI.put(`/v1/users/${user_id}`, body);

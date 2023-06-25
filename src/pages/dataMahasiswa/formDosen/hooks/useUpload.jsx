@@ -18,9 +18,6 @@ const useUpload = () => {
         throw new Error(response.message);
       }
     } catch (error) {
-      console.error("Upload Error:", error);
-      throw error;
-    } finally {
       setIsLoading(false);
     }
   }, []);

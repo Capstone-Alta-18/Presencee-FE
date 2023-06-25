@@ -50,12 +50,7 @@ const FormMahasiswa = () => {
         <Row gutter={[16, 16]}>
           <Col span={8}>
             <div className="upload-container">
-              <Dragger fileList={fileList} onChange={handleUploadChange}>
-                <p className="ant-upload-drag-icon">
-                  <InboxOutlined />
-                </p>
-                <p className="ant-upload-text">Click or drag file to this area to upload</p>
-              </Dragger>
+              
             </div>
           </Col>
           <Col span={8}>

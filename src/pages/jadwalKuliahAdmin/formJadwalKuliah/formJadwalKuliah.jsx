@@ -73,8 +73,8 @@ const FormJadwalKuliah = () => {
       sks: values.sks,
       jam_mulai: moment(values.jam).format(), // Menggunakan format tanggal dan waktu yang sesuai dengan kebutuhan API Anda
       jam_selesai: moment(values.jam).format(), // Menggunakan format tanggal dan waktu yang sesuai dengan kebutuhan API Anda
-      name: "Akutansi",
-      description: "Ini bahasa akutansi",
+      name: "Ilustrator",
+      description: "Ini bahasa",
       user_id: 3883762711,
       dosen_id: values.dosen_id,
     };
