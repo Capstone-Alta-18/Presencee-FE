@@ -1,11 +1,52 @@
 import React, { useEffect, useState } from "react";
 import { Button, Table } from "antd";
+
 import "./JadwalKuliah.css";
 import { Link, useParams } from "react-router-dom";
 import { api } from "../../api/Index";
 import dayjs from "dayjs";
-
 dayjs.locale("id");
+import "./jadwalKuliah.css";
+import { Link } from "react-router-dom";
+
+const dataSource = [
+  {
+    key: "1",
+    name: "John Brown",
+    age: 32,
+    address: "New York No. 1 Lake Park",
+  },
+  {
+    key: "2",
+    name: "Jim Green",
+    age: 42,
+    address: "London No. 1 Lake Park",
+  },
+  {
+    key: "3",
+    name: "Joe Black",
+    age: 32,
+    address: "Sidney No. 1 Lake Park",
+  },
+];
+
+const columns = [
+  {
+    title: "Name",
+    dataIndex: "name",
+    key: "name",
+  },
+  {
+    title: "Age",
+    dataIndex: "age",
+    key: "age",
+  },
+  {
+    title: "Address",
+    dataIndex: "address",
+    key: "address",
+  },
+];
 
 const JadwalKuliahAdmin = () => {
   const [dataSource, setDataSource] = useState([]);

@@ -100,7 +100,7 @@ export const api = {
   createMahasiswa: (body) => {
     return baseAPI.post("/v1/mahasiswa", body);
   },
-  uploadImage: (body) => {
+ uploadImage: (body) => {
     return baseAPI.post("/v1/upload", body, {
       headers: {
         "Content-Type": "multipart/form-data",
