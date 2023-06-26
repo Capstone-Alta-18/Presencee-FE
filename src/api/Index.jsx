@@ -22,7 +22,6 @@ baseAPI.interceptors.request.use(
 );
 
 export const api = {
-
   login: (body) => {
     return baseAPI.post("/v1/users/login", body);
   },
@@ -84,7 +83,7 @@ export const api = {
   getJadwalDosenById: (dosen_id) => {
     return baseAPI.get(`/v1/jadwals/filter?jadwal_id=0&user_id=0&dosen_id=${dosen_id}&matakuliah_id=0&room_id=0`);
   },
-  getAbsen: (user_id) => {
+  getAbsenDosen: (user_id) => {
     return baseAPI.get(`/v1/absens/filter?absen_id=0&user_id=${user_id}&mahasiswa_id=0&jadwal_id=0`);
   },
 
@@ -109,7 +108,7 @@ export const api = {
   createMahasiswa: (body) => {
     return baseAPI.post("/v1/mahasiswa", body);
   },
- uploadImage: (body) => {
+  uploadImage: (body) => {
     return baseAPI.post("/v1/upload", body, {
       headers: {
         "Content-Type": "multipart/form-data",
