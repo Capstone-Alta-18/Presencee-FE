@@ -60,47 +60,50 @@ const DataMhs = () => {
         <h1 className="title-mhs">Data Mahasiswa</h1>
       </div>
       <div className="table-container-mhs">
-        <table className="custom-table-mhs">
-          <thead>
-            <tr>
-              <th className="container-th1-mhs">Tanggal Masuk</th>
-              <th className="container-th1-mhs">NIM</th>
-              <th className="container-th-mhs">Nama Mahasiswa</th>
-              <th>
-                <Search placeholder="Cari Nama Mahasiswa" allowClear onSearch={handleSearch} style={{ width: 200 }} />
-              </th>
-              <th></th>
-            </tr>
-            <tr>
-              <td colSpan={3}></td>
-            </tr>
-          </thead>
-          <tbody>
-            {paginatedData.map((data) => (
-              <tr key={data.key}>
-                <td>{data.tanggalMasuk}</td>
-                <td>{data.nim}</td>
-                <td>{data.namaMahasiswa}</td>
-                <td>
-                  <Button className="button-mhs" onClick={() => handleDetail(data.nim)}>
-                    Detail
-                  </Button>
-                </td>
+        <div className="container-mahasiswa-section">
+          <div className="search-bar-mahasiswa">
+            <Search className="search" placeholder="Cari Nama Mahasiswa" allowClear onSearch={handleSearch} />
+          </div>
+          <table className="custom-table-mhs">
+            <thead>
+              <tr>
+                <th className="container-th1-mhs">Tanggal Masuk</th>
+                <th className="container-th1-mhs">NIM</th>
+                <th className="container-th-mhs">Nama Mahasiswa</th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {paginatedData.map((data) => (
+                <tr key={data.key}>
+                  <td>{data.tanggalMasuk}</td>
+                  <td>{data.nim}</td>
+                  <td>{data.namaMahasiswa}</td>
+                  <td>
+                    <Link to={`/admin-page/data/data-mahasiswa/detail/${data.key}`}>
+                      <Button className="button">Detail</Button>
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div className="pagination-container">
-        <Pagination current={currentPage} pageSize={pageSize} total={filteredData.length} onChange={handleChangePage} showSizeChanger={false} />
-      </div>
-      <div className="button-container-mhs">
-        <Link to="/admin-page/data">
-          <Button className="back-mhs">Kembali</Button>
-        </Link>
-        <Link to="/admin-page/data/data-mahasiswa/form-mahasiswa">
-          <Button className="tambah-mhs">Tambah</Button>
-        </Link>
+      <div className="footer-mahasiswa">
+        <div>
+          <Link to="/admin-page/data">
+            <Button className="back-mhs">Back</Button>
+          </Link>
+        </div>
+        <div className="pagination-container">
+          <Pagination current={currentPage} pageSize={pageSize} total={filteredData.length} onChange={handleChangePage} showSizeChanger={false} />
+        </div>
+        <div className="button-container-mhs">
+          <Link to="/admin-page/data/data-mahasiswa/form-mahasiswa">
+            <Button className="tambah-mhs">Tambah</Button>
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -1,18 +1,17 @@
-.container {
+.container-manage {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
 }
 
 .title {
   width: 100%;
-  height: 70px;
+  height: 82px !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #feafa4;
+  background-color: #ffc9c3 !important;
   color: black;
   font-size: 24px;
   margin-bottom: 30px;

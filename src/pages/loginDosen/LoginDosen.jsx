@@ -37,7 +37,6 @@ const LoginDosen = () => {
         >
           <Form name="login-form" onFinish={onLoginDosen}>
             <Form.Item name="email" rules={[{ required: true, message: "Please input your username!" }]}>
-
               <Input placeholder="Input Email/NIM" />
             </Form.Item>
             <Form.Item name="password" rules={[{ required: true, message: "Please input your password!" }]}>

@@ -1,0 +1,45 @@
+.title-page-riwayat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffc9c3;
+  height: 82px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 42px;
+  letter-spacing: 0.01em;
+  font-family: "Poppins", sans-serif;
+}
+
+.content-halaman-riwayat {
+  font-family: "Poppins", sans-serif;
+  max-height: 431px;
+  margin-top: 30px;
+  background-color: #ffe4e1;
+  padding: 80px 185px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-content {
+  padding-bottom: 55px;
+  font-size: 24px;
+}
+.button-riwayat {
+  width: 816px;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 kolom dengan lebar yang sama */
+  grid-template-rows: repeat(2, 50px); /* 2 baris dengan tinggi yang otomatis */
+  gap: 20px; /* Jarak antara tombol */
+}
+
+.btn-riwayat {
+  background-color: #fe9486;
+  border: 1px solid #fe9486;
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+  border-radius: 16px;
+  width: 114px;
+}

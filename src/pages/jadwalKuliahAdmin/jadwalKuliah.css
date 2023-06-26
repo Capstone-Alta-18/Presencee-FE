@@ -11,7 +11,7 @@
   color: #000000;
   background-color: #ffc9c3;
   padding: 20px;
-
+  margin-top: 0px;
   gap: 10px;
 }
 .table-jadwal-kuliah {
@@ -21,6 +21,7 @@
 
 .rowClassName1 {
   background-color: #ffe4e1;
+  font-size: 16px;
 }
 
 .rowClassName1 td {
@@ -29,6 +30,8 @@
 
 .ant-table .ant-table-container .ant-table-content table thead.ant-table-thead .ant-table-cell {
   background-color: #ffe4e1 !important;
+  font-size: 24px;
+  border: transparent 1px solid;
 }
 
 .btn-add {

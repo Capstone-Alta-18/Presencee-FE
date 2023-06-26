@@ -9,10 +9,11 @@
 }
 
 .side-bar {
-  height: 100vh;
+  position: fixed !important;
   background: linear-gradient(180deg, #cd4f3f 0%, #fe7968 100%) !important;
   border-radius: 0px 50px 50px 0px;
   padding: 64px 0px;
+  z-index: 999;
 }
 
 .menu-bar-admin {
@@ -48,10 +49,13 @@
 
 .header-layout {
   background: #ffe4e1;
+  position: fixed;
+  width: 104%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-left: -40px;
+  padding-left: 120px;
+  z-index: 99;
 }
 
 .nav-brand {
