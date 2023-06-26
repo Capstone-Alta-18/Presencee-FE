@@ -1,12 +1,15 @@
 .table-jadwal-dosen-detail {
   margin-top: 35px;
+  font-family: "Poppins", sans-serif;
 }
 .table-jadwal-dosen-detail .ant-table-thead th {
   background-color: #fe9486 !important;
   border-color: #fe9486 !important;
   font-size: 20px;
+  font-family: "Poppins", sans-serif;
 }
 
 .table-jadwal-dosen-detail .ant-table-tbody td {
   background-color: #ffe4e1;
+  font-family: "Poppins", sans-serif;
 }

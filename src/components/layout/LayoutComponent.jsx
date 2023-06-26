@@ -72,6 +72,7 @@ const LayoutComponent = ({ children }) => {
             style={{
               margin: "24px 16px",
               padding: 24,
+              fontFamily: "Poppins, sans-serif",
             }}
           >
             {children}

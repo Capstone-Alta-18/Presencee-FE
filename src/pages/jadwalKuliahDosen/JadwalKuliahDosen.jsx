@@ -1,10 +1,18 @@
 import { Input, Select, Table } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 import { AudioOutlined } from "@ant-design/icons";
+import dayjs from "dayjs"; // Mengimpor day.js
 import "./jadwalKuliahDosen.css";
 import { Link, useParams } from "react-router-dom";
+import { api } from "../../api/Index";
+import { useGetJadwalDosen } from "./hooks/useGetData";
 
 const JadwalKuliahDosen = () => {
+  const [isLoading, dataJadwal, getDataJadwal] = useGetJadwalDosen();
+  console.log({ dataJadwal });
+  useEffect(() => {
+    getDataJadwal();
+  }, [getDataJadwal]);
 
   const { Search } = Input;
   const suffix = (
@@ -18,75 +26,38 @@ const JadwalKuliahDosen = () => {
 
   const onSearch = (value) => console.log(value);
 
-  const column = [
+  const columns = [
     {
       title: "Mata Kuliah",
-      dataIndex: "mataKuliah",
-      key: "mataKuliah",
-      render: (text, record) => <Link to={`/dosen-page/jadwal-kuliah-dosen/${record.id}`}>{text}</Link>,
+      dataIndex: "name",
+      key: "name",
+      render: (text, record) => (
+        <Link to={`/dosen-page/jadwal-kuliah-dosen/${record.dosen.user_id}/${record.matakuliah_id}/${record.jam_mulai}/${record.jam_selesai}`} style={{ color: "black" }}>
+          {text}
+        </Link>
+      ),
     },
     {
       title: "Jumlah SKS",
-      dataIndex: "jumlahSks",
-      key: "jumlahSks",
+      dataIndex: "sks",
+      key: "sks",
     },
     {
       title: "Kelas",
-      dataIndex: "kelas",
-      key: "kelas",
-    },
-    {
-      title: "Jumlah Mahasiswa",
-      dataIndex: "jumlahMahasiswa",
-      key: "jumlahMahasiswa",
+      dataIndex: "room",
+      key: "room",
+      render: (room) => room.name,
     },
     {
       title: "Jadwal",
-      dataIndex: "jadwal",
+      dataIndex: "id",
       key: "jadwal",
-    },
-  ];
-
-  const datasource = [
-    {
-      id: 1,
-      mataKuliah: "Bahasa Indonesia",
-      jumlahSks: "3",
-      kelas: "Kelas B",
-      jumlahMahasiswa: "30",
-      jadwal: "Selasa 07:00-08:00 wib",
-    },
-    {
-      id: 2,
-      mataKuliah: "Bahasa Indonesia",
-      jumlahSks: "3",
-      kelas: "Kelas B",
-      jumlahMahasiswa: "30",
-      jadwal: "Selasa 07:00-08:00 wib",
-    },
-    {
-      id: 3,
-      mataKuliah: "Bahasa Indonesia",
-      jumlahSks: "3",
-      kelas: "Kelas B",
-      jumlahMahasiswa: "30",
-      jadwal: "Selasa 07:00-08:00 wib",
-    },
-    {
-      id: 4,
-      mataKuliah: "Bahasa Indonesia",
-      jumlahSks: "3",
-      kelas: "Kelas B",
-      jumlahMahasiswa: "30",
-      jadwal: "Selasa 07:00-08:00 wib",
-    },
-    {
-      id: 5,
-      mataKuliah: "Bahasa Indonesia",
-      jumlahSks: "3",
-      kelas: "Kelas B",
-      jumlahMahasiswa: "30",
-      jadwal: "Selasa 07:00-08:00 wib",
+      render: (id, record) => {
+        const { jam_mulai, jam_selesai } = record;
+        const startTime = dayjs(jam_mulai).locale("id").format("dddd, HH:mm");
+        const endTime = dayjs(jam_selesai).locale("id").format("HH:mm");
+        return `${startTime} - ${endTime}`;
+      },
     },
   ];
 
@@ -120,10 +91,11 @@ const JadwalKuliahDosen = () => {
       label: "Minggu",
     },
   ];
+
   return (
-    <div>
+    <div className="jadwal-dosen-section">
       <p className="title-jadwal-dosen">Jadwal Saya</p>
-      <div className="jadwal-dosen-section">
+      <div>
         <div className="header-jadwal">
           <div className="search">
             <Search
@@ -144,7 +116,7 @@ const JadwalKuliahDosen = () => {
           </div>
         </div>
         <div className="table-jadwal-dosen">
-          <Table columns={column} dataSource={datasource} />
+          <Table columns={columns} dataSource={dataJadwal ? dataJadwal : []} />
         </div>
       </div>
     </div>
