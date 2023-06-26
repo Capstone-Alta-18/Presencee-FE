@@ -3,10 +3,14 @@ import { Button, Table } from "antd";
 import "./JadwalKuliah.css";
 import { Link, useParams } from "react-router-dom";
 import { api } from "../../api/Index";
+import dayjs from "dayjs";
+
+dayjs.locale("id");
 
 const JadwalKuliahAdmin = () => {
   const [dataSource, setDataSource] = useState([]);
   const { id } = useParams();
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -21,7 +25,7 @@ const JadwalKuliahAdmin = () => {
           jumlahSks: item.sks,
           kelas: item.room_id,
           pengajar: item.dosen ? item.dosen.name : "",
-          jadwal: item.jam,
+          jadwal: `${dayjs(item.jam_mulai).format("dddd")} ${dayjs(item.jam_mulai).format("HH.mm")}-${dayjs(item.jam_selesai).format("HH.mm")} WIB`,
         }));
         setDataSource(formattedData);
       }
@@ -30,17 +34,15 @@ const JadwalKuliahAdmin = () => {
     }
   };
 
-  const renderMataKuliah = (text, record) => {
-    // Custom rendering for MataKuliah column
+  const renderMataKuliah = (text, data) => {
     return (
-      <Link to={`/admin-page/form-jadwal-kuliah-admin/${record.key}`} style={{ color: "black" }}>
+      <Link to={`/admin-page/form-jadwal-kuliah-admin/${data.key}`} style={{ color: "black" }}>
         {text}
       </Link>
     );
   };
 
   const renderJumlahSks = (text) => {
-    // Custom rendering for JumlahSks column
     return <span>{text} SKS</span>;
   };
 
@@ -71,6 +73,7 @@ const JadwalKuliahAdmin = () => {
       title: "Jadwal",
       dataIndex: "jadwal",
       key: "jadwal",
+      render: (text) => <span>{text}</span>,
     },
   ];
 

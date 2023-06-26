@@ -59,7 +59,7 @@ const RouterManagement = () => {
                     <Route path="/" element={<DashboardAdmin />} />
                     <Route path="/jadwal-kuliah-admin" element={<JadwalKuliahAdmin />} />
                     <Route path="/form-jadwal-kuliah-admin" element={<FormJadwalKuliah />} />
-                    <Route path="/form-jadwal-kuliah-admin/:id" element={<UpdateJadwalKuliah />} />
+                    <Route path="/form-jadwal-kuliah-admin/:id_jadwal" element={<UpdateJadwalKuliah />} />
                     <Route path="/data" element={<DataMahasiswa />} />
                     <Route path="/data/data-dosen" element={<DataDosen />} />
                     <Route path="/data/data-dosen/detail/:id" element={<DetailDosen />} />

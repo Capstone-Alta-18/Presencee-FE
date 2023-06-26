@@ -41,8 +41,8 @@ const FormDosen = () => {
       const formData = new FormData();
       formData.append("image", file.file.originFileObj);
       await upload(formData);
-      isLoadingUpload;
       console.log("Image URL:", imageUrl);
+      form.setFieldsValue({ image: imageUrl });
     } catch (error) {
       console.error("Upload Error:", error);
     }
@@ -50,11 +50,15 @@ const FormDosen = () => {
 
   const onFinish = async (values) => {
     try {
+      const newValues = { ...values }; // Duplikat nilai-nilai form
+
       if (imageUrl) {
-        await createDosen({ ...values, image: imageUrl });
+        newValues.image = imageUrl; // Tambahkan URL gambar ke newValues
       } else {
-        await createDosen({ ...values, image: null });
+        newValues.image = null;
       }
+
+      await createDosen(newValues);
       form.resetFields();
       message.success("Dosen created successfully!");
     } catch (error) {
@@ -78,7 +82,6 @@ const FormDosen = () => {
                   alt="avatar"
                   style={{
                     height: "150px",
-
                     borderRadius: "10px",
                   }}
                 />
@@ -92,6 +95,7 @@ const FormDosen = () => {
               </Dragger>
             )}
           </div>
+
           <div className="form-container-dosen">
             <Form form={form} name="validateOnly" layout="vertical" autoComplete="off" onFinish={onFinish}>
               <Form.Item className="text-form-dosen" name="name" label="Nama" rules={[{ required: true, message: "Please input your name!" }]}>

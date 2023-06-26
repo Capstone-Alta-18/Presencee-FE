@@ -89,12 +89,7 @@ const DetailDosen = () => {
       <div className="container-form-dosen">
         <div className="row">
           <div className="upload-container-dosen">
-            <Dragger>
-              <p className="ant-upload-drag-icon">
-                <InboxOutlined />
-              </p>
-              <p className="ant-upload-text">Click or drag file to this area to upload</p>
-            </Dragger>
+            <div className="upload-container-detail">{dosen.image && <img src={dosen.image} alt="Mahasiswa" className="uploaded-image" width={300} height={400} />}</div>
           </div>
           <div className="form-container-dosen">
             <Form name="validateOnly" layout="vertical" autoComplete="off" initialValues={dosen} onFinish={handleUpdate}>

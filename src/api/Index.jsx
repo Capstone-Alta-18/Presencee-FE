@@ -22,8 +22,6 @@ baseAPI.interceptors.request.use(
 );
 
 export const api = {
-  // API with Token
-  // Login
   login: (body) => {
     return baseAPI.post("/v1/users/login", body);
   },
@@ -42,7 +40,6 @@ export const api = {
   getRoom: () => {
     return baseAPI.get("/v1/room");
   },
-
   getJadwal: () => {
     return baseAPI.get("/v1/jadwals");
   },
@@ -52,8 +49,14 @@ export const api = {
   deleteJadwal: (id) => {
     return baseAPI.delete(`/v1/jadwals/${id}`);
   },
-  updateJadwal: (id, body) => {
-    return baseAPI.put(`/v1/jadwals/${id}`, body);
+  updateJadwal: (id_jadwal, body) => {
+    return baseAPI.put(`/v1/jadwals/${id_jadwal}`, body);
+  },
+  getJadwalByID: (id_jadwal) => {
+    return baseAPI.get(`/v1/jadwals/${id_jadwal}`);
+  },
+  deleteJadwalByID: (id_jadwal) => {
+    return baseAPI.get(`/v1/jadwals/${id_jadwal}`);
   },
   updateUserDosen: (user_id, body) => {
     return baseAPI.put(`/v1/users/${user_id}`, body);
@@ -61,7 +64,6 @@ export const api = {
   updateUserMahasiswa: (user_id, body) => {
     return baseAPI.put(`/v1/users/${user_id}`, body);
   },
-
   getAbsen: () => {
     return baseAPI.get("/v1/absens");
   },
@@ -105,21 +107,4 @@ export const api = {
       },
     });
   },
-
-  // unggah gambar
-  // uploadImage: (file) => {
-  // const formData = new FormData();
-  // formData.append("file", file);
-  //   return baseAPI.post("/v1/upload", formData);
-  // },
-  // unggah gambar
-  // uploadImage: (file) => {
-  //   const formData = new FormData();
-  //   formData.append("file", file);
-  // return baseAPI.post("/v1/upload", formData, {
-  //   headers: {
-  //     "Content-Type": "multipart/form-data",
-  //   },
-  //   });
-  // },
 };
