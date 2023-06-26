@@ -40,20 +40,30 @@ const DashboardDosen = () => {
             <Calendar fullscreen={false} headerRender={renderHeader} />
           </div>
           <div className="total-kehadiran-mahasiswa">
-            <h1>Total Kehadiran Mahasiswa</h1>
+            <h1>
+              Total Kehadiran Mahasiswa <br />
+              83
+            </h1>
           </div>
         </Col>
         <Col className="right-dashboard-dosen">
           <div className="konfirmasi-kehadiran">
             <img className="img-vector-konfirmasi-kehadiran" src={IMAGES.Vector} alt="vector" />
             <div className="content-konfirmasi-kehadiran">
-              <h3>Kehadiran Terkonfirmasi</h3>
+              <h3>
+                Kehadiran Terkonfirmasi <br /> <br />
+                50
+              </h3>
             </div>
           </div>
           <div className="konfirmasi-kehadiran">
             <img className="img-vector-konfirmasi-on-progres" src={IMAGES.Vector2} alt="vector" />
             <div className="content-konfirmasi-kehadiran">
-              <h3>Konfirmasi On Proses</h3>
+              <h3>
+                Konfirmasi On Proses <br />
+                <br />
+                33
+              </h3>
             </div>
           </div>
         </Col>
