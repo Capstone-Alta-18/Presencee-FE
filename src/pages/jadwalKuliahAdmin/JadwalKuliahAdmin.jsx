@@ -7,7 +7,6 @@ import { api } from "../../api/Index";
 import dayjs from "dayjs";
 dayjs.locale("id");
 import "./jadwalKuliah.css";
-import { Link } from "react-router-dom";
 
 const dataSource = [
   {
