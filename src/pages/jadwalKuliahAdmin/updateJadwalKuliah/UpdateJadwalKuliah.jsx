@@ -1,47 +1,25 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { Form, Input, Select, DatePicker, Button, Row, Col } from "antd";
-import { Link } from "react-router-dom";
-import "./updateJadwalKuliah.css";
-import { api } from "../../../api/Index";
 import moment from "moment";
+import { Link } from "react-router-dom";
+import { api } from "../../../api/Index";
+import { useGetDataJadwalId } from "./hooks/useGetDataJadwalId";
+import { Form, Input, Select, DatePicker, Button, Row, Col } from "antd";
 
 const { Option } = Select;
 
 const UpdateJadwalKuliah = ({ id_jadwal }) => {
   const [formBio] = Form.useForm();
-  const [matakuliahId, setMatakuliahId] = useState("");
-  const [sks, setSks] = useState("");
-  const [roomId, setRoomId] = useState("");
-  const [dosenId, setDosenId] = useState("");
-  const [jamAwal, setJamAwal] = useState(null);
-  const [jamSelesai, setJamSelesai] = useState(null);
+  const [dataJadwalKuliah, setDataJadwalKuliah] = useState(null);
+  const [, , getDataJadwal] = useGetDataJadwalId();
   const [dosenOptions, setDosenOptions] = useState([]);
   const [roomOptions, setRoomOptions] = useState([]);
   const [matakuliahOptions, setMatakuliahOptions] = useState([]);
-
+  console.log(dataJadwalKuliah);
   useEffect(() => {
-    const fetchJadwalById = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        const response = await api.getJadwalByID(id_jadwal, token);
-        const jadwal = response.data.data[0];
-        setMatakuliahId(jadwal.matakuliah_id);
-        setSks(jadwal.sks);
-        setRoomId(jadwal.room_id);
-        setDosenId(jadwal.dosen_id);
-        setJamAwal(jadwal.jam_mulai);
-        setJamSelesai(jadwal.jam_selesai);
-        setDosenOptions([{ ID: jadwal.dosen_id, name: jadwal.dosen.name }]);
-        setRoomOptions([{ ID: jadwal.room_id, name: jadwal.room.name }]);
-        setMatakuliahOptions([{ ID: jadwal.matakuliah_id, name: jadwal.name }]);
-      } catch (error) {
-        console.error("Failed to fetch jadwalById:", error);
-      }
-    };
-
-    fetchJadwalById();
-  }, [id_jadwal]);
+    getDataJadwal().then(([isLoading, data]) => {
+      setDataJadwalKuliah(data);
+    });
+  }, []);
 
   const handleDelete = async () => {
     try {
@@ -64,12 +42,12 @@ const UpdateJadwalKuliah = ({ id_jadwal }) => {
         colon={false}
         onFinish={onFinish}
         initialValues={{
-          matakuliah_id: matakuliahId,
-          sks,
-          room_id: roomId,
-          dosen_id: dosenId,
-          jam_awal: jamAwal ? moment(jamAwal) : null,
-          jam_selesai: jamSelesai ? moment(jamSelesai) : null,
+          matakuliah_id: dataJadwalKuliah?.matakuliah_id,
+          sks: dataJadwalKuliah?.data.sks,
+          room_id: dataJadwalKuliah?.room_id,
+          dosen_id: dataJadwalKuliah?.dosen_id,
+          jam_awal: dataJadwalKuliah?.jam_awal ? moment(dataJadwalKuliah.jam_awal) : null,
+          jam_selesai: dataJadwalKuliah?.jam_selesai ? moment(dataJadwalKuliah.jam_selesai) : null,
         }}
       >
         <div className="layout-form-jadwal-kuliah">
@@ -162,10 +140,6 @@ const UpdateJadwalKuliah = ({ id_jadwal }) => {
       </div>
     </div>
   );
-};
-
-UpdateJadwalKuliah.propTypes = {
-  id_jadwal: PropTypes.string.isRequired,
 };
 
 export default UpdateJadwalKuliah;
