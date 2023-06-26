@@ -10,10 +10,9 @@ const useUpload = () => {
       setIsLoading(true);
 
       const response = await api.uploadImage(body);
-      console.log("Upload Image Response:", response);
-      if (response.error === false) {
-        const imageURL = response.url;
-        setImageUrl(imageURL);
+      if (response) {
+        const imageUrl = response.data.url;
+        setImageUrl(imageUrl);
       } else {
         throw new Error(response.message);
       }

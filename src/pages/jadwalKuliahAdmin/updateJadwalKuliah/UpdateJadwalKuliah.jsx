@@ -1,52 +1,44 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { Form, Input, Select, DatePicker, Button, Row, Col } from "antd";
-import { Link } from "react-router-dom";
-import "./updateJadwalKuliah.css";
-import { api } from "../../../api/Index";
 import moment from "moment";
+import { Link } from "react-router-dom";
+import { api } from "../../../api/Index";
+import { useGetDataJadwalId } from "./hooks/useGetDataJadwalId";
+import { Form, Input, Select, DatePicker, Button, Row, Col } from "antd";
 
 const { Option } = Select;
 
 const UpdateJadwalKuliah = ({ id_jadwal }) => {
   const [formBio] = Form.useForm();
-  const [matakuliahId, setMatakuliahId] = useState("");
-  const [sks, setSks] = useState("");
-  const [roomId, setRoomId] = useState("");
-  const [dosenId, setDosenId] = useState("");
-  const [jamAwal, setJamAwal] = useState(null);
-  const [jamSelesai, setJamSelesai] = useState(null);
+  const [dataJadwalKuliah, setDataJadwalKuliah] = useState(null);
+  const [, data, getDataJadwal] = useGetDataJadwalId();
   const [dosenOptions, setDosenOptions] = useState([]);
   const [roomOptions, setRoomOptions] = useState([]);
   const [matakuliahOptions, setMatakuliahOptions] = useState([]);
+  console.log(data);
 
   useEffect(() => {
-    const fetchJadwalById = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        const response = await api.getJadwalByID(id_jadwal, token);
-        const jadwal = response.data.data[0];
-        setMatakuliahId(jadwal.matakuliah_id);
-        setSks(jadwal.sks);
-        setRoomId(jadwal.room_id);
-        setDosenId(jadwal.dosen_id);
-        setJamAwal(jadwal.jam_mulai);
-        setJamSelesai(jadwal.jam_selesai);
-        setDosenOptions([{ ID: jadwal.dosen_id, name: jadwal.dosen.name }]);
-        setRoomOptions([{ ID: jadwal.room_id, name: jadwal.room.name }]);
-        setMatakuliahOptions([{ ID: jadwal.matakuliah_id, name: jadwal.name }]);
-      } catch (error) {
-        console.error("Failed to fetch jadwalById:", error);
-      }
-    };
+    getDataJadwal().then(([isLoading, data]) => {
+      setDataJadwalKuliah(data);
+    });
+  }, []);
 
-    fetchJadwalById();
-  }, [id_jadwal]);
+  useEffect(() => {
+    if (data) {
+      formBio.setFieldsValue({
+        matakuliah_id: data.name,
+        sks: data.sks,
+        room_id: data.room.name,
+        dosen_id: data.dosen.name,
+        jam_awal: data.jam_mulai ? moment(data.jam_mulai) : null,
+        jam_selesai: data.jam_selesai ? moment(data.jam_selesai) : null,
+      });
+    }
+  }, [data]);
 
   const handleDelete = async () => {
     try {
       const token = localStorage.getItem("token");
-      await api.deleteJadwalById(id_jadwal, token);
+      await api.deleteJadwalByID(id_jadwal, token);
       // Redirect or show success message
     } catch (error) {
       console.error("Failed to delete jadwal:", error);
@@ -55,23 +47,22 @@ const UpdateJadwalKuliah = ({ id_jadwal }) => {
 
   const onFinish = () => {};
 
+  const saveResponse = (data) => {
+    const { matakuliah, sks, room, dosen, jam_mulai, jam_selesai } = data.data;
+    data({
+      matakuliah_id: matakuliah.ID,
+      sks,
+      room_id: room.ID,
+      dosen_id: dosen.ID,
+      jam_awal: moment(jam_mulai),
+      jam_selesai: moment(jam_selesai),
+    });
+  };
+
   return (
     <div className="Layout-jadwal-kuliah">
       <p>Manage Jadwal</p>
-      <Form
-        form={formBio}
-        layout="vertical"
-        colon={false}
-        onFinish={onFinish}
-        initialValues={{
-          matakuliah_id: matakuliahId,
-          sks,
-          room_id: roomId,
-          dosen_id: dosenId,
-          jam_awal: jamAwal ? moment(jamAwal) : null,
-          jam_selesai: jamSelesai ? moment(jamSelesai) : null,
-        }}
-      >
+      <Form form={formBio} layout="vertical" colon={false} onFinish={onFinish}>
         <div className="layout-form-jadwal-kuliah">
           <h1 className="title-form-jadwal-kuliah"> Lihat Jadwal Kuliah </h1>
           <Row>
@@ -91,7 +82,6 @@ const UpdateJadwalKuliah = ({ id_jadwal }) => {
                 label="Jumlah SKS"
                 rules={[
                   {
-                    required: true,
                     message: "Mohon masukkan Jumlah SKS Mata Kuliah!",
                   },
                 ]}
@@ -140,7 +130,7 @@ const UpdateJadwalKuliah = ({ id_jadwal }) => {
           </Row>
 
           <Form.Item>
-            <Button className="submit-form-jadwal-kuliah" style={{ float: "right" }} htmlType="submit">
+            <Button className="submit-form-jadwal-kuliah" style={{ float: "right" }} htmlType="submit" onClick={() => saveResponse(response)}>
               Simpan
             </Button>
           </Form.Item>
@@ -162,10 +152,6 @@ const UpdateJadwalKuliah = ({ id_jadwal }) => {
       </div>
     </div>
   );
-};
-
-UpdateJadwalKuliah.propTypes = {
-  id_jadwal: PropTypes.string.isRequired,
 };
 
 export default UpdateJadwalKuliah;

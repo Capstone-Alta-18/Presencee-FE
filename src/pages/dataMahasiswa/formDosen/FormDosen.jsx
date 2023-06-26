@@ -35,13 +35,13 @@ const FormDosen = () => {
   const [form] = Form.useForm();
   const { createDosen } = useCreateDosen();
   const [isLoadingUpload, imageUrl, upload] = useUpload();
+  
 
   const handleUpload = async (file) => {
     try {
       const formData = new FormData();
       formData.append("image", file.file.originFileObj);
       await upload(formData);
-      console.log("Image URL:", imageUrl);
       form.setFieldsValue({ image: imageUrl });
     } catch (error) {
       console.error("Upload Error:", error);
@@ -81,8 +81,8 @@ const FormDosen = () => {
                   src={imageUrl}
                   alt="avatar"
                   style={{
-                    height: "150px",
-                    borderRadius: "10px",
+                    width: 300,
+                    height: 400,
                   }}
                 />
               </div>
