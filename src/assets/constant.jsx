@@ -13,9 +13,9 @@ import Features3 from "./img/features3.png";
 import Features4 from "./img/features4.png";
 import AboutUs from "./img/aboutUs.png";
 import imagecontactus from "./img/imagecontactus.png";
+import animasiLogin2 from "./img/animasi login2.png";
 
 import profilImage from "./img/profil-image.png";
-
 
 export const IMAGES = {
   animasiLogin: animasiLogin,
@@ -32,8 +32,7 @@ export const IMAGES = {
   Features3: Features3,
   Features4: Features4,
   AboutUs: AboutUs,
-  imagecontactus : imagecontactus,
-
+  imagecontactus: imagecontactus,
+  animasiLogin2: animasiLogin2,
   profilImage: profilImage,
-
 };
