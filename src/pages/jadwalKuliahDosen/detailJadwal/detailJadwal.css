@@ -1,3 +1,7 @@
+.header-jadwal-dosen {
+  display: inline;
+  justify-content: space-between;
+}
 .table-jadwal-dosen-detail {
   margin-top: 35px;
   font-family: "Poppins", sans-serif;

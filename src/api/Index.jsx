@@ -83,8 +83,8 @@ export const api = {
   getJadwalDosenById: (dosen_id) => {
     return baseAPI.get(`/v1/jadwals/filter?jadwal_id=0&user_id=0&dosen_id=${dosen_id}&matakuliah_id=0&room_id=0`);
   },
-  getAbsenDosen: (user_id) => {
-    return baseAPI.get(`/v1/absens/filter?absen_id=0&user_id=${user_id}&mahasiswa_id=0&jadwal_id=0`);
+  getAbsenDosen: () => {
+    return baseAPI.get(`/v1/absens/filter?absen_id=0&user_id=0&mahasiswa_id=0&jadwal_id=0`);
   },
 
   updateDosen: (id, body) => {
@@ -95,6 +95,9 @@ export const api = {
   },
   updateMahasiswa: (id, body) => {
     return baseAPI.put(`/v1/mahasiswa/${id}`, body);
+  },
+  updateAbsen: (body) => {
+    return baseAPI.put(`/v1/absens`, body);
   },
   deleteMahasiswa: (id) => {
     return baseAPI.delete(`/v1/mahasiswa/${id}`);

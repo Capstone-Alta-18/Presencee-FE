@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Button, Input, Select, Table } from "antd";
+import { Popconfirm, Button, Input, Select, Table, message } from "antd";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import "./detailJadwal.css";
@@ -11,12 +11,13 @@ const DetailJadwal = () => {
   const { Search } = Input;
   const onSearch = (value) => console.log(value);
   const currentDate = dayjs().format("dddd, DD MMMM YYYY");
+  const [confirm, setConfirm] = useState(false);
 
-  const [isLoading, dataAbsen, getDataAbsen] = useGetDataAbsen();
+  const [isLoading, dataAbsen, getDataAbsen, confirmAbsen] = useGetDataAbsen();
   console.log({ dataAbsen });
   useEffect(() => {
     getDataAbsen();
-  }, [user_id, getDataAbsen]);
+  }, []);
 
   const hari = [
     {
@@ -49,14 +50,25 @@ const DetailJadwal = () => {
     },
   ];
 
-  const renderAksi = (is_konfirmasi) => {
+  const handleConfirm = async (id) => {
+    const body = {
+      id: id,
+      is_konfirmasi: true,
+    };
+    await confirmAbsen(body);
+    setConfirm(true);
+  };
+
+  const renderAksi = (is_konfirmasi, id) => {
     if (is_konfirmasi) {
       return <span style={{ borderRadius: "21px", background: "#34B139", padding: "5px", color: "#fff" }}>Terkonfirmasi</span>;
     } else {
       return (
-        <Button type="primary" style={{ borderRadius: "0" }}>
-          Pilih Aksi
-        </Button>
+        <Popconfirm title="Konfirmasi" description="Apakah anda yakin akan melakukan konfirmasi?" onConfirm={() => handleConfirm(id)} onCancel={cancel} okText="Yes" cancelText="No">
+          <Button type="primary" style={{ borderRadius: "0" }}>
+            Pilih Aksi
+          </Button>
+        </Popconfirm>
       );
     }
   };
@@ -86,6 +98,10 @@ const DetailJadwal = () => {
             ? "#CCB90D" // Kuning
             : text === "Hadir"
             ? "rgba(64, 119, 76, 1)" // Hijau
+            : text === "Dispensasi"
+            ? "orange"
+            : text === "Alpha"
+            ? "#AA3131"
             : "";
 
         return (
@@ -112,16 +128,21 @@ const DetailJadwal = () => {
       title: "Aksi",
       dataIndex: "is_konfirmasi",
       key: "is_konfirmasi",
-      render: renderAksi,
+      render: (is_konfirmasi, record) => renderAksi(is_konfirmasi, record.id),
     },
   ];
 
+  const cancel = (e) => {
+    console.log(e);
+    message.error("Aksi dibatalkan");
+  };
+
   return (
     <div>
-      <p className="title-jadwal-dosen">
-        Matakuliah - Kelas <br /> Hari
-      </p>
-      <p className="tanggal-jadwal-dosen">{currentDate}</p>
+      <div className="header-jadwal-dosen">
+        <p className="title-jadwal-dosen">Data Absensi</p>
+        <p className="tanggal-jadwal-dosen">{currentDate}</p>
+      </div>
       <div className="jadwal-dosen-section">
         <div className="header-jadwal">
           <div className="search">

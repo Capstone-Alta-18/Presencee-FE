@@ -10,8 +10,7 @@ export const useGetDataAbsen = () => {
 
   const getData = useCallback(async () => {
     try {
-      const token = localStorage.getItem("token"); // Mengambil token dari local storage
-      const res = await api.getAbsen(user_id, token); // Menyertakan user_id dan token dalam permintaan API
+      const res = await api.getAbsenDosen(); // Menyertakan user_id dan token dalam permintaan API
       setData(res?.data.data);
     } catch (err) {
       message.open({
@@ -23,9 +22,22 @@ export const useGetDataAbsen = () => {
     }
   }, [user_id]);
 
+  const confirm = useCallback(
+    async (body) => {
+      try {
+        await api.updateAbsen(body);
+        message.success("Konfirmasi berhasil");
+        getData();
+      } catch (err) {
+        message.error(`Terjadi kesalahan: ${err?.message}`);
+      }
+    },
+    [getData]
+  );
+
   useEffect(() => {
     getData();
   }, [getData]);
 
-  return [isLoading, data, getData];
+  return [isLoading, data, getData, confirm];
 };

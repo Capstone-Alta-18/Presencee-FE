@@ -30,7 +30,7 @@ const LayoutComponentDosen = ({ children }) => {
 
   return (
     <div>
-      <Layout>
+      <Layout style={{ backgroundColor: "#fff" }}>
         {/* sidebar */}
         <Sider className="side-bar" trigger={null} collapsible collapsed={collapsed}>
           <Button className="btn-menu" theme="light" type="text" icon={<List size={20} />} onClick={showDrawer} />
@@ -75,7 +75,7 @@ const LayoutComponentDosen = ({ children }) => {
           </Header>
 
           {/* content */}
-          <Content style={{ paddingLeft: "130px", paddingTop: "50px", paddingRight: "50px" }}>{children}</Content>
+          <Content style={{ paddingLeft: "130px", paddingTop: "50px", paddingRight: "50px", paddingBottom: "50px" }}>{children}</Content>
         </Layout>
       </Layout>
     </div>
