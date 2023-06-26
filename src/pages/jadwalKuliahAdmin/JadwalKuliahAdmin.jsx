@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Button, Table } from "antd";
 import "./jadwalKuliah.css";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { api } from "../../api/Index";
 import dayjs from "dayjs";
-import { Link } from "react-router-dom";
+import "./jadwalKuliah.css";
 
 dayjs.locale("id");
 

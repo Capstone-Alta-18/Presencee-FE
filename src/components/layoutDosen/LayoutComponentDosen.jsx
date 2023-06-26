@@ -30,7 +30,7 @@ const LayoutComponentDosen = ({ children }) => {
 
   return (
     <div>
-      <Layout>
+      <Layout style={{ backgroundColor: "#fff" }}>
         {/* sidebar */}
         <Sider className="side-bar" trigger={null} collapsible collapsed={collapsed}>
           <Button className="btn-menu" theme="light" type="text" icon={<List size={20} />} onClick={showDrawer} />
@@ -63,7 +63,8 @@ const LayoutComponentDosen = ({ children }) => {
                 <Button
                   type="primary"
                   onClick={() => {
-                    localStorage.removeItem("access_token");
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("dosen_id");
                   }}
                   danger
                 >
@@ -74,14 +75,7 @@ const LayoutComponentDosen = ({ children }) => {
           </Header>
 
           {/* content */}
-          <Content
-            style={{
-              margin: "24px 16px",
-              padding: 24,
-            }}
-          >
-            {children}
-          </Content>
+          <Content style={{ paddingLeft: "130px", paddingTop: "50px", paddingRight: "50px", paddingBottom: "50px" }}>{children}</Content>
         </Layout>
       </Layout>
     </div>

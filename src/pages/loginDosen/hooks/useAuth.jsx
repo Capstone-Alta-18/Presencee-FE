@@ -14,6 +14,7 @@ export const useLoginDosen = () => {
 
       if (res) {
         localStorage.setItem("token", res.data?.token);
+        localStorage.setItem("dosen_id", res.data?.data?.dosen?.ID);
         message.success("Berhasil Login");
         onSuccess && onSuccess();
       }

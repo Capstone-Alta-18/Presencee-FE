@@ -13,6 +13,8 @@
   background: linear-gradient(180deg, #cd4f3f 0%, #fe7968 100%) !important;
   border-radius: 0px 50px 50px 0px;
   padding: 64px 0px;
+  position: fixed !important;
+  z-index: 9;
 }
 
 .menu-bar-admin {
@@ -52,10 +54,13 @@
   align-items: center;
   justify-content: space-between;
   margin-left: -40px;
+  position: fixed;
+  width: 103%;
+  z-index: 8;
 }
 
 .nav-brand {
-  margin-left: 40px;
+  margin-left: 150px;
 }
 .nav-users {
   display: flex;

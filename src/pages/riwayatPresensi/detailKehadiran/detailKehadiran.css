@@ -26,7 +26,29 @@
 }
 
 /* collapse */
-.content-panel-collapse {
-  display: flex;
-  justify-content: space-between;
+
+.table-matkul {
+  width: 100%;
+}
+
+.table-matkul tr :nth-child(2n) {
+  text-align: end;
+  border-top: solid 1px #232121c2;
+  padding: 0px 5px;
+  background-color: #ffe4e1;
+}
+
+.table-matkul tr :nth-child(1n) {
+  text-align: start;
+  border-top: solid 1px #232121c2;
+  padding: 0px 5px;
+  background-color: #ffe4e1;
+}
+
+.table-matkul tr :nth-child(1) {
+  padding-top: 20px;
+}
+
+.btn-back-matkul {
+  background-color: #ffc9c3;
 }

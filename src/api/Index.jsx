@@ -56,7 +56,7 @@ export const api = {
     return baseAPI.get(`/v1/jadwals/${id_jadwal}`);
   },
   deleteJadwalByID: (id_jadwal) => {
-    return baseAPI.get(`/v1/jadwals/${id_jadwal}`);
+    return baseAPI.delete(`/v1/jadwals/${id_jadwal}`);
   },
   updateUserDosen: (user_id, body) => {
     return baseAPI.put(`/v1/users/${user_id}`, body);
@@ -79,6 +79,14 @@ export const api = {
   getMahasiswaById: (id) => {
     return baseAPI.get(`/v1/mahasiswa/${id}`);
   },
+
+  getJadwalDosenById: (dosen_id) => {
+    return baseAPI.get(`/v1/jadwals/filter?jadwal_id=0&user_id=0&dosen_id=${dosen_id}&matakuliah_id=0&room_id=0`);
+  },
+  getAbsenDosen: () => {
+    return baseAPI.get(`/v1/absens/filter?absen_id=0&user_id=0&mahasiswa_id=0&jadwal_id=0`);
+  },
+
   updateDosen: (id, body) => {
     return baseAPI.put(`/v1/dosen/${id}`, body);
   },
@@ -87,6 +95,9 @@ export const api = {
   },
   updateMahasiswa: (id, body) => {
     return baseAPI.put(`/v1/mahasiswa/${id}`, body);
+  },
+  updateAbsen: (body) => {
+    return baseAPI.put(`/v1/absens`, body);
   },
   deleteMahasiswa: (id) => {
     return baseAPI.delete(`/v1/mahasiswa/${id}`);
@@ -100,7 +111,7 @@ export const api = {
   createMahasiswa: (body) => {
     return baseAPI.post("/v1/mahasiswa", body);
   },
- uploadImage: (body) => {
+  uploadImage: (body) => {
     return baseAPI.post("/v1/upload", body, {
       headers: {
         "Content-Type": "multipart/form-data",

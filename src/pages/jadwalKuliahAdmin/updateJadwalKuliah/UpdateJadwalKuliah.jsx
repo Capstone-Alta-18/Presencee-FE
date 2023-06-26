@@ -10,21 +10,34 @@ const { Option } = Select;
 const UpdateJadwalKuliah = ({ id_jadwal }) => {
   const [formBio] = Form.useForm();
   const [dataJadwalKuliah, setDataJadwalKuliah] = useState(null);
-  const [, , getDataJadwal] = useGetDataJadwalId();
+  const [, data, getDataJadwal] = useGetDataJadwalId();
   const [dosenOptions, setDosenOptions] = useState([]);
   const [roomOptions, setRoomOptions] = useState([]);
   const [matakuliahOptions, setMatakuliahOptions] = useState([]);
-  console.log(dataJadwalKuliah);
+
   useEffect(() => {
-    getDataJadwal().then(([isLoading, data]) => {
+    getDataJadwal().then(([ data]) => {
       setDataJadwalKuliah(data);
     });
   }, []);
 
+  useEffect(() => {
+    if (data) {
+      formBio.setFieldsValue({
+        matakuliah_id: data.name,
+        sks: data.sks,
+        room_id: data.room.name,
+        dosen_id: data.dosen.name,
+        jam_awal: data.jam_mulai ? moment(data.jam_mulai) : null,
+        jam_selesai: data.jam_selesai ? moment(data.jam_selesai) : null,
+      });
+    }
+  }, [data]);
+
   const handleDelete = async () => {
     try {
       const token = localStorage.getItem("token");
-      await api.deleteJadwalById(id_jadwal, token);
+      await api.deleteJadwalByID(id_jadwal, token);
       // Redirect or show success message
     } catch (error) {
       console.error("Failed to delete jadwal:", error);
@@ -33,23 +46,22 @@ const UpdateJadwalKuliah = ({ id_jadwal }) => {
 
   const onFinish = () => {};
 
+  const saveResponse = (data) => {
+    const { matakuliah, sks, room, dosen, jam_mulai, jam_selesai } = data.data;
+    data({
+      matakuliah_id: matakuliah.ID,
+      sks,
+      room_id: room.ID,
+      dosen_id: dosen.ID,
+      jam_awal: moment(jam_mulai),
+      jam_selesai: moment(jam_selesai),
+    });
+  };
+
   return (
     <div className="Layout-jadwal-kuliah">
       <p>Manage Jadwal</p>
-      <Form
-        form={formBio}
-        layout="vertical"
-        colon={false}
-        onFinish={onFinish}
-        initialValues={{
-          matakuliah_id: dataJadwalKuliah?.matakuliah_id,
-          sks: dataJadwalKuliah?.data.sks,
-          room_id: dataJadwalKuliah?.room_id,
-          dosen_id: dataJadwalKuliah?.dosen_id,
-          jam_awal: dataJadwalKuliah?.jam_awal ? moment(dataJadwalKuliah.jam_awal) : null,
-          jam_selesai: dataJadwalKuliah?.jam_selesai ? moment(dataJadwalKuliah.jam_selesai) : null,
-        }}
-      >
+      <Form form={formBio} layout="vertical" colon={false} onFinish={onFinish}>
         <div className="layout-form-jadwal-kuliah">
           <h1 className="title-form-jadwal-kuliah"> Lihat Jadwal Kuliah </h1>
           <Row>
@@ -69,7 +81,6 @@ const UpdateJadwalKuliah = ({ id_jadwal }) => {
                 label="Jumlah SKS"
                 rules={[
                   {
-                    required: true,
                     message: "Mohon masukkan Jumlah SKS Mata Kuliah!",
                   },
                 ]}
@@ -118,7 +129,7 @@ const UpdateJadwalKuliah = ({ id_jadwal }) => {
           </Row>
 
           <Form.Item>
-            <Button className="submit-form-jadwal-kuliah" style={{ float: "right" }} htmlType="submit">
+            <Button className="submit-form-jadwal-kuliah" style={{ float: "right" }} htmlType="submit" onClick={() => saveResponse(response)}>
               Simpan
             </Button>
           </Form.Item>
@@ -133,7 +144,7 @@ const UpdateJadwalKuliah = ({ id_jadwal }) => {
           </div>
         </Link>
         <div>
-          <Button className="btn-jadwal" type="primary" danger onClick={handleDelete}>
+          <Button className="btn-hapus" type="primary" style={{ float: "right" }}>
             Hapus
           </Button>
         </div>

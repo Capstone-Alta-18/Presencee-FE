@@ -23,6 +23,7 @@ import FormMahasiswa from "../pages/dataMahasiswa/formMahasiswa/FormMahasiswa";
 import DetailDosen from "../pages/dataMahasiswa/formDosen/detail/DetailDosen";
 import DashboardDosen from "../pages/dashboardDosen/DashboardDosen";
 import JadwalKuliahDosen from "../pages/jadwalKuliahDosen/JadwalKuliahDosen";
+import DetailJadwal from "../pages/jadwalKuliahDosen/detailJadwal/DetailJadwal";
 import FormJadwalKuliah from "./../pages/jadwalKuliahAdmin/formJadwalKuliah/formJadwalKuliah";
 import LayoutComponent from "../components/layout/LayoutComponent";
 import LandingMain from "../pages/landingPage/LandingMain";
@@ -30,6 +31,7 @@ import LoginDosen from "../pages/loginDosen/LoginDosen";
 import LayoutComponentDosen from "../components/layoutDosen/LayoutComponentDosen";
 import DetailMhs from "../pages/dataMahasiswa/formMahasiswa/detail/DetailMhs";
 import UpdateJadwalKuliah from "../pages/jadwalKuliahAdmin/updateJadwalKuliah/UpdateJadwalKuliah";
+import LupaPassword from "../pages/lupaPassword/LupaPassword";
 
 const RouterManagement = () => {
   const token = localStorage.getItem("token");
@@ -38,7 +40,7 @@ const RouterManagement = () => {
   const { tahun, fakultas } = useParams();
 
   useEffect(() => {
-    if (!token && window.location.pathname !== "/login-admin" && window.location.pathname !== "/login-dosen") {
+    if (!token && window.location.pathname !== "/login-admin" && window.location.pathname !== "/login-dosen" && window.location.pathname !== "/lupa-password") {
       navigate("/");
     }
   }, [token, navigate]);
@@ -50,6 +52,7 @@ const RouterManagement = () => {
           <Route path="/" element={<LandingMain />} />
           <Route path="/login-admin" element={<LoginAdmin />} />
           <Route path="/login-dosen" element={<LoginDosen />} />
+          <Route path="/lupa-password" element={<LupaPassword />} />
           <Route
             path="/admin-page/*"
             element={
@@ -93,6 +96,7 @@ const RouterManagement = () => {
                 <Routes>
                   <Route path="/" element={<DashboardDosen />} />
                   <Route path="/jadwal-kuliah-dosen" element={<JadwalKuliahDosen />} />
+                  <Route path="/jadwal-kuliah-dosen/:user_id/:matakuliah_id/:jam_mulai/:jam_selesai" element={<DetailJadwal />} />
                 </Routes>
               </LayoutComponentDosen>
             }

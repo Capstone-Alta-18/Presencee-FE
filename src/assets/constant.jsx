@@ -1,4 +1,5 @@
 import animasiLogin from "./img/animasi login.png";
+import animasiLogin2 from "./img/animasi login2.png";
 import bgLandingPage from "./img/bg landing page.png";
 import faq1 from "./img/FAQ 1.png";
 import faq2 from "./img/FAQ 2.png";
@@ -13,12 +14,14 @@ import Features3 from "./img/features3.png";
 import Features4 from "./img/features4.png";
 import AboutUs from "./img/aboutUs.png";
 import imagecontactus from "./img/imagecontactus.png";
+import Vector from "./img/Vector.png";
+import Vector2 from "./img/Vector2.png";
 
 import profilImage from "./img/profil-image.png";
 
-
 export const IMAGES = {
   animasiLogin: animasiLogin,
+  animasiLogin2: animasiLogin2,
   bgLandingPage: bgLandingPage,
   faq1: faq1,
   faq2: faq2,
@@ -32,8 +35,9 @@ export const IMAGES = {
   Features3: Features3,
   Features4: Features4,
   AboutUs: AboutUs,
-  imagecontactus : imagecontactus,
+  imagecontactus: imagecontactus,
 
   profilImage: profilImage,
-
+  Vector: Vector,
+  Vector2: Vector2,
 };
