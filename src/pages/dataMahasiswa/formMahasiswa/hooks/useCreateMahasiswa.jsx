@@ -32,11 +32,11 @@ const useCreateMahasiswa = () => {
         jurusan: data.jurusan,
         tahun_masuk: data.tahun_masuk,
         ipk: data.ipk,
-        user_id: id,   
+        user_id: id,
       };
 
       const response = await api.createMahasiswa(mahasiswaData);
-      console.log("Create Mahasiswa Response:", response.data);
+      console("Create Mahasiswa Response:", response.data);
 
       message.success("Data Mahasiswa berhasil dibuat");
 

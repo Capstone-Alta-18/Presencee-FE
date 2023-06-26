@@ -14,10 +14,9 @@ const UpdateJadwalKuliah = ({ id_jadwal }) => {
   const [dosenOptions, setDosenOptions] = useState([]);
   const [roomOptions, setRoomOptions] = useState([]);
   const [matakuliahOptions, setMatakuliahOptions] = useState([]);
-  console.log(data);
 
   useEffect(() => {
-    getDataJadwal().then(([isLoading, data]) => {
+    getDataJadwal().then(([ data]) => {
       setDataJadwalKuliah(data);
     });
   }, []);
@@ -145,7 +144,7 @@ const UpdateJadwalKuliah = ({ id_jadwal }) => {
           </div>
         </Link>
         <div>
-          <Button className="btn-jadwal" type="primary" danger onClick={handleDelete}>
+          <Button className="btn-hapus" type="primary" style={{ float: "right" }}>
             Hapus
           </Button>
         </div>

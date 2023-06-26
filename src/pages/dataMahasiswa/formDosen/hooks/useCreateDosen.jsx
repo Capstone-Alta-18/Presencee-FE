@@ -32,7 +32,7 @@ const useCreateDosen = () => {
       };
 
       const response = await api.createDosen(dosenData);
-      console.log("Create Dosen Response:", response.data);
+      console("Create Dosen Response:", response.data);
 
       message.success("Data Dosen berhasil dibuat");
 

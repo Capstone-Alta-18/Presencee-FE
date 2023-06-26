@@ -19,10 +19,6 @@ const FormJadwalKuliah = () => {
   const roomOptions = useFetchRoomOptions();
   const matkulOptions = useFetchMatkulOptions();
 
-  const onOk = (value) => {
-    console.log("onOk: ", value);
-  };
-
   const handleSuccessClick = () => {
     Swal.fire({
       title: "Berhasil Menyimpan Data",
@@ -76,12 +72,10 @@ const FormJadwalKuliah = () => {
 
     api
       .createJadwal(body)
-      .then((response) => {
-        console.log(response);
+      .then(() => {
         handleSuccessClick();
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
         handleErrorClick();
       });
   };
@@ -90,12 +84,10 @@ const FormJadwalKuliah = () => {
     // Tambahkan kode untuk menghapus data dari API di sini
     api
       .deleteJadwal(row_id)
-      .then((response) => {
-        console.log(response);
+      .then(() => {
         handleSuccessClick();
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
         handleErrorClick();
       });
   };
@@ -108,12 +100,10 @@ const FormJadwalKuliah = () => {
     // Tambahkan kode untuk memperbarui data ke API di sini
     api
       .updateJadwal(id, body)
-      .then((response) => {
-        console.log(response);
+      .then(() => {
         handleCancel();
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
         handleErrorClick();
       });
   };
