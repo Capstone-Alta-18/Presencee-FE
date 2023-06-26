@@ -56,7 +56,7 @@ export const api = {
     return baseAPI.get(`/v1/jadwals/${id_jadwal}`);
   },
   deleteJadwalByID: (id_jadwal) => {
-    return baseAPI.get(`/v1/jadwals/${id_jadwal}`);
+    return baseAPI.delete(`/v1/jadwals/${id_jadwal}`);
   },
   updateUserDosen: (user_id, body) => {
     return baseAPI.put(`/v1/users/${user_id}`, body);

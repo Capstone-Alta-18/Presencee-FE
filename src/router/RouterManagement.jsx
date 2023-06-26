@@ -31,7 +31,7 @@ import LoginDosen from "../pages/loginDosen/LoginDosen";
 import LayoutComponentDosen from "../components/layoutDosen/LayoutComponentDosen";
 import DetailMhs from "../pages/dataMahasiswa/formMahasiswa/detail/DetailMhs";
 import UpdateJadwalKuliah from "../pages/jadwalKuliahAdmin/updateJadwalKuliah/UpdateJadwalKuliah";
-
+import LupaPassword from "../pages/lupaPassword/LupaPassword";
 
 const RouterManagement = () => {
   const token = localStorage.getItem("token");
@@ -40,7 +40,7 @@ const RouterManagement = () => {
   const { tahun, fakultas } = useParams();
 
   useEffect(() => {
-    if (!token && window.location.pathname !== "/login-admin" && window.location.pathname !== "/login-dosen") {
+    if (!token && window.location.pathname !== "/login-admin" && window.location.pathname !== "/login-dosen" && window.location.pathname !== "/lupa-password") {
       navigate("/");
     }
   }, [token, navigate]);
@@ -52,6 +52,7 @@ const RouterManagement = () => {
           <Route path="/" element={<LandingMain />} />
           <Route path="/login-admin" element={<LoginAdmin />} />
           <Route path="/login-dosen" element={<LoginDosen />} />
+          <Route path="/lupa-password" element={<LupaPassword />} />
           <Route
             path="/admin-page/*"
             element={

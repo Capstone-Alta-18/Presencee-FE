@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Input, Button, Space, Upload, message } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
@@ -35,14 +35,15 @@ const FormDosen = () => {
   const [form] = Form.useForm();
   const { createDosen } = useCreateDosen();
   const [isLoadingUpload, imageUrl, upload] = useUpload();
+  const [images, setImage] = useState(imageUrl);
 
   const handleUpload = async (file) => {
     try {
       const formData = new FormData();
       formData.append("image", file.file.originFileObj);
       await upload(formData);
-      console.log("Image URL:", imageUrl);
       form.setFieldsValue({ image: imageUrl });
+      setImage(imageUrl);
     } catch (error) {
       console.error("Upload Error:", error);
     }
@@ -59,6 +60,7 @@ const FormDosen = () => {
       }
 
       await createDosen(newValues);
+      setImage();
       form.resetFields();
       message.success("Dosen created successfully!");
     } catch (error) {
@@ -75,14 +77,14 @@ const FormDosen = () => {
       <div className="container-form-dosen">
         <div className="row">
           <div className="upload-container-dosen">
-            {imageUrl ? (
+            {images ? (
               <div>
                 <img
-                  src={imageUrl}
+                  src={images}
                   alt="avatar"
                   style={{
-                    height: "150px",
-                    borderRadius: "10px",
+                    width: 300,
+                    height: 400,
                   }}
                 />
               </div>

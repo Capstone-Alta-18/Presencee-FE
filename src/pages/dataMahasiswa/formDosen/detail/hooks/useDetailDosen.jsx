@@ -47,7 +47,6 @@ const useDetailDosen = (id) => {
       }
 
       // Tambahkan pesan sukses jika diperlukan
-      console.log("Data Dosen berhasil diperbarui");
     } catch (error) {
       setError(error);
     }
