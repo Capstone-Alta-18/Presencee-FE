@@ -1,4 +1,5 @@
 import animasiLogin from "./img/animasi login.png";
+import animasiLogin2 from "./img/animasi login2.png";
 import bgLandingPage from "./img/bg landing page.png";
 import faq1 from "./img/FAQ 1.png";
 import faq2 from "./img/FAQ 2.png";
@@ -20,6 +21,7 @@ import profilImage from "./img/profil-image.png";
 
 export const IMAGES = {
   animasiLogin: animasiLogin,
+  animasiLogin2: animasiLogin2,
   bgLandingPage: bgLandingPage,
   faq1: faq1,
   faq2: faq2,
